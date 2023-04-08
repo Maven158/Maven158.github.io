@@ -199,10 +199,11 @@ function sideBarNav() {
 					if($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
-					
-					// if($(this).hasClass('tt')) {
-					// 	$(this).display = 'none';
-					// }
+					menu.find('li').each(function() {
+						console.log($(this).find('tt'));
+						$(this).find('tt').opacity = '0';
+						// $(this).find('a').removeClass('current');
+					});
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
@@ -222,34 +223,39 @@ function sideBarNav() {
 	});
 }
 
-// function siteNav() {
-// 	var menu = $('#siteNav');
-// 	menu.find('a').each(function() {
-// 		if($(this).hasClass('resume')) {
-// 			console.log(menu);
-// 			var nav = document.getElementsByClassName('resume')[0];
-// 			nav.addEventListener('click', function (){
-// 				fetch('resume.html')
-// 				.then((response) => response.text())
-// 				.then((text) => {
-// 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-// 					var flash = document.getElementsByClassName('resume')[0];
-// 					$(flash).addClass('flash');
-// 					setTimeout(function() {
-// 						$(flash).removeClass('flash');
-// 					}, 600);
-// 					newDoc.innerHTML = text;
-// 					let str = newDoc.querySelector('#mainContent').outerHTML;
-// 					document.getElementById("mainContent").outerHTML = str;
-// 					document.getElementById("mainContent").style.float = "none";
-// 					document.getElementById("mainContent").style.display = "flex";
-// 					// document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-// 					// document.getElementById("field").style.padding = "40px 20px 40px 20px";
-// 				});
-// 			});
-// 		}
-// 	});
-// }
+function siteNav() {
+	var menu = $('#siteNav');
+	menu.find('a').each(function() {
+		if($(this).hasClass('resume')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('resume')[0];
+			nav.addEventListener('click', function (){
+				console.log("CLICKED");
+				fetch('resume.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('resume')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					menu.find('li').each(function() {
+						$(this).find('ul').stop(true, true).fadeOut(1000);
+						$(this).find('a').removeClass('current');
+					});
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				});
+			});
+		}
+	});
+}
 function loadScript(src) {
   return new Promise(function (resolve, reject) {
     if ($("script[src='" + src + "']").length === 0) {
