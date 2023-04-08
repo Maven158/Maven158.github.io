@@ -279,7 +279,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   font-weight: 600 !important;
 }
 .copyright {
-	display: block;
+	display: 	block;
 	position: absolute;
 	z-index: 1;
 	background: transparent;
@@ -288,15 +288,11 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	bottom: 4px;
 	color:#e84393;
 }
-.copyright a.link::hover {
-	display: block;
-	position: absolute;
-	z-index: 1;
-	background: transparent;
-	font-weight: bold;
-	font-variant-caps: all-small-caps;
-	bottom: 4px;
-	color:#d63031;
+#mainContent > div > a.footer {
+	color:#a29bfe;
+}
+#mainContent > div > a.footer:hover {
+	color:#6c5ce7;
 }
 .pfp {
 	position: absolute;
