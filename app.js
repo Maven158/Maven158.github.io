@@ -43,7 +43,7 @@ const parkUpdateUISuccess = function(parsedData) {
   parkName.textContent = parsedData.data[number].fullName;
   parkName.href = parsedData.data[number].url;
   parkDesc.textContent = parsedData.data[number].description;
-  parkThumb.src = 'http://127.0.0.1:5500/_images/pfp-50-50.png';
+  parkThumb.src = 'pfp-50-50.png';
   parkSection.classList.remove('hidden');
 }
 const smartyUpdateUIError = function(error) {
@@ -55,7 +55,7 @@ const parkUpdateUIError = function(error) {
   parkName.href = parksFallback.url;
   parkDesc.textContent = parksFallback.description;
   console.log('ERROR');
-  parkThumb.src = 'http://127.0.0.1:5500/_images/pfp-50-50.png';
+  parkThumb.src = 'pfp-50-50.png';
   parkSection.classList.remove('hidden');
 };
 

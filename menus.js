@@ -73,7 +73,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('../home.html')
+				fetch('home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -204,7 +204,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('../contact.html')
+				fetch('contact.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -213,7 +213,7 @@ function sideBarNav() {
 					document.getElementById("mainContent").outerHTML = str;
 					str = newDoc.querySelector('#secondaryContent').outerHTML;
 					document.getElementById("secondaryContent").outerHTML = str;
-					loadScript("../_scripts/app.js");
+					loadScript("app.js");
 				});
 			});
 		}
@@ -234,7 +234,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('../resume.html')
+				fetch('resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -284,7 +284,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('resume')[0];
 			nav.addEventListener('click', function (){
 				console.log("Clicked Resume");
-				fetch('../resume.html')
+				fetch('resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
