@@ -27,6 +27,13 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 ::-webkit-calendar-picker-indicator {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23e84393" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
 }
+#field > article > div.hero > div > img.banner {
+	margin-top: 20px;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #f78da7;
+	box-shadow: 0px 0px 4px 4px #fd79a8;
+}
 .resume {
   /* padding: 1.3cm 1.4cm 1.3cm 1.4cm; */
   position: relative;
@@ -758,12 +765,12 @@ span.accent {
 	border-width: 2px;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	padding: 0 .5em;
+	padding: 0 .25em 0 .5em;
 	background: #000000;
 }
 #siteNav > div > ul > li:nth-child(4) > a, #siteNav > div > ul > li:nth-child(4) > a:hover, #siteNav li:nth-child(4) a.current, #siteNav li:nth-child(4) a.current:hover {
 	border-width: 2px;
-	padding: 0 .5em;
+	padding: 0 .5em 0 .25em;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	background: #000000;
@@ -788,7 +795,7 @@ span.accent {
 }
 #siteNav li a:link, #siteNav li a:visited {
 	display: block;
-	padding: 0em 1em;
+	padding: 0em .25em;
 	background: #000000;
 	font: 1.1em Arial, sans-serif;
 	font-weight: bold;
