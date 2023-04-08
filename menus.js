@@ -32,10 +32,8 @@ function enableMenus() {
 			$(this).unbind();
 			$(this).mouseenter(function() {
 				$(this).find('a').addClass('current');
-			  // $(this).find('div').stop(true, true).slideRight(1000);
 			});
 			$(this).mouseleave(function() {
-			  // $(this).find('div').stop(true, true).slideLeft(1000);
 				$(this).find('a').removeClass('current');
 			});
 		};
@@ -61,13 +59,10 @@ function sideBarNav() {
 			let flash = document.getElementsByClassName('fas fa-house-user')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					if($(this).hasClass('selected')) {
-						// console.log(this);
 						$(this).removeClass('selected');
 					}
 				});
-				console.log("Clicked Home");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -79,9 +74,7 @@ function sideBarNav() {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					// console.log(str)
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById('secondaryContent').innerHTML = "";
 				});
 			});
 		}
@@ -90,19 +83,15 @@ function sideBarNav() {
 			let flash = document.getElementsByClassName('fa fa-code')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					if($(this).hasClass('selected')) {
-						console.log(this);
 						$(this).removeClass('selected');
 					}
 				});
-				console.log("Clicked HTML Tags");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				document.getElementById('secondaryContent').innerHTML = "";
 				document.getElementById('mainContent').innerHTML = "";
 			});
 		}
@@ -111,13 +100,10 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-linkedin')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					// if($(this).hasClass('selected')) {
-					// 	console.log(this);
 					// 	$(this).removeClass('selected');
 					// }
 				});
-				console.log("Clicked LinkedIn");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -132,13 +118,10 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					// if($(this).hasClass('selected')) {
-					// 	console.log(this);
 					// 	$(this).removeClass('selected');
 					// }
 				});
-				console.log("Clicked Reddit");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -152,13 +135,10 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-github-alt')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					// if($(this).hasClass('selected')) {
-					// 	console.log(this);
 					// 	$(this).removeClass('selected');
 					// }
 				});
-				console.log("Clicked GitHub");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -172,13 +152,10 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					// if($(this).hasClass('selected')) {
-					// 	console.log(this);
 					// 	$(this).removeClass('selected');
 					// }
 				});
-				console.log("Clicked Stack Overflow");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -192,13 +169,10 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-send')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					if($(this).hasClass('selected')) {
-						console.log(this);
 						$(this).removeClass('selected');
 					}
 				});
-				console.log("Clicked Paper Airplane");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -211,8 +185,6 @@ function sideBarNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					str = newDoc.querySelector('#secondaryContent').outerHTML;
-					document.getElementById("secondaryContent").outerHTML = str;
 					loadScript("app.js");
 				});
 			});
@@ -222,13 +194,10 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-file-alt')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					console.log($(this));
 					if($(this).hasClass('selected')) {
-						console.log(this);
 						$(this).removeClass('selected');
 					}
 				});
-				console.log("Clicked Resume");
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
@@ -240,13 +209,7 @@ function sideBarNav() {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					// console.log(str)
 					document.getElementById("mainContent").outerHTML = str;
-					// document.getElementById("mainContent").style.float = "none";
-					// document.getElementById("mainContent").style.display = "flex";
-					// document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					// document.getElementById("field").style.padding = "40px 20px 40px 20px";
-					document.getElementById("secondaryContent").style.display = "none";
 				});
 			});
 		}
@@ -259,31 +222,24 @@ function siteNav() {
 		if($(this).hasClass('sideBarHome')) {
 			var nav = document.getElementsByClassName('sideBarHome')[0];
 			nav.addEventListener('click', function (){
-				console.log("Clicked Home");
-				document.getElementById('secondaryContent').innerHTML = "";
 				document.getElementById('mainContent').innerHTML = "";
 			});
 		}
 		if($(this).hasClass('sideBarCode')) {
 			var nav = document.getElementsByClassName('sideBarCode')[0];
 			nav.addEventListener('click', function (){
-				console.log("Clicked HTML Tags");
-				document.getElementById('secondaryContent').innerHTML = "";
 				document.getElementById('mainContent').innerHTML = "";
 			});
 		}
 		if($(this).hasClass('sideBarLinkedIn')) {
 			var nav = document.getElementsByClassName('sideBarLinkedIn')[0];
 			nav.addEventListener('click', function (){
-				console.log("Clicked LinkedIn");
-				document.getElementById('secondaryContent').innerHTML = "";
 				document.getElementById('mainContent').innerHTML = "";
 			});
 		}
 		if($(this).hasClass('resume')) {
 			var nav = document.getElementsByClassName('resume')[0];
 			nav.addEventListener('click', function (){
-				console.log("Clicked Resume");
 				fetch('resume.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -300,7 +256,6 @@ function siteNav() {
 					document.getElementById("mainContent").style.display = "flex";
 					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
 					document.getElementById("field").style.padding = "40px 20px 40px 20px";
-					document.getElementById("secondaryContent").style.display = "none";
 				});
 			});
 		}
@@ -319,7 +274,6 @@ function loadScript(src) {
         script.src = src;
         document.body.appendChild(script);
     } else {
-			console.log("RESOLVE")
     		reload_js(src);
         resolve();
     }
