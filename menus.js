@@ -192,11 +192,17 @@ function sideBarNav() {
 		if($(this).hasClass('sideBarResume')) {
 			var nav = document.getElementsByClassName('sideBarResume')[0];
 			var flash = document.getElementsByClassName('fa fa-file-alt')[0];
+			console.log($(this));
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
+
 					if($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
+					
+					// if($(this).hasClass('tt')) {
+					// 	$(this).display = 'none';
+					// }
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
@@ -216,51 +222,34 @@ function sideBarNav() {
 	});
 }
 
-function siteNav() {
-	var menu = $('#siteNav');
-	menu.find('a').each(function() {
-		if($(this).hasClass('sideBarHome')) {
-			var nav = document.getElementsByClassName('sideBarHome')[0];
-			nav.addEventListener('click', function (){
-				document.getElementById('mainContent').innerHTML = "";
-			});
-		}
-		if($(this).hasClass('sideBarCode')) {
-			var nav = document.getElementsByClassName('sideBarCode')[0];
-			nav.addEventListener('click', function (){
-				document.getElementById('mainContent').innerHTML = "";
-			});
-		}
-		if($(this).hasClass('sideBarLinkedIn')) {
-			var nav = document.getElementsByClassName('sideBarLinkedIn')[0];
-			nav.addEventListener('click', function (){
-				document.getElementById('mainContent').innerHTML = "";
-			});
-		}
-		if($(this).hasClass('resume')) {
-			var nav = document.getElementsByClassName('resume')[0];
-			nav.addEventListener('click', function (){
-				fetch('resume.html')
-				.then((response) => response.text())
-				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('resume')[0];
-					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
-					newDoc.innerHTML = text;
-					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
-				});
-			});
-		}
-	});
-}
+// function siteNav() {
+// 	var menu = $('#siteNav');
+// 	menu.find('a').each(function() {
+// 		if($(this).hasClass('resume')) {
+// 			console.log(menu);
+// 			var nav = document.getElementsByClassName('resume')[0];
+// 			nav.addEventListener('click', function (){
+// 				fetch('resume.html')
+// 				.then((response) => response.text())
+// 				.then((text) => {
+// 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+// 					var flash = document.getElementsByClassName('resume')[0];
+// 					$(flash).addClass('flash');
+// 					setTimeout(function() {
+// 						$(flash).removeClass('flash');
+// 					}, 600);
+// 					newDoc.innerHTML = text;
+// 					let str = newDoc.querySelector('#mainContent').outerHTML;
+// 					document.getElementById("mainContent").outerHTML = str;
+// 					document.getElementById("mainContent").style.float = "none";
+// 					document.getElementById("mainContent").style.display = "flex";
+// 					// document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+// 					// document.getElementById("field").style.padding = "40px 20px 40px 20px";
+// 				});
+// 			});
+// 		}
+// 	});
+// }
 function loadScript(src) {
   return new Promise(function (resolve, reject) {
     if ($("script[src='" + src + "']").length === 0) {
