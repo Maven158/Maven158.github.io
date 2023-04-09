@@ -274,8 +274,10 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   font-weight: 600 !important;
 }
 .copyright {
-	display: 	block;
+	display: 	inline-flex;
 	position: absolute;
+	align-content: center;
+	font-kerning: auto;
 	z-index: 1;
 	background: transparent;
 	font-weight: bold;
@@ -283,10 +285,16 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	bottom: 4px;
 	color:#e84393;
 }
-#mainContent > div > img.copyright {
-	display: inline-flex;
-	margin-left: 5px;
-	bottom: 0px;
+#mainContent > div > div > img.copyright {
+	display: flex;
+	position: relative;
+	bottom: -2px;
+}
+#field > img.field {
+	display: flex;
+	right: 10px;
+	bottom: 10px;
+	position: absolute;
 }
 #mainContent > div > a.footer {
 	color:#a29bfe;
