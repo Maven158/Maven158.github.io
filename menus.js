@@ -202,7 +202,6 @@ function sideBarNav() {
 			console.log($(this));
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-
 					if($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
@@ -250,10 +249,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -283,10 +278,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -299,15 +290,15 @@ function siteNav() {
 				})
 			});
 		}
-		if($(this).hasClass('resume')) {
+		if($(this).hasClass('main')) {
 			console.log(menu);
-			var nav = document.getElementsByClassName('resume')[0];
+			var nav = document.getElementsByClassName('main')[0];
 			nav.addEventListener('click', function (){
 				fetch('resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('resume')[0];
+					var flash = document.getElementsByClassName('main')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -315,10 +306,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -348,10 +335,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -381,10 +364,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -414,10 +393,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -447,10 +422,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -480,10 +451,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -513,10 +480,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -546,10 +509,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -579,10 +538,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -612,10 +567,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -645,10 +596,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {
@@ -678,10 +625,6 @@ function siteNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
-					document.getElementById("mainContent").style.float = "none";
-					document.getElementById("mainContent").style.display = "flex";
-					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
-					document.getElementById("field").style.padding = "40px 20px 40px 20px";
 				})
 				.then((delayed) => {
 					setTimeout(function() {

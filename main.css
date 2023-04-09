@@ -3,23 +3,6 @@
 /*--------------------------- global constants -------------------------*/
 /*limited reset*/
 html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
-	--preset--color--black: #000000;
-	--preset--color--cyan-bluish-gray: #abb8c3;
-	--preset--color--white: #ffffff;
-	--preset--color--pale-pink: #f78da7;
-	--preset--color--vivid-red: #cf2e2e;
-	--preset--color--luminous-vivid-orange: #ff6900;
-	--preset--color--luminous-vivid-amber: #fcb900;
-	--preset--color--light-green-cyan: #7bdcb5;
-	--preset--color--vivid-green-cyan: #00d084;
-	--preset--color--mint-green: #00b894;
-	--preset--color--pale-cyan-blue: #8ed1fc;
-	--preset--color--vivid-cyan-blue: #0693e3;
-	--preset--color--light-green: #55efc4;
-	--preset--color--dark-orange: #db6159;
-	--preset--color--dark-blue: #000000;
-	--preset--color--vivid-purple: #6c5ce7;
-	--preset--gradient--dark-blue-to-dark-orange: linear-gradient(180deg, #000000 15%, #0984e3 80%); 
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -38,23 +21,26 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	border: 2px solid #f78da7;
 	box-shadow: 0px 0px 4px 4px #e84393;
 }
-.resume {
+#field {
+	padding: 40px 20px 40px 20px;
+}
+.main {
   /* padding: 1.3cm 1.4cm 1.3cm 1.4cm; */
   position: relative;
 	justify-content: center;
 }
-.lambda {
+.onePage {
   font-family: Arial, sans-serif;
   color: #a29bfe;
   -webkit-font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   -o-font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
 }
-.lambda h1 {
+.onePage h1 {
   font-family: Arial, sans-serif;
   line-height: inherit;
 }
-.lambda .section-header {
+.onePage .section-header {
   font-family: Arial, sans-serif;
   display: block;
 	color: #e84393;
@@ -66,12 +52,12 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   text-align: left;
   border-bottom: none;
 }
-.lambda .editableContent {
+.onePage .editableContent {
   font-family: Arial, sans-serif;
   font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   overflow: hidden;
 }
-.lambda p {
+.onePage p {
   white-space: pre-line;
   padding: 0;
   margin: 0 auto;
@@ -82,15 +68,15 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   display: block;
   position: relative;
 }
-.lambda .item,
-.lambda .skills .item {
+.onePage .item,
+.onePage .skills .item {
   line-height: 1.25 !important;
   margin-bottom: 9px;
 }
-.lambda .skills .item {
+.onePage .skills .item {
   margin-bottom: 0;
 }
-.lambda .name {
+.onePage .name {
   color: #6c5ce7;
 	font-variant-caps: all-small-caps;	
   font-family: Arial, sans-serif;
@@ -102,14 +88,14 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   padding: 0 0 3px 0;
   font-weight: 700;
 }
-.lambda .contact {
+.onePage .contact {
   color: #f78da7;
   margin-top: 2px;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
 }
-.lambda .contact-item {
+.onePage .contact-item {
   font-family: Arial, sans-serif;
   display: block;
   align-items: center;
@@ -117,7 +103,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   font-weight: 500;
   padding: 2px 3px 8px 3px;
 }
-.lambda .contact-item-location {
+.onePage .contact-item-location {
   display: inline-flex;
   -webkit-box-align: center;
   align-items: center;
@@ -125,35 +111,35 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   font-weight: 500;
   padding: 2px 3px 8px 0;
 }
-.lambda .contact-icon {
+.onePage .contact-icon {
   width: 0.9em;
   height: 0.9em;
   margin-right: 3px;
   fill: currentColor;
 }
-.lambda[data-icons="false"] .contact-icon {
+.onePage[data-icons="false"] .contact-icon {
   display: none;
 }
-.lambda[data-icons="false"] .contact-item:before {
+.onePage[data-icons="false"] .contact-item:before {
   content: "•";
   display: block;
   padding: 0 7px 0 3px;
 }
-.lambda .contact span i {
+.onePage .contact span i {
   position: relative;
   top: 1px;
   margin: 0 3px 0 0;
 }
-.lambda .summary {
+.onePage .summary {
   display: block;
 }
-.lambda .summary-paragraph {
+.onePage .summary-paragraph {
   margin-top: .7em !important;
 }
-.lambda .item > div > span {
+.onePage .item > div > span {
   line-height: 2em;
 }
-.lambda .item span {
+.onePage .item span {
   margin: 0 0 -6px;
   font-size: 1em;
   font-weight: 600;
@@ -163,28 +149,28 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   padding: 0;
   line-height: initial;
 }
-.lambda .highlight {
+.onePage .highlight {
   color: #6c5ce7;
 	text-transform:uppercase;
 }
-.lambda .item .ghost-hightlight span > span,
-.lambda .minor .minor-text {
+.onePage .item .ghost-hightlight span > span,
+.onePage .minor .minor-text {
   font-size: 1em;
   font-weight: 400 !important;
 }
-.lambda .item span > span:after {
+.onePage .item span > span:after {
   display: none;
 }
-.lambda .minor {
+.onePage .minor {
   font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   display: inline-flex !important;
   position: relative;
   overflow: hidden;
 }
-.lambda .minor .minor-text {
+.onePage .minor .minor-text {
   font-weight: normal;
 }
-.lambda .item p {
+.onePage .item p {
   display: block;
   text-align: left;
   white-space: pre-line;
@@ -194,25 +180,25 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   font-weight: 400;
   line-height: 1.6em;
 }
-.lambda .handle {
+.onePage .handle {
   top: 0 !important;
 }
-.lambda > div > div > div > .handle {
+.onePage > div > div > div > .handle {
   top: 0px !important;
   font-size: 1.2em;
   height: calc(100% - 27px);
 }
-.lambda .summary .item {
+.onePage .summary .item {
   margin-top: -6px;
 }
-.lambda .education .item > div {
+.onePage .education .item > div {
   display: inline-block;
 }
-.lambda .education-location,
-.lambda .education-date {
+.onePage .education-location,
+.onePage .education-date {
   font-weight: 400 !important;
 }
-.lambda .item span:after {
+.onePage .item span:after {
   content: "|";
 	font-weight: bold;
   position: relative;
@@ -222,36 +208,36 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   padding: 0 0px 0 3px;
   color: #e84393;
 }
-.lambda .item .baseline {
+.onePage .item .baseline {
   display: block !important;
 }
-.lambda .item .baseline > span:not(:last-child):after {
+.onePage .item .baseline > span:not(:last-child):after {
   content: ",";
   margin-left: -3px;
   color: #f78da7;
 }
-.lambda .item span:last-child:after {
+.onePage .item span:last-child:after {
   content: "";
   position: relative;
   padding: 0;
 }
-.lambda .item .baseline > span {
+.onePage .item .baseline > span {
   color: #f78da7;
   font-weight: normal;
   margin-bottom: 0;
 }
-.lambda .hero.havePicture {
+.onePage .hero.havePicture {
   display: flex;
   align-items: flex-end;
 }
-.lambda .hero.havePicture .name {
+.onePage .hero.havePicture .name {
   text-align: left;
 }
-.lambda .hero.havePicture .contact {
+.onePage .hero.havePicture .contact {
   text-align: left;
   justify-content: left;
 }
-.lambda .picture {
+.onePage .picture {
   width: 2.5cm;
   min-width: 2.5cm;
   height: 3cm;
@@ -261,13 +247,13 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   color: #f1f1f1;
   background: #f1f1f1;
 }
-.lambda .picture img {
+.onePage .picture img {
   object-fit: cover;
   object-position: center;
   width: 2.5cm;
   height: 3cm;
 }
-.lambda .no-picture {
+.onePage .no-picture {
   color: var(--color-grey);
   border: 2px dashed var(--color-grey);
   cursor: pointer;
@@ -281,7 +267,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   font-size: var(--scale-000);
   line-height: 1.5em;
 }
-.lambda .hide-picture {
+.onePage .hide-picture {
   display: none;
 }
 .heading {
@@ -611,11 +597,14 @@ span.accent {
 	z-index: 2; /*fix for IE menu issues*/
 }
 #mainContent {
-	float: right;
+	/* float: right;
 	display: flex;
 	width: 100%;
 	margin-right: 0px;
-	margin-top: 55px;
+	margin-top: 55px; */
+	float: none;
+	display: flex;
+	margin: 80px auto 0px auto;
 }
 #secondaryContent {
 	float: left;
@@ -1064,7 +1053,7 @@ span.accent {
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
 }
-#mainContent .resume {
+#mainContent .main {
 	padding: 20px !important;
 	display: inline;
 	width: 55%;
