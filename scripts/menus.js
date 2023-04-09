@@ -68,7 +68,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('home.html')
+				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -92,7 +92,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('code.html')
+				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -185,7 +185,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('contact.html')
+				fetch('/site/contact.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -216,7 +216,7 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				fetch('resume.html')
+				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -237,7 +237,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('accolades')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('accolades.html')
+				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -266,7 +266,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('biography')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('biography.html')
+				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -294,7 +294,7 @@ function siteNav() {
 			console.log(menu);
 			var nav = document.getElementsByClassName('main')[0];
 			nav.addEventListener('click', function (){
-				fetch('resume.html')
+				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -323,7 +323,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('future')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -352,7 +352,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('core')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -381,7 +381,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('hrenovator')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -410,7 +410,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('neirman')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -439,7 +439,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('maven')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -468,7 +468,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('linkedin')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -497,7 +497,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('reddit')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -526,7 +526,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('github')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -555,7 +555,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('stackoverflow')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -584,7 +584,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('contract')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
@@ -613,7 +613,7 @@ function siteNav() {
 			var nav = document.getElementsByClassName('email')[0];
 			console.log(nav)
 			nav.addEventListener('click', function (){
-				fetch('home.html')
+				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;

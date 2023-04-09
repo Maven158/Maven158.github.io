@@ -15,7 +15,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	position: absolute;
 }
 #field > article > div.hero > div > img.banner {
-	margin-top: 20px;
+	margin-top: 28px;
 	border-radius: 10px;
 	padding: 10px;
 	border: 2px solid #f78da7;
@@ -80,7 +80,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   color: #6c5ce7;
 	font-variant-caps: all-small-caps;	
   font-family: Arial, sans-serif;
-  margin: 0 auto;
+  margin: 6px auto;
   display: block;
   text-align: left;
   width: 100%;
@@ -597,11 +597,6 @@ span.accent {
 	z-index: 2; /*fix for IE menu issues*/
 }
 #mainContent {
-	/* float: right;
-	display: flex;
-	width: 100%;
-	margin-right: 0px;
-	margin-top: 55px; */
 	float: none;
 	display: flex;
 	margin: 80px auto 0px auto;
