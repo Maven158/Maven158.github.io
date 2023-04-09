@@ -226,16 +226,444 @@ function sideBarNav() {
 function siteNav() {
 	var menu = $('#siteNav');
 	menu.find('a').each(function() {
+		if($(this).hasClass('accolades')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('accolades')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('accolades.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('accolades')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('biography')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('biography')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('biography.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('biography')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
 		if($(this).hasClass('resume')) {
 			console.log(menu);
 			var nav = document.getElementsByClassName('resume')[0];
 			nav.addEventListener('click', function (){
-				console.log("CLICKED");
 				fetch('resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					var flash = document.getElementsByClassName('resume')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('future')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('future')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('future')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('core')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('core')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('core')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('hrenovator')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('hrenovator')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('hrenovator')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('neirman')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('neirman')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('neirman')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('maven')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('maven')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('maven')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('linkedin')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('linkedin')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('linkedin')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('reddit')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('reddit')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('reddit')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('github')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('github')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('github')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('stackoverflow')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('stackoverflow')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('stackoverflow')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('contract')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('contract')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('contract')[0];
+					$(flash).addClass('flash');
+					setTimeout(function() {
+						$(flash).removeClass('flash');
+					}, 600);
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+					document.getElementById("mainContent").style.float = "none";
+					document.getElementById("mainContent").style.display = "flex";
+					document.getElementById("mainContent").style.margin = "80px auto 0px auto";
+					document.getElementById("field").style.padding = "40px 20px 40px 20px";
+				})
+				.then((delayed) => {
+					setTimeout(function() {
+						if ($(this).find('ul').length > 0 ) {
+							$(this).off();
+							$(this).find('ul').stop(true, true).fadeOut(1000)
+							$(this).find('a').removeClass('current');	
+						}
+					}, 600);
+				})
+			});
+		}
+		if($(this).hasClass('email')) {
+			console.log(menu);
+			var nav = document.getElementsByClassName('email')[0];
+			console.log(nav)
+			nav.addEventListener('click', function (){
+				fetch('home.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					var flash = document.getElementsByClassName('email')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');

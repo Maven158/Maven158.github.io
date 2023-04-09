@@ -27,6 +27,10 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 ::-webkit-calendar-picker-indicator {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23e84393" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
 }
+#field > article > div.hero > div > div > span.bio {
+	margin-top: -115px;
+	position: absolute;
+}
 #field > article > div.hero > div > img.banner {
 	margin-top: 20px;
 	border-radius: 10px;
@@ -770,7 +774,7 @@ span.accent {
 }
 #siteNav > div > ul > li:nth-child(4) > a, #siteNav > div > ul > li:nth-child(4) > a:hover, #siteNav li:nth-child(4) a.current, #siteNav li:nth-child(4) a.current:hover {
 	border-width: 2px;
-	padding: 0 .5em 0 .25em;
+	padding: 0 .5em 0 .5em;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	background: #000000;
