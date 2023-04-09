@@ -52,7 +52,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   text-align: left;
   border-bottom: none;
 }
-.onePage .editableContent {
+.onePage .content {
   font-family: Arial, sans-serif;
   font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   overflow: hidden;
