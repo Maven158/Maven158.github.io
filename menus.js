@@ -92,7 +92,14 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
-				document.getElementById('mainContent').innerHTML = "";
+				fetch('code.html')
+				.then((response) => response.text())
+				.then((text) => {
+					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					document.getElementById("mainContent").outerHTML = str;
+				});
 			});
 		}
 		if($(this).hasClass('sideBarLinkedIn')) {

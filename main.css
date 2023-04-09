@@ -28,7 +28,7 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23e84393" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
 }
 #field > article > div.hero > div > div > span.bio {
-	margin-top: -115px;
+	/* margin-top: -115px; */
 	position: absolute;
 }
 #field > article > div.hero > div > img.banner {
@@ -216,7 +216,8 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
   content: "|";
 	font-weight: bold;
   position: relative;
-  left: 0;
+  left: 1px;
+	bottom: 2px;
   box-sizing: border-box;
   padding: 0 0px 0 3px;
   color: #e84393;
@@ -296,6 +297,11 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	bottom: 4px;
 	color:#e84393;
 }
+#mainContent > div > img.copyright {
+	display: inline-flex;
+	margin-left: 5px;
+	bottom: 0px;
+}
 #mainContent > div > a.footer {
 	color:#a29bfe;
 }
@@ -307,6 +313,16 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	z-index: 1;
 	background: #000000;
 	right: 20px;
+	top: 20px;
+	border-radius: 10px;
+	border: 2px solid #a29bfe;
+	box-shadow: 0px 0px 4px 4px #6c5ce7;
+}
+.pfp-bio {
+	position: absolute;
+	z-index: 1;
+	background: #000000;
+	left: 20px;
 	top: 20px;
 	border-radius: 10px;
 	border: 2px solid #a29bfe;
@@ -648,12 +664,13 @@ span.accent {
 	height: 41px;
 	background: #000000;
 	z-index: 999999999999;
-	margin-top: -6.5px;
+	margin-top: -8.5px;
 	padding: 4px 4px 4px 10px;
 	border-radius: 10px;
 	opacity: 0;
 	pointer-events: none;
-	box-shadow: 0px 0px 4px 4px #55efc4;
+	border: 2px solid #fd79a8;
+	box-shadow: 0px 0px 4px 4px #e84393;
 }
 .tt .tt-title {
 	position: relative;
@@ -661,7 +678,7 @@ span.accent {
 	background-color: #000000;
 	text-shadow: 2px 2px 1px #2d3436;
 	font-weight: bold;
-	color: #e84393;
+	color: #55efc4;
 	font-size: 15px;
 	margin-bottom: 4px;
 }
@@ -679,7 +696,7 @@ span.accent {
 	font-weight: bold;
 	line-height: 100%;
 	width: 100%;
-	color: #55efc4;
+	color: #a29bfe;
 	overflow-x: auto;
 	overflow-y: hidden;
 	letter-spacing: -.01em;
@@ -689,7 +706,7 @@ span.accent {
 	text-align: left;
 	overflow-x: auto;
 	overflow-y: hidden;
-	color: #55efc4
+	color: #a29bfe
 }
 .tt .tt-descr img {
 	margin-top: 0px;
