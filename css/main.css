@@ -31,6 +31,12 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	bottom: 10px;
 	position: absolute;
 }
+#personalInfo > img {
+	display: flex;
+	right: 10px;
+	bottom: 10px;
+	position: absolute;
+}
 #field > article > div.hero > div > div > span.bio {
 	/* margin-top: -115px; */
 	position: absolute;
