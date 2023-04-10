@@ -70,10 +70,10 @@ class Card {
   #handleMove = (x, y) => {
     this.#offsetX = x - this.#startPoint.x;
     this.#offsetY = y - this.#startPoint.y;
-    const rotate = this.#offsetX * 0.1;
+    const rotate = this.#offsetX * .1;
     this.element.style.transform = `translate(${this.#offsetX}px, ${this.#offsetY}px) rotate(${rotate}deg)`;
     // dismiss card
-    if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7) {
+    if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.75) {
       this.#dismiss(this.#offsetX > 0 ? 1 : -1);
     }
   }
@@ -114,7 +114,7 @@ class Card {
     document.removeEventListener('touchend', this.#handleTouchEnd);
     document.removeEventListener('touchmove', this.#handleTouchMove);
     this.element.style.transition = 'transform 1s';
-    this.element.style.transform = `translate(${direction * window.innerWidth}px, ${this.#offsetY}px) rotate(${90 * direction}deg)`;
+    this.element.style.transform = `translate(${(direction * -1) * window.innerWidth}px, ${this.#offsetY}px) `;
     this.element.classList.add('dismissing');
     setTimeout(() => {
       this.element.remove();
@@ -126,6 +126,7 @@ class Card {
       this.onLike();
     }
     if (typeof this.onDislike === 'function' && direction === -1) {
+      this.zindex = '-9999';
       this.onDislike();
     }
   }
