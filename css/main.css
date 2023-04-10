@@ -2,13 +2,34 @@
 
 /*--------------------------- global constants -------------------------*/
 /*limited reset*/
-html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
+html, body {
+	width: 100vw;
+  height: 100vh;
+	margin: 0;
+	padding: 0;
+	font: 100% Arial, sans-serif;
+  /* overflow: hidden; */
+}
+body {
+	text-align: center;
+	background: #000000;
+}
+div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
 ::-webkit-calendar-picker-indicator {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23e84393" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+}
+#field {
+	padding: 40px 20px 40px 20px;
+}
+#field > img.field {
+	display: flex;
+	right: 10px;
+	bottom: 10px;
+	position: absolute;
 }
 #field > article > div.hero > div > div > span.bio {
 	/* margin-top: -115px; */
@@ -18,11 +39,11 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	margin-top: 28px;
 	border-radius: 10px;
 	padding: 10px;
+	min-width: 184px;
+	max-width: 420px;
+	width: calc(100vw * .25);
 	border: 2px solid #f78da7;
 	box-shadow: 0px 0px 4px 4px #e84393;
-}
-#field {
-	padding: 40px 20px 40px 20px;
 }
 .main {
   /* padding: 1.3cm 1.4cm 1.3cm 1.4cm; */
@@ -285,23 +306,6 @@ html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h
 	bottom: 4px;
 	color:#e84393;
 }
-#mainContent > div > div > img.copyright {
-	display: flex;
-	position: relative;
-	bottom: -2px;
-}
-#field > img.field {
-	display: flex;
-	right: 10px;
-	bottom: 10px;
-	position: absolute;
-}
-#mainContent > div > a.footer {
-	color:#a29bfe;
-}
-#mainContent > div > a.footer:hover {
-	color:#6c5ce7;
-}
 .pfp {
 	position: absolute;
 	z-index: 1;
@@ -428,15 +432,6 @@ p {
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, video {
 	display: block;
 }
-html, body {
-	margin: 0; padding: 0;}
-
-body {
-	text-align:center;
-	font: 100% Arial, sans-serif;
-	background: #000000;
-	margin:0;
-}
 /* ^2 ------ global classes -------- */
 .floatRight {
 	float: right;
@@ -458,17 +453,14 @@ span.accent {
 	text-align: right;
 }
 .fixed-header {
-	width: 100%;
+	width: 100vw;
 	min-height: 68px;
 	position: fixed;
 	align-self: center;
 	justify-self: center;
 	align-content: center;
-	margin: 4px auto 0 auto;
-}
-#mainContent img.articleImage {
-	display: block;
-	margin: 1em 0;
+	margin: 0px auto 0 auto;
+	top: 4px
 }
 .callOut {
 	background: transparent;
@@ -501,45 +493,18 @@ span.accent {
 #home #wrapper {
 	background: #000 url(../_images/home_page_back.jpg) no-repeat 0 100px;
 }
-#actionCall {
-	height: 328px;
-	clear: both;
-	border-top: 1px solid #757575;
-}
-#actionCall h1{
-	font: normal 2.8em Arial, sans-serif;
-	color: transparent;
-	text-shadow: 1px 0px 0px #000;
-	filter: dropshadow(color=#000000, offx=1, offy=0); 
-	margin: 70px 0 0 607px;
-	letter-spacing:1px;
-}
-#actionCall a:link, #actionCall a:visited{
-	border: none;
-	width: 285px;
-	height: 55px;
-	background: url(../_images/tour_badge.png) no-repeat;
-	display:block;
-	margin: 70px 0 0 783px;
-}
-#actionCall a:hover, #actionCall a:active{
-	background-position: left bottom;
-}
-#actionCall h2{
-	text-indent:-1000em;
-}
 #home #contentWrapper{
 	margin: 0 25px;
 	padding: 25px;
 	background: transparent;
 	background: rgba(255, 255, 255, 0);
 	float: left;
-	width: 1180px;
+	width: 100vw;
 }
 #home #mainContent {
 	float: right;
 	/* display:flex; */
-	width: 100%;
+	width: 100vw;
 	padding-right: 0;
 	margin-right: 0;
 	/* z-index: -2; */
@@ -590,7 +555,7 @@ span.accent {
 	z-index: 1; /*fix for IE menu issues*/
 }
 #mainWrapper {
-	width: 100%;
+	width: 100vw;
 	display: inline-block;
 }
 #mainHeader {
@@ -603,6 +568,21 @@ span.accent {
 	height: 60px;
 	overflow-y:hidden;
 	z-index: 2; /*fix for IE menu issues*/
+}
+#mainContent img.articleImage {
+	display: block;
+	margin: 1em 0;
+}
+#mainContent > div > div > img.copyright {
+	display: flex;
+	position: relative;
+	bottom: -2px;
+}
+#mainContent > div > a.footer {
+	color:#a29bfe;
+}
+#mainContent > div > a.footer:hover {
+	color:#6c5ce7;
 }
 #mainContent {
 	float: none;
@@ -707,6 +687,7 @@ span.accent {
 
 #sideBar {
 	position: fixed;
+	height: calc(100vh / 2);
 	left: 1em;
 	top: 1em;
 	display: block;
@@ -755,6 +736,7 @@ span.accent {
 	height: 50px;
 	background-color: transparent;
 	width: auto;
+	/* max-width: calc(100vw - 8px); */
 	padding: 0;
 	margin: 0;
 	display: flex;
@@ -792,9 +774,8 @@ span.accent {
 	width: max-content;
 	justify-content: center;
 	padding: 0;
-	background: #000000;
+	background: transparent;
 	margin: auto;
-
 }
 #siteNav > div > ul {
 	display: flex;
@@ -805,6 +786,7 @@ span.accent {
 	border: 2px solid #fd79a8;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #e84393;
+	max-width: calc(100vw - 8px);
 }
 #siteNav li a:link, #siteNav li a:visited {
 	display: block;
@@ -1010,7 +992,9 @@ span.accent {
 	/* padding: 0px 0px 0px 0px; */
 	margin: -47px 0 26px;
 	background-color: transparent;
-	width: 100%;
+	width: max-content !important;
+	min-width: 55vw !important;
+	max-width: 65vw !important; 
 	border: 2px solid #55efc4;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #00b894;
@@ -1034,7 +1018,9 @@ span.accent {
 	height: 36px;
 	overflow-y:hidden;
 	background-color: transparent;
-	width: 55%;
+	width: auto;
+	min-width: 55vw;
+	max-width: 70vw !important; 
 	border: 2px solid #55efc4;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #00b894;
