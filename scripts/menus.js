@@ -205,11 +205,6 @@ function sideBarNav() {
 					if($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
-					menu.find('li').each(function() {
-						console.log($(this).find('tt'));
-						$(this).find('tt').opacity = '0';
-						// $(this).find('a').removeClass('current');
-					});
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
