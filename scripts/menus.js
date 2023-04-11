@@ -56,7 +56,7 @@ function enableMenus() {
 function changeFont(element, size){
 	element.style.fontSize = size;
 	
-			// console.log(element);
+			console.log(element.style.fontSize);
 	
 }
 
@@ -241,17 +241,37 @@ function siteNav() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
+					changeFont(font[i], '1.0rem');
+				}
+			}
+		});
+	}
+	if ($(document).width() < 400) {
+		menu.find('a').each(function() {
+		if($(this).hasClass('mainNav')) {
+			let font = document.getElementsByClassName('mainNav');
+				for(var i = 0; i < font.length; i++){
 					changeFont(font[i], '.9rem');
 				}
 			}
 		});
 	}
-	if ($(document).width() <= 320) {
+	if ($(document).width() < 360) {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
 					changeFont(font[i], '.8rem');
+				}
+			}
+		});
+	}
+	if ($(document).width() < 325) {
+		menu.find('a').each(function() {
+			if($(this).hasClass('mainNav')) {
+				let font = document.getElementsByClassName('mainNav');
+				for(var i = 0; i < font.length; i++){
+					changeFont(font[i], '.7rem');
 				}
 			}
 		});
@@ -267,7 +287,7 @@ function siteNav() {
 		});
 	}
 	else {
-		if ($(document).width() > 420) {
+		if ($(document).width() >= 435) {
 			menu.find('a').each(function() {
 				if($(this).hasClass('mainNav')) {
 					let font = document.getElementsByClassName('mainNav');
