@@ -1,3 +1,4 @@
+
 // desktop version sliding menus
 
 //enable menu animation if the screen is set to desktop
@@ -660,6 +661,7 @@ $(document).ready(function(){
 	enableMenus();
 	sideBarNav();
 	siteNav();
+	
 });
 $(window).resize(function() {
  	enableMenus();
