@@ -236,7 +236,17 @@ function sideBarNav() {
 function siteNav() {
 	var menu = $('#siteNav');
 	console.log($(document).width());
-	if ($(document).width() < 435) {
+	if ($(document).width() >= 420) {
+		menu.find('a').each(function() {
+			if($(this).hasClass('mainNav')) {
+				let font = document.getElementsByClassName('mainNav');
+				for(var i = 0; i < font.length; i++){
+					changeFont(font[i], '1.1rem');
+				}
+			}
+		});
+	}
+	if ($(document).width() < 420) {
 		menu.find('a').each(function() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
@@ -285,18 +295,6 @@ function siteNav() {
 				}
 			}
 		});
-	}
-	else {
-		if ($(document).width() >= 435) {
-			menu.find('a').each(function() {
-				if($(this).hasClass('mainNav')) {
-					let font = document.getElementsByClassName('mainNav');
-					for(var i = 0; i < font.length; i++){
-						changeFont(font[i], '1.1rem');
-					}
-				}
-			});
-		}
 	}
 	menu.find('a').each(function() {
 		if($(this).hasClass('accolades')) {
