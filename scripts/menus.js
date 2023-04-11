@@ -236,7 +236,7 @@ function sideBarNav() {
 function siteNav() {
 	var menu = $('#siteNav');
 	console.log($(document).width());
-	if ($(document).width() >= 420) {
+	if ($(document).width() >= 435) {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
@@ -246,7 +246,7 @@ function siteNav() {
 			}
 		});
 	}
-	if ($(document).width() < 420) {
+	if ($(document).width() < 435) {
 		menu.find('a').each(function() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
