@@ -12,6 +12,7 @@ function enableMenus() {
 	if($('body').hasClass('no-js')) {
 		$('body').removeClass('no-js');
 	};
+
 	//attach a listener to each li that has a child ul, and then slide submenus down or up depending upon mouse position
 	menu.find('li').each(function() {
 		if ($(this).find('ul').length > 0 ) {
@@ -51,6 +52,13 @@ function enableMenus() {
 		};
 	};
 };
+
+function changeFont(element, size){
+	element.style.fontSize = size;
+	
+			// console.log(element);
+	
+}
 
 function sideBarNav() {
 	var menu = $('#sideBar');
@@ -200,7 +208,7 @@ function sideBarNav() {
 		if($(this).hasClass('sideBarResume')) {
 			var nav = document.getElementsByClassName('sideBarResume')[0];
 			var flash = document.getElementsByClassName('fa fa-file-alt')[0];
-			console.log($(this));
+			// console.log($(this));
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					if($(this).hasClass('selected')) {
@@ -227,11 +235,54 @@ function sideBarNav() {
 
 function siteNav() {
 	var menu = $('#siteNav');
+	console.log($(document).width());
+	if ($(document).width() < 420) {
+		menu.find('a').each(function() {
+		if($(this).hasClass('mainNav')) {
+			let font = document.getElementsByClassName('mainNav');
+				for(var i = 0; i < font.length; i++){
+					changeFont(font[i], '.9rem');
+				}
+			}
+		});
+	}
+	if ($(document).width() <= 320) {
+		menu.find('a').each(function() {
+			if($(this).hasClass('mainNav')) {
+				let font = document.getElementsByClassName('mainNav');
+				for(var i = 0; i < font.length; i++){
+					changeFont(font[i], '.8rem');
+				}
+			}
+		});
+	}
+	if ($(document).width() <= 280) {
+		menu.find('a').each(function() {
+			if($(this).hasClass('mainNav')) {
+				let font = document.getElementsByClassName('mainNav');
+				for(var i = 0; i < font.length; i++){
+					changeFont(font[i], '.7rem');
+				}
+			}
+		});
+	}
+	else {
+		if ($(document).width() > 420) {
+			menu.find('a').each(function() {
+				if($(this).hasClass('mainNav')) {
+					let font = document.getElementsByClassName('mainNav');
+					for(var i = 0; i < font.length; i++){
+						changeFont(font[i], '1.1rem');
+					}
+				}
+			});
+		}
+	}
 	menu.find('a').each(function() {
 		if($(this).hasClass('accolades')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('accolades')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
@@ -258,9 +309,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('biography')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('biography')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/biography.html')
 				.then((response) => response.text())
@@ -287,7 +338,7 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('main')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('main')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/resume.html')
@@ -315,9 +366,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('future')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('future')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/future.html')
 				.then((response) => response.text())
@@ -344,9 +395,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('core')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('core')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/core.html')
 				.then((response) => response.text())
@@ -373,9 +424,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('hrenovator')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('hrenovator')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
@@ -402,9 +453,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('neirman')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('neirman')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
@@ -431,9 +482,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('maven')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('maven')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/maven.html')
 				.then((response) => response.text())
@@ -460,9 +511,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('linkedin')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('linkedin')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
@@ -489,9 +540,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('reddit')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('reddit')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
@@ -518,9 +569,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('github')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('github')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
@@ -547,9 +598,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('stackoverflow')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('stackoverflow')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
@@ -576,9 +627,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('contract')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('contract')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/contract.html')
 				.then((response) => response.text())
@@ -605,9 +656,9 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('email')) {
-			console.log(menu);
+			// console.log(menu);
 			var nav = document.getElementsByClassName('email')[0];
-			console.log(nav)
+			// console.log(nav)
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())

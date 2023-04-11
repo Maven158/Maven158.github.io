@@ -759,7 +759,7 @@ span.accent {
 	height: 50px;
 	background-color: transparent;
 	/* width: auto; */
-	width: clamp(320px, calc(100vw - 12px), 436px);
+	/* width: clamp(320px, calc(100vw - 12px), 436px); */
 	/* max-width: calc(100vw - 8px); */
 	padding: 0;
 	margin: 0;
@@ -811,13 +811,13 @@ span.accent {
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #e84393;
 	/* max-width: calc(100vw - 8px); */
-	/* font-size: clamp(.75rem, .5vh + 1rem, 1rem); */
+	font-size: 1.1rem;
 }
 #siteNav li a:link, #siteNav li a:visited {
 	display: block;
 	padding: 0em .25em;
 	background: #000000;
-	font: clamp(.75rem, 1vh + 1.1rem, 1.1rem) Arial, sans-serif;
+	/* font: 1.1rem Arial, sans-serif; */
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #55efc4;
@@ -826,8 +826,8 @@ span.accent {
 }
 #siteNav > div > ul > li > ul > li > a {
 	line-height: 2em;
-  /* font-size: .7em; */
-	/* font-size: clamp(.5rem, .5vh + .7rem, .7rem); */
+  /* font-size: auto; */
+	font-size: .7em;
 	margin-bottom: .6em;
 	border-right: 2px;
 	border: 2px solid #000000;
@@ -858,7 +858,7 @@ span.accent {
 	border-bottom: none;
 }
 #siteNav li a:link span.tagline, #siteNav li a:visited span.tagline{
-	font: small-caps bold italic 1em Arial;
+	font: small-caps bold italic Arial;
 	color: #6c5ce7;
 	text-transform: none;
 	margin-top: .5em;
@@ -885,7 +885,7 @@ span.accent {
 	color: #55efc4
 }
 #siteNav li ul a:link, #siteNav li ul a:visited {
-	font: normal .7em Arial, sans-serif;
+	/* font: normal .7em Arial, sans-serif; */
 	font-weight: bold;
 	line-height: 2em;
 	text-align: center;
