@@ -1,6 +1,6 @@
 
 // desktop version sliding menus
-var tabToggle = false;
+var tabToggle = true;
 
 //enable menu animation if the screen is set to desktop
 function enableMenus() {
@@ -57,30 +57,31 @@ function enableMenus() {
 function changeFont(element, size, margin){
 	// console.log(element.parentElement.children[1].children[0]);
 	element.style.fontSize = size;
-	element.style.transition = '1s';
+	element.style.transition = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 }
 function pullTabClick() {
-	var pullTab = document.getElementsByClassName('pulltab')[0];
+	var pullTab = document.getElementsByClassName('pullTab-Wrapper')[0];
 	pullTab.addEventListener('click', function () {
-		$(sideBar)[0].style.transition = 'all 1s';
+		$(sideBar)[0].style.transition = '1s';
 		if (tabToggle) {
 			$(sideBar)[0].style.left = '4px';
 		} else {
 			$(sideBar)[0].style.left = '-60px';
 		}
 		tabToggle = !tabToggle;
+		// console.log(tabToggle);
 	});
 };
 function sideBarNav() {
 	var menu = $('#sideBar');
-	if ($(document).width() < 600 && tabToggle == false) {
-		$(sideBar)[0].style.transition = 'all 1s';
+	if ($(document).width() < 600) {
+		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '-60px';
 	} else {
 		if ($(document).width() >= 600) {
-			$(sideBar)[0].style.transition = 'all 1s';
+			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
 		} 
 	}
@@ -101,6 +102,11 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
+				if ($(document).width() < 600) {
+					$(sideBar)[0].style.left = '-60px';
+					tabToggle = !tabToggle;
+				}
+				// console.log(tabToggle);
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -130,6 +136,10 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
+				if ($(document).width() < 600) {
+					$(sideBar)[0].style.left = '-60px';
+					tabToggle = !tabToggle;
+				}
 				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -150,6 +160,10 @@ function sideBarNav() {
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
+					if ($(document).width() < 600) {
+						$(sideBar)[0].style.left = '-60px';
+						tabToggle = !tabToggle;
+					}
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
@@ -169,6 +183,10 @@ function sideBarNav() {
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
+					if ($(document).width() < 600) {
+						$(sideBar)[0].style.left = '-60px';
+						tabToggle = !tabToggle;
+					}
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
@@ -187,6 +205,10 @@ function sideBarNav() {
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
+					if ($(document).width() < 600) {
+						$(sideBar)[0].style.left = '-60px';
+						tabToggle = !tabToggle;
+					}
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
@@ -205,6 +227,10 @@ function sideBarNav() {
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
+					if ($(document).width() < 600) {
+						$(sideBar)[0].style.left = '-60px';
+						tabToggle = !tabToggle;
+					}
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
@@ -232,6 +258,10 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
+				if ($(document).width() < 600) {
+					$(sideBar)[0].style.left = '-60px';
+					tabToggle = !tabToggle;
+				}
 				fetch('/site/contact.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -263,6 +293,10 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
+				if ($(document).width() < 600) {
+					$(sideBar)[0].style.left = '-60px';
+					tabToggle = !tabToggle;
+				}
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {

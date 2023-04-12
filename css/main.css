@@ -320,7 +320,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 .copyright {
 	display: 	inline-flex;
 	position: absolute;
-	align-content: center;
+	align-items: center;
 	font-kerning: auto;
 	z-index: 1;
 	background: transparent;
@@ -329,6 +329,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	font-variant-caps: all-small-caps;
 	bottom: 4px;
 	color:#e84393;
+	transition: 0s;
 }
 .pfp {
 	position: absolute;
@@ -601,6 +602,7 @@ span.accent {
 	display: flex;
 	position: relative;
 	bottom: -2px;
+	transition: 0s;
 	width: clamp(.75rem, 1vw + 1em, 1em);
 	height: clamp(.75rem, 1vw + 1em, 1em);
 }
@@ -653,17 +655,26 @@ span.accent {
 	pointer-events: none;
 	box-shadow: 0px 0px 4px 4px #6c5ce7;
 }
-.pulltab {
-	content: "|";
+.pullTab-Wrapper {
 	position: absolute;
+	background: transparent;
 	left: 61px;
+	width: 30px;
+	height: 60px;
+	top: 50%;
+	opacity: 1;
+	display: flex;
+	align-items: center;
+}
+.pullTab {
+	position: float;
 	background: #e84393;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	border: 2px solid #fd79a8;
-	/* box-shadow: 4px 0px 4px 4px #e84393; */
-	height: 35px;
-	width: 5px;
+	height: 40px;
+	width: 7px;
+	top: 50%;
 	opacity: 1;
 }
 .tt {
@@ -721,24 +732,26 @@ span.accent {
 .tt .tt-descr img {
 	margin-top: 0px;
 }
-
+.sideBar-Wrapper {
+	height: auto;
+}
 
 #sideBar {
 	position: fixed;
-	height: calc(100vh / 2);
+	/* height: calc(100vh / 2); */
 	left: 1em;
 	top: 1em;
 	display: block;
 	margin-top: 0em;
 	padding-bottom: 0em;
 }
-#sideBar > ul > li > a > i.selected {
+#sideBar > div > ul > li > a > i.selected {
 	color: #e84393;
 	border: 2px solid #ffeaa7;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #fdcb6e;
 }
-#sideBar > ul > li > a.current > i > ul > li > div, #sideBar > ul > li > a.current > i > ul > li > div > .tt {
+#sideBar > div  > ul > li > a.current > i > ul > li > div, #sideBar > div  > ul > li > a.current > i > ul > li > div > .tt {
 	display: block;
 	opacity: 1;
 }
