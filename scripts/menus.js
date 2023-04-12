@@ -7,7 +7,7 @@ function enableMenus() {
 	var menu = $('#siteNav');
 	var sideMenu = $('#sideBar');
 	//check to see if we are on desktop .vs tablet or mobile
-	if ($(document).width() > 768) {
+	// if ($(document).width() > 300) {
 	//strip out no-js class if jQuery is running the animation
 	if($('body').hasClass('no-js')) {
 		$('body').removeClass('no-js');
@@ -40,24 +40,28 @@ function enableMenus() {
 			});
 		};
 	});
-	} else {
-		menu.find('li').each(function() {
-      if ($(this).find('ul').length > 0 ) {
-      	// strip any existing events
-      	$(this).unbind();
-      };
-		});
-		if($('body').hasClass('no-js') == false) {
-			$('body').addClass('no-js');
-		};
-	};
+	// } else {
+	// 	menu.find('li').each(function() {
+  //     if ($(this).find('ul').length > 0 ) {
+  //     	// strip any existing events
+  //     	$(this).unbind();
+  //     };
+	// 	});
+	// 	if($('body').hasClass('no-js') == false) {
+	// 		$('body').addClass('no-js');
+	// 	};
+	// };
 };
 
-function changeFont(element, size){
+function changeFont(element, size, margin){
+	// console.log(element.parentElement.children[1].children[0]);
 	element.style.fontSize = size;
-	
-			console.log(element.style.fontSize);
-	
+	element.style.transition = '1s';
+	element.parentElement.children[1].children[0].style.marginTop = margin;
+	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
+	console.log('mainNav font-size: ',size);
+	console.log('first child margin-top: ',element.parentElement.children[1].children[0].style.marginTop);
+	console.log('children font-size: ',element.parentElement.children[1].children[0].style.fontSize);
 }
 
 function sideBarNav() {
@@ -235,13 +239,12 @@ function sideBarNav() {
 
 function siteNav() {
 	var menu = $('#siteNav');
-	console.log($(document).width());
 	if ($(document).width() >= 435) {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
-					changeFont(font[i], '1.1rem');
+					changeFont(font[i], '1.1rem', '3px');
 				}
 			}
 		});
@@ -251,7 +254,7 @@ function siteNav() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
-					changeFont(font[i], '1.0rem');
+					changeFont(font[i], '1.0rem', '2px');
 				}
 			}
 		});
@@ -261,7 +264,7 @@ function siteNav() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
-					changeFont(font[i], '.9rem');
+					changeFont(font[i], '.9rem', '0px');
 				}
 			}
 		});
@@ -271,7 +274,7 @@ function siteNav() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
-					changeFont(font[i], '.8rem');
+					changeFont(font[i], '.8rem', '-2px');
 				}
 			}
 		});
@@ -281,7 +284,7 @@ function siteNav() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
-					changeFont(font[i], '.7rem');
+					changeFont(font[i], '.7rem', '-4px');
 				}
 			}
 		});
@@ -291,7 +294,7 @@ function siteNav() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(var i = 0; i < font.length; i++){
-					changeFont(font[i], '.7rem');
+					changeFont(font[i], '.7rem', '-4px');
 				}
 			}
 		});

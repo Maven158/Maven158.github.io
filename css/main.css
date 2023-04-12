@@ -827,7 +827,7 @@ span.accent {
 #siteNav > div > ul > li > ul > li > a {
 	line-height: 2em;
   /* font-size: auto; */
-	font-size: .7em;
+	font-size: .7rem;
 	margin-bottom: .6em;
 	border-right: 2px;
 	border: 2px solid #000000;
@@ -837,7 +837,7 @@ span.accent {
 #siteNav > div > ul > li > ul > li > a:hover {
 	transition: 1s;
 	line-height: 2em;
-  font-size: .7em;
+  font-size: .7rem;
 	border: 2px solid #ffeaa7;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #fdcb6e;
