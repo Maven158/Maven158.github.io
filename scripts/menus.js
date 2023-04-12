@@ -1,6 +1,7 @@
 
 // desktop version sliding menus
 var tabToggle = true;
+var state;
 
 //enable menu animation if the screen is set to desktop
 function enableMenus() {
@@ -64,23 +65,28 @@ function changeFont(element, size, margin){
 function pullTabClick() {
 	var pullTab = document.getElementsByClassName('pullTab-Wrapper')[0];
 	pullTab.addEventListener('click', function () {
-		$(sideBar)[0].style.transition = '1s';
-		if (tabToggle) {
-			$(sideBar)[0].style.left = '4px';
-		} else {
+		if ($(sideBar).hasClass('toggle')) {
+			$(sideBar).removeClass('toggle');
+			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '-60px';
+		} else if (!$(sideBar).hasClass('toggle')) {
+			$(sideBar).addClass('toggle');
+			$(sideBar)[0].style.transition = '1s';
+			$(sideBar)[0].style.left = '4px';
 		}
-		tabToggle = !tabToggle;
-		// console.log(tabToggle);
 	});
 };
 function sideBarNav() {
 	var menu = $('#sideBar');
-	if ($(document).width() < 600) {
+	if ($(document).width() < 600 && $(sideBar).hasClass('toggle')) {
+		console.log('resized');
+		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '-60px';
-	} else {
-		if ($(document).width() >= 600) {
+		} else {
+		if ($(document).width() >= 600 && !$(sideBar).hasClass('toggle')) {
+			console.log('resized');
+			$(sideBar).addClass('toggle');
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
 		} 
@@ -104,7 +110,6 @@ function sideBarNav() {
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
 					$(sideBar)[0].style.left = '-60px';
-					tabToggle = !tabToggle;
 				}
 				// console.log(tabToggle);
 				fetch('/site/home.html')
@@ -138,7 +143,6 @@ function sideBarNav() {
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
 					$(sideBar)[0].style.left = '-60px';
-					tabToggle = !tabToggle;
 				}
 				fetch('/site/code.html')
 				.then((response) => response.text())
@@ -162,7 +166,6 @@ function sideBarNav() {
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
 						$(sideBar)[0].style.left = '-60px';
-						tabToggle = !tabToggle;
 					}
 				});
 				$(flash).addClass('flash');
@@ -185,7 +188,6 @@ function sideBarNav() {
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
 						$(sideBar)[0].style.left = '-60px';
-						tabToggle = !tabToggle;
 					}
 				});
 				$(flash).addClass('flash');
@@ -207,7 +209,6 @@ function sideBarNav() {
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
 						$(sideBar)[0].style.left = '-60px';
-						tabToggle = !tabToggle;
 					}
 				});
 				$(flash).addClass('flash');
@@ -229,7 +230,6 @@ function sideBarNav() {
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
 						$(sideBar)[0].style.left = '-60px';
-						tabToggle = !tabToggle;
 					}
 				});
 				$(flash).addClass('flash');
@@ -260,7 +260,6 @@ function sideBarNav() {
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
 					$(sideBar)[0].style.left = '-60px';
-					tabToggle = !tabToggle;
 				}
 				fetch('/site/contact.html')
 				.then((response) => response.text())
@@ -295,7 +294,6 @@ function sideBarNav() {
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
 					$(sideBar)[0].style.left = '-60px';
-					tabToggle = !tabToggle;
 				}
 				fetch('/site/resume.html')
 				.then((response) => response.text())
@@ -810,11 +808,10 @@ $(document).ready(function(){
 	sideBarNav();
 	siteNav();
 	pullTabClick();
-	
 });
 $(window).resize(function() {
  	enableMenus();
 	sideBarNav();
 	siteNav();
-	pullTabClick();
+	// pullTabClick();
 });

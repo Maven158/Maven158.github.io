@@ -672,8 +672,8 @@ span.accent {
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	border: 2px solid #fd79a8;
-	height: 40px;
-	width: 7px;
+	height: 35px;
+	width: 10px;
 	top: 50%;
 	opacity: 1;
 }
@@ -739,11 +739,14 @@ span.accent {
 #sideBar {
 	position: fixed;
 	/* height: calc(100vh / 2); */
-	left: 1em;
-	top: 1em;
+	left: 4px;
+	top: 4px;
 	display: block;
 	margin-top: 0em;
 	padding-bottom: 0em;
+}
+#sideBar .toggle {
+	left: -60px;
 }
 #sideBar > div > ul > li > a > i.selected {
 	color: #e84393;
