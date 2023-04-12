@@ -81,6 +81,8 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
+				toolTip = flash.getElementsByClassName('tt');
+				toolTip[0].style.opacity = '0';
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -88,6 +90,9 @@ function sideBarNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+				});
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
 				});
 			});
 		}
@@ -105,6 +110,8 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
+				toolTip = flash.getElementsByClassName('tt');
+				toolTip[0].style.opacity = '0';
 				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -112,6 +119,9 @@ function sideBarNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+				});
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
 				});
 			});
 		}
@@ -198,6 +208,8 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
+				toolTip = flash.getElementsByClassName('tt');
+				toolTip[0].style.opacity = '0';
 				fetch('/site/contact.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -206,6 +218,9 @@ function sideBarNav() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
 					loadScript("app.js");
+				});
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
 				});
 			});
 		}
@@ -224,6 +239,8 @@ function sideBarNav() {
 					$(flash).removeClass('flash');
 				}, 600);
 				$(flash).addClass('selected');
+				toolTip = flash.getElementsByClassName('tt');
+				toolTip[0].style.opacity = '0';
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -231,6 +248,9 @@ function sideBarNav() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+				});
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
 				});
 			});
 		}
