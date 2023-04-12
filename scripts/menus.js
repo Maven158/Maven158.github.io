@@ -1,5 +1,6 @@
 
 // desktop version sliding menus
+var tabToggle = false;
 
 //enable menu animation if the screen is set to desktop
 function enableMenus() {
@@ -59,13 +60,30 @@ function changeFont(element, size, margin){
 	element.style.transition = '1s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
-	console.log('mainNav font-size: ',size);
-	console.log('first child margin-top: ',element.parentElement.children[1].children[0].style.marginTop);
-	console.log('children font-size: ',element.parentElement.children[1].children[0].style.fontSize);
 }
-
+function pullTabClick() {
+	var pullTab = document.getElementsByClassName('pulltab')[0];
+	pullTab.addEventListener('click', function () {
+		$(sideBar)[0].style.transition = 'all 1s';
+		if (tabToggle) {
+			$(sideBar)[0].style.left = '4px';
+		} else {
+			$(sideBar)[0].style.left = '-60px';
+		}
+		tabToggle = !tabToggle;
+	});
+};
 function sideBarNav() {
 	var menu = $('#sideBar');
+	if ($(document).width() < 600 && tabToggle == false) {
+		$(sideBar)[0].style.transition = 'all 1s';
+		$(sideBar)[0].style.left = '-60px';
+	} else {
+		if ($(document).width() >= 600) {
+			$(sideBar)[0].style.transition = 'all 1s';
+			$(sideBar)[0].style.left = '4px';
+		} 
+	}
 	menu.find('a').each(function() {
 		if($(this).hasClass('sideBarHome')) {
 			let nav = document.getElementsByClassName('sideBarHome')[0];
@@ -130,15 +148,16 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-linkedin')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					// if($(this).hasClass('selected')) {
-					// 	$(this).removeClass('selected');
-					// }
+					toolTip = flash.getElementsByClassName('tt');
+					toolTip[0].style.opacity = '0';
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
 				}, 600);
-				// $(flash).addClass('selected');
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
+				});
 				window.open("https://www.linkedin.com/in/chris-hren/", '_blank');
 			});
 		}
@@ -148,15 +167,16 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					// if($(this).hasClass('selected')) {
-					// 	$(this).removeClass('selected');
-					// }
+					toolTip = flash.getElementsByClassName('tt');
+					toolTip[0].style.opacity = '0';
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
 				}, 600);
-				// $(flash).addClass('selected');
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
+				});
 				window.open("https://www.reddit.com/user/Richard_Musk/", '_blank');
 			});
 		}		
@@ -165,15 +185,16 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-github-alt')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					// if($(this).hasClass('selected')) {
-					// 	$(this).removeClass('selected');
-					// }
+					toolTip = flash.getElementsByClassName('tt');
+					toolTip[0].style.opacity = '0';
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
 				}, 600);
-				// $(flash).addClass('selected');
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
+				});
 				window.open("https://github.com/Maven158", '_blank');
 			});
 		}		
@@ -182,15 +203,16 @@ function sideBarNav() {
 			var flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
-					// if($(this).hasClass('selected')) {
-					// 	$(this).removeClass('selected');
-					// }
+					toolTip = flash.getElementsByClassName('tt');
+					toolTip[0].style.opacity = '0';
 				});
 				$(flash).addClass('flash');
 				setTimeout(function() {
 					$(flash).removeClass('flash');
 				}, 600);
-				// $(flash).addClass('selected');
+				$(flash).mouseleave(function() {
+					toolTip[0].style.opacity = null;
+				});
 				window.open("https://stackoverflow.com/users/18815704/maven", '_blank');
 			});
 		}
@@ -753,10 +775,12 @@ $(document).ready(function(){
 	enableMenus();
 	sideBarNav();
 	siteNav();
+	pullTabClick();
 	
 });
 $(window).resize(function() {
  	enableMenus();
 	sideBarNav();
 	siteNav();
+	pullTabClick();
 });
