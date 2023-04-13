@@ -1,13 +1,11 @@
 
 // desktop version sliding menus
-var tabToggle = true;
-var state;
 
 //enable menu animation if the screen is set to desktop
 function enableMenus() {
 	//create shortcut for nav element
-	var menu = $('#siteNav');
-	var sideMenu = $('#sideBar');
+	let menu = $('#siteNav');
+	let sideMenu = $('#sideBar');
 	//check to see if we are on desktop .vs tablet or mobile
 	// if ($(document).width() > 300) {
 	//strip out no-js class if jQuery is running the animation
@@ -55,6 +53,21 @@ function enableMenus() {
 	// };
 };
 
+// let lastScrollPosition = 0;
+// let homeState = 0;
+// let box = document.getElementsByClassName('box')[0];
+// document.addEventListener('scroll', function(e) {
+//   if (window.scrollY > lastScrollPosition) {
+// 		let temp = $(box)[0].style.top;
+//   	$(box)[0].style.top = '-50';
+// 		// state.showNav = false;
+// 		console.log(temp);
+//   } else {
+//     // state.showNav = true;
+//   }
+//   lastScrollPosition = window.scrollY;
+// }, { passive: true });
+
 function changeFont(element, size, margin){
 	// console.log(element.parentElement.children[1].children[0]);
 	element.style.fontSize = size;
@@ -63,32 +76,58 @@ function changeFont(element, size, margin){
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 }
 function pullTabClick() {
-	var pullTab = document.getElementsByClassName('pullTab-Wrapper')[0];
-	pullTab.addEventListener('click', function () {
-		if ($(sideBar).hasClass('toggle')) {
-			$(sideBar).removeClass('toggle');
-			$(sideBar)[0].style.transition = '1s';
-			$(sideBar)[0].style.left = '-60px';
-		} else if (!$(sideBar).hasClass('toggle')) {
-			$(sideBar).addClass('toggle');
-			$(sideBar)[0].style.transition = '1s';
-			$(sideBar)[0].style.left = '4px';
-		}
-	});
+	let pullTab = document.getElementsByClassName('pullTab-Wrapper')[0];
+	if ($(document).width() < 635 ) {
+		pullTab.addEventListener('click', pullTab.fn = function clicked() {
+			if ($(sideBar).hasClass('toggle')) {
+				$(sideBar).removeClass('toggle');
+				$(sideBar)[0].style.transition = '1s';
+				$(sideBar)[0].style.left = '-62px';
+			} else if (!$(sideBar).hasClass('toggle')) {
+				$(sideBar).addClass('toggle');
+				$(sideBar)[0].style.transition = '1s';
+				$(sideBar)[0].style.left = '4px';
+				// $(sideBar)[0].style.background = '#000000d9';
+				// $(sideBar)[0].style.borderRadius = '10px';
+				// $(sideBar)[0].style.border = '2px solid #000000d9';
+				// setTimeout(function() {
+				// 	pullTabClick();
+				// }, 100);
+			}
+		});
+	}
 };
 function sideBarNav() {
-	var menu = $('#sideBar');
+	let menu = $('#sideBar');
 	if ($(document).width() < 600 && $(sideBar).hasClass('toggle')) {
-		console.log('resized');
 		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
-		$(sideBar)[0].style.left = '-60px';
+		$(sideBar)[0].style.left = '-62px';
+		let pT = document.getElementsByClassName('pullTab')[0];
+		let pTW = document.getElementsByClassName('pullTab-Wrapper')[0];
+		pT.style.opacity = '1';
+		pTW.addEventListener('click', pTW.fn);
 		} else {
 		if ($(document).width() >= 600 && !$(sideBar).hasClass('toggle')) {
-			console.log('resized');
 			$(sideBar).addClass('toggle');
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
+			if ($(document).width() >= 635) {
+				let pT = document.getElementsByClassName('pullTab')[0];
+				let pTW = document.getElementsByClassName('pullTab-Wrapper')[0];
+				pT.style.opacity = '0';
+				pTW.removeEventListener('click', pTW.fn);
+			}
+		}
+		if ($(document).width() >= 600 && $(sideBar).hasClass('toggle')) {
+			$(sideBar)[0].style.transition = '1s';
+			$(sideBar)[0].style.left = '4px';
+			if ($(document).width() >= 635) {
+				let pT = document.getElementsByClassName('pullTab')[0];
+				let pTW = document.getElementsByClassName('pullTab-Wrapper')[0];
+				pT.style.opacity = '0';
+				pTW.removeEventListener('click', pTW.fn);
+			}
 		} 
 	}
 	menu.find('a').each(function() {
@@ -109,9 +148,9 @@ function sideBarNav() {
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
-					$(sideBar)[0].style.left = '-60px';
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar).removeClass('toggle');
 				}
-				// console.log(tabToggle);
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -142,7 +181,8 @@ function sideBarNav() {
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
-					$(sideBar)[0].style.left = '-60px';
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/code.html')
 				.then((response) => response.text())
@@ -158,14 +198,15 @@ function sideBarNav() {
 			});
 		}
 		if($(this).hasClass('sideBarLinkedIn')) {
-			var nav = document.getElementsByClassName('sideBarLinkedIn')[0];
-			var flash = document.getElementsByClassName('fa fa-linkedin')[0];
+			let nav = document.getElementsByClassName('sideBarLinkedIn')[0];
+			let flash = document.getElementsByClassName('fa fa-linkedin')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
-						$(sideBar)[0].style.left = '-60px';
+						$(sideBar)[0].style.left = '-62px';
+						$(sideBar).removeClass('toggle');
 					}
 				});
 				$(flash).addClass('flash');
@@ -180,14 +221,15 @@ function sideBarNav() {
 		}
 
 		if($(this).hasClass('sideBarReddit')) {
-			var nav = document.getElementsByClassName('sideBarReddit')[0];
-			var flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
+			let nav = document.getElementsByClassName('sideBarReddit')[0];
+			let flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
-						$(sideBar)[0].style.left = '-60px';
+						$(sideBar)[0].style.left = '-62px';
+						$(sideBar).removeClass('toggle');
 					}
 				});
 				$(flash).addClass('flash');
@@ -201,14 +243,15 @@ function sideBarNav() {
 			});
 		}		
 		if($(this).hasClass('sideBarGitHub')) {
-			var nav = document.getElementsByClassName('sideBarGitHub')[0];
-			var flash = document.getElementsByClassName('fa fa-github-alt')[0];
+			let nav = document.getElementsByClassName('sideBarGitHub')[0];
+			let flash = document.getElementsByClassName('fa fa-github-alt')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
-						$(sideBar)[0].style.left = '-60px';
+						$(sideBar)[0].style.left = '-62px';
+						$(sideBar).removeClass('toggle');
 					}
 				});
 				$(flash).addClass('flash');
@@ -222,14 +265,15 @@ function sideBarNav() {
 			});
 		}		
 		if($(this).hasClass('sideBarStackOverflow')) {
-			var nav = document.getElementsByClassName('sideBarStackOverflow')[0];
-			var flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
+			let nav = document.getElementsByClassName('sideBarStackOverflow')[0];
+			let flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
 					if ($(document).width() < 600) {
-						$(sideBar)[0].style.left = '-60px';
+						$(sideBar)[0].style.left = '-62px';
+						$(sideBar).removeClass('toggle');
 					}
 				});
 				$(flash).addClass('flash');
@@ -243,8 +287,8 @@ function sideBarNav() {
 			});
 		}
 		if($(this).hasClass('sideBarEmail')) {
-			var nav = document.getElementsByClassName('sideBarEmail')[0];
-			var flash = document.getElementsByClassName('fa fa-send')[0];
+			let nav = document.getElementsByClassName('sideBarEmail')[0];
+			let flash = document.getElementsByClassName('fa fa-send')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					if($(this).hasClass('selected')) {
@@ -259,7 +303,8 @@ function sideBarNav() {
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
-					$(sideBar)[0].style.left = '-60px';
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/contact.html')
 				.then((response) => response.text())
@@ -276,9 +321,8 @@ function sideBarNav() {
 			});
 		}
 		if($(this).hasClass('sideBarResume')) {
-			var nav = document.getElementsByClassName('sideBarResume')[0];
-			var flash = document.getElementsByClassName('fa fa-file-alt')[0];
-			// console.log($(this));
+			let nav = document.getElementsByClassName('sideBarResume')[0];
+			let flash = document.getElementsByClassName('fa fa-file-alt')[0];
 			nav.addEventListener('click', function (){
 				menu.find('i').each(function() {
 					if($(this).hasClass('selected')) {
@@ -293,7 +337,8 @@ function sideBarNav() {
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
 				if ($(document).width() < 600) {
-					$(sideBar)[0].style.left = '-60px';
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/resume.html')
 				.then((response) => response.text())
@@ -312,12 +357,12 @@ function sideBarNav() {
 }
 
 function siteNav() {
-	var menu = $('#siteNav');
+	let menu = $('#siteNav');
 	if ($(document).width() >= 435) {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
-				for(var i = 0; i < font.length; i++){
+				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '1.1rem', '3px');
 				}
 			}
@@ -327,7 +372,7 @@ function siteNav() {
 		menu.find('a').each(function() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
-				for(var i = 0; i < font.length; i++){
+				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '1.0rem', '2px');
 				}
 			}
@@ -337,7 +382,7 @@ function siteNav() {
 		menu.find('a').each(function() {
 		if($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
-				for(var i = 0; i < font.length; i++){
+				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.9rem', '0px');
 				}
 			}
@@ -347,7 +392,7 @@ function siteNav() {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
-				for(var i = 0; i < font.length; i++){
+				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.8rem', '-2px');
 				}
 			}
@@ -357,7 +402,7 @@ function siteNav() {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
-				for(var i = 0; i < font.length; i++){
+				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.7rem', '-4px');
 				}
 			}
@@ -367,7 +412,7 @@ function siteNav() {
 		menu.find('a').each(function() {
 			if($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
-				for(var i = 0; i < font.length; i++){
+				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.7rem', '-4px');
 				}
 			}
@@ -375,15 +420,13 @@ function siteNav() {
 	}
 	menu.find('a').each(function() {
 		if($(this).hasClass('accolades')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('accolades')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('accolades')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('accolades')[0];
+					let flash = document.getElementsByClassName('accolades')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -404,15 +447,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('biography')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('biography')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('biography')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('biography')[0];
+					let flash = document.getElementsByClassName('biography')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -433,14 +474,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('main')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('main')[0];
+			let nav = document.getElementsByClassName('main')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('main')[0];
+					let flash = document.getElementsByClassName('main')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -461,15 +501,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('future')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('future')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('future')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('future')[0];
+					let flash = document.getElementsByClassName('future')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -490,15 +528,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('core')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('core')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('core')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('core')[0];
+					let flash = document.getElementsByClassName('core')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -519,15 +555,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('hrenovator')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('hrenovator')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('hrenovator')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('hrenovator')[0];
+					let flash = document.getElementsByClassName('hrenovator')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -548,15 +582,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('neirman')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('neirman')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('neirman')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('neirman')[0];
+					let flash = document.getElementsByClassName('neirman')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -577,15 +609,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('maven')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('maven')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('maven')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('maven')[0];
+					let flash = document.getElementsByClassName('maven')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -606,15 +636,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('linkedin')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('linkedin')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('linkedin')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('linkedin')[0];
+					let flash = document.getElementsByClassName('linkedin')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -635,15 +663,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('reddit')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('reddit')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('reddit')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('reddit')[0];
+					let flash = document.getElementsByClassName('reddit')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -664,15 +690,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('github')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('github')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('github')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('github')[0];
+					let flash = document.getElementsByClassName('github')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -693,15 +717,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('stackoverflow')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('stackoverflow')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('stackoverflow')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('stackoverflow')[0];
+					let flash = document.getElementsByClassName('stackoverflow')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -722,15 +744,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('contract')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('contract')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('contract')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('contract')[0];
+					let flash = document.getElementsByClassName('contract')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -751,15 +771,13 @@ function siteNav() {
 			});
 		}
 		if($(this).hasClass('email')) {
-			// console.log(menu);
-			var nav = document.getElementsByClassName('email')[0];
-			// console.log(nav)
+			let nav = document.getElementsByClassName('email')[0];
 			nav.addEventListener('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					var flash = document.getElementsByClassName('email')[0];
+					let flash = document.getElementsByClassName('email')[0];
 					$(flash).addClass('flash');
 					setTimeout(function() {
 						$(flash).removeClass('flash');
@@ -784,7 +802,7 @@ function siteNav() {
 function loadScript(src) {
   return new Promise(function (resolve, reject) {
     if ($("script[src='" + src + "']").length === 0) {
-        var script = document.createElement('script');
+        let script = document.createElement('script');
         script.onload = function () {
             resolve();
         };
@@ -813,5 +831,4 @@ $(window).resize(function() {
  	enableMenus();
 	sideBarNav();
 	siteNav();
-	// pullTabClick();
 });
