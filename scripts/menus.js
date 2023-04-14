@@ -1,20 +1,21 @@
 
 // desktop version sliding menus
+var lastScrollTop = 0;
 
 //enable menu animation if the screen is set to desktop
 function enableMenus() {
 	//create shortcut for nav element
-	let menu = $('#siteNav');
-	let sideMenu = $('#sideBar');
+	let siteNav = $('#siteNav');
+	let sideBar = $('#sideBar');
 	//check to see if we are on desktop .vs tablet or mobile
-	// if ($(document).width() > 300) {
+	// if (screen.availWidth > 300) {
 	//strip out no-js class if jQuery is running the animation
-	if($('body').hasClass('no-js')) {
+	if ($('body').hasClass('no-js')) {
 		$('body').removeClass('no-js');
 	};
 
 	//attach a listener to each li that has a child ul, and then slide submenus down or up depending upon mouse position
-	menu.find('li').each(function() {
+	siteNav.find('li').each(function() {
 		if ($(this).find('ul').length > 0 ) {
 			// strip any existing events
 			$(this).off();
@@ -28,7 +29,7 @@ function enableMenus() {
 			});
 		};
 	});
-	sideMenu.find('li').each(function() {
+	sideBar.find('li').each(function() {
 		if ($(this).find('ul').length > 0 ) {
 			// strip any existing events
 			$(this).off();
@@ -41,32 +42,30 @@ function enableMenus() {
 		};
 	});
 	// } else {
-	// 	menu.find('li').each(function() {
+	// 	siteNav.find('li').each(function() {
   //     if ($(this).find('ul').length > 0 ) {
   //     	// strip any existing events
   //     	$(this).unbind();
   //     };
 	// 	});
-	// 	if($('body').hasClass('no-js') == false) {
+	// 	if ($('body').hasClass('no-js') == false) {
 	// 		$('body').addClass('no-js');
 	// 	};
 	// };
 };
 
-var lastScrollTop = 0;
-
 window.addEventListener('scroll', function() {
 	let state = window.pageYOffset || document.documentElement.scrollTop;
-	if (state > lastScrollTop || state < lastScrollTop) {
+	if (state > lastScrollTop && (state - lastScrollTop) > 5) {
 		$('.fixedBanner').fadeOut(1000);
-	} // else if (state < lastScrollTop) {
-	// 	$('.fixedBanner').fadeIn(1000);
-	// } 
-	lastScrollTop = state <= 0 ? 0 : state;
-	clearTimeout($.data(this, 'scrollTimer'));
-	$.data(this, 'scrollTimer', setTimeout(function() {
+	}  else if (state < lastScrollTop) {
 		$('.fixedBanner').fadeIn(1000);
-	}, 750));
+	} 
+	lastScrollTop = state <= 0 ? 0 : state;
+	// clearTimeout($.data(this, 'scrollTimer'));
+	// $.data(this, 'scrollTimer', setTimeout(function() {
+	// 	$('.fixedBanner').fadeIn(1000);
+	// }, 750));
 }, false);
 
 function changeFont(element, size, margin){
@@ -75,11 +74,12 @@ function changeFont(element, size, margin){
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 }
+
 function pullTabClick() {
 	clearTimeout($.data(this));
-	let pullTab = document.getElementsByClassName('pullTab-Wrapper')[0];
-	if ($(document).width() < 635 ) {
-		pullTab.addEventListener('click', pullTab.fn = function clicked() {
+	let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
+	if (screen.availWidth < 635 ) {
+		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked() {
 			if ($(sideBar).hasClass('toggle')) {
 				$(sideBar).removeClass('toggle');
 				$(sideBar)[0].style.transition = '1s';
@@ -89,8 +89,8 @@ function pullTabClick() {
 				$(sideBar)[0].style.transition = '1s';
 				$(sideBar)[0].style.left = '4px';
 				clearTimeout($.data(this));
-				let delay = setTimeout(function() {
-					if (screen.availWidth < 600) {
+				setTimeout(function() {
+					if (screen.availWidth < 635) {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
 							$(sideBar)[0].style.transition = '1s';
@@ -102,21 +102,27 @@ function pullTabClick() {
 		});
 	}
 };
+
 function sideBarNav() {
-	let menu = $('#sideBar');
-	let pt = $('#pullTab-Wrapper');
+	let sideBar = $('#sideBar');
+	let pullTabWrapper = $('#pullTab-Wrapper');
 	let touchStartPosY = 0;
 	let touchStartPosX = 0;
 	let head = 4;
-	clearTimeout($.data(this));
-	$(menu)[0].style.transition = '0s';
-	$(menu)[0].style.top = head + 'px';
-	if (screen.availHeight > 509) {
-		pt.on('touchmove', (el) => {
-			console.log('touched');
-			el.stopPropagation();
-			el.preventDefault();
-			const currentPageX = Math.round(el.originalEvent.touches[0].screenX);
+	let highestId = window.setTimeout(() => {
+		for (let i = highestId; i >= 0; i--) {
+			window.clearTimeout(i);
+		}
+	}, 0);
+	setTimeout(function() {
+		$(sideBar)[0].style.transition = '0s';
+		$(sideBar)[0].style.top = head + 'px';
+	}, 0);
+	if (screen.availWidth < 635) {	
+		pullTabWrapper.on('touchmove', (element) => {
+			element.stopPropagation();
+			element.preventDefault();
+			const currentPageX = Math.round(element.originalEvent.touches[0].screenX);
 			if (touchStartPosX === currentPageX) return;
 			if (touchStartPosX - currentPageX > 0) {
 				if ($(sideBar).hasClass('toggle')) {
@@ -129,9 +135,13 @@ function sideBarNav() {
 					$(sideBar).addClass('toggle');
 					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.left = '4px';
-					clearTimeout($.data(this));
-					let delay = setTimeout(function() {
-						if (screen.availWidth < 600) {
+					let highestId = window.setTimeout(() => {
+						for (let i = highestId; i >= 0; i--) {
+							window.clearInterval(i);
+						}
+					}, 0);
+					setTimeout(function() {
+						if (screen.availWidth < 635) {
 							if ($(sideBar).hasClass('toggle')) {
 								$(sideBar).removeClass('toggle');
 								$(sideBar)[0].style.transition = '1s';
@@ -143,64 +153,68 @@ function sideBarNav() {
 			}
 			touchStartPosX = currentPageX;
 		});
-		$(menu).off();
+		$(sideBar).off('touchmove');
 	}
 	if (screen.availHeight < 510) {
-		menu.on('touchmove', (el) => {
-			el.stopPropagation();
-			el.preventDefault();
-			const currentPageY = Math.round(el.originalEvent.touches[0].screenY);
+		sideBar.on('touchmove', (element) => {
+			element.stopPropagation();
+			element.preventDefault();
+			const currentPageY = Math.round(element.originalEvent.touches[0].screenY);
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
-				$(menu)[0].style.transition = '.2s';
+				$(sideBar)[0].style.transition = '.2s';
 				head = screen.availHeight - 504;
-				$(menu)[0].style.top = head + 'px';
+				$(sideBar)[0].style.top = head + 'px';
 			} else {
-				$(menu)[0].style.transition = '.2s';
+				$(sideBar)[0].style.transition = '.2s';
 				head = 4;		
-				$(menu)[0].style.top = head + 'px';
+				$(sideBar)[0].style.top = head + 'px';
 			}
 			touchStartPosY = currentPageY;
 		});
 	}
-	if ($(document).width() < 600 && $(sideBar).hasClass('toggle')) {
+	if (screen.availWidth < 635 && !$(sideBar).hasClass('toggle')) {
+		let pullTab = document.getElementsByClassName('pullTab')[0];
+		pullTab.style.opacity = '1';
+		pullTabClick();
+	}  
+	if (screen.availWidth < 635 && $(sideBar).hasClass('toggle')) {
 		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '-62px';
-		let pT = document.getElementsByClassName('pullTab')[0];
-		let pTW = document.getElementsByClassName('pullTab-Wrapper')[0];
-		pT.style.opacity = '1';
-		pTW.addEventListener('click', pTW.fn);
-		} else {
-		if ($(document).width() >= 600 && !$(sideBar).hasClass('toggle')) {
+		let pullTab = document.getElementsByClassName('pullTab')[0];
+		pullTab.style.opacity = '1';
+		pullTabClick();
+	 } else {
+		if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
 			$(sideBar).addClass('toggle');
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
-			if ($(document).width() >= 635) {
-				let pT = document.getElementsByClassName('pullTab')[0];
-				let pTW = document.getElementsByClassName('pullTab-Wrapper')[0];
-				pT.style.opacity = '0';
-				pTW.removeEventListener('click', pTW.fn);
+			if (screen.availWidth >= 635) {
+				let pullTab = document.getElementsByClassName('pullTab')[0];
+				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
+				pullTab.style.opacity = '0';
+				$(pullTabWrapper).off('click', pullTabWrapper.fn);
 			}
 		}
-		if ($(document).width() >= 600 && $(sideBar).hasClass('toggle')) {
+		if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
-			if ($(document).width() >= 635) {
-				let pT = document.getElementsByClassName('pullTab')[0];
-				let pTW = document.getElementsByClassName('pullTab-Wrapper')[0];
-				pT.style.opacity = '0';
-				pTW.removeEventListener('click', pTW.fn);
+			if (screen.availWidth >= 635) {
+				let pullTab = document.getElementsByClassName('pullTab')[0];
+				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
+				pullTab.style.opacity = '0';
+				$(pullTabWrapper).off('click', pullTabWrapper.fn);
 			}
 		} 
 	}
-	menu.find('a').each(function() {
-		if($(this).hasClass('sideBarHome')) {
+	sideBar.find('a').each(function() {
+		if ($(this).hasClass('sideBarHome')) {
 			let nav = document.getElementsByClassName('sideBarHome')[0];
 			let flash = document.getElementsByClassName('fas fa-house-user')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
-					if($(this).hasClass('selected')) {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
+					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
@@ -211,7 +225,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ($(document).width() < 600) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -228,12 +242,12 @@ function sideBarNav() {
 				});
 			});
 		}
-		if($(this).hasClass('sideBarCode')) {
+		if ($(this).hasClass('sideBarCode')) {
 			let nav = document.getElementsByClassName('sideBarCode')[0];
 			let flash = document.getElementsByClassName('fa fa-code')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
-					if($(this).hasClass('selected')) {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
+					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
@@ -244,7 +258,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ($(document).width() < 600) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -261,14 +275,14 @@ function sideBarNav() {
 				});
 			});
 		}
-		if($(this).hasClass('sideBarLinkedIn')) {
+		if ($(this).hasClass('sideBarLinkedIn')) {
 			let nav = document.getElementsByClassName('sideBarLinkedIn')[0];
 			let flash = document.getElementsByClassName('fa fa-linkedin')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ($(document).width() < 600) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -283,15 +297,14 @@ function sideBarNav() {
 				window.open("https://www.linkedin.com/in/chris-hren/");
 			});
 		}
-
-		if($(this).hasClass('sideBarReddit')) {
+		if ($(this).hasClass('sideBarReddit')) {
 			let nav = document.getElementsByClassName('sideBarReddit')[0];
 			let flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ($(document).width() < 600) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -306,14 +319,14 @@ function sideBarNav() {
 				window.open("https://www.reddit.com/user/Richard_Musk/");
 			});
 		}		
-		if($(this).hasClass('sideBarGitHub')) {
+		if ($(this).hasClass('sideBarGitHub')) {
 			let nav = document.getElementsByClassName('sideBarGitHub')[0];
 			let flash = document.getElementsByClassName('fa fa-github-alt')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ($(document).width() < 600) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -328,14 +341,14 @@ function sideBarNav() {
 				window.open("https://github.com/Maven158");
 			});
 		}		
-		if($(this).hasClass('sideBarStackOverflow')) {
+		if ($(this).hasClass('sideBarStackOverflow')) {
 			let nav = document.getElementsByClassName('sideBarStackOverflow')[0];
 			let flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ($(document).width() < 600) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -350,12 +363,12 @@ function sideBarNav() {
 				window.open("https://stackoverflow.com/users/18815704/maven");
 			});
 		}
-		if($(this).hasClass('sideBarEmail')) {
+		if ($(this).hasClass('sideBarEmail')) {
 			let nav = document.getElementsByClassName('sideBarEmail')[0];
 			let flash = document.getElementsByClassName('fa fa-send')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
-					if($(this).hasClass('selected')) {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
+					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
@@ -366,7 +379,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ($(document).width() < 600) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -384,12 +397,12 @@ function sideBarNav() {
 				});
 			});
 		}
-		if($(this).hasClass('sideBarResume')) {
+		if ($(this).hasClass('sideBarResume')) {
 			let nav = document.getElementsByClassName('sideBarResume')[0];
 			let flash = document.getElementsByClassName('fa fa-file-alt')[0];
-			nav.addEventListener('click', function (){
-				menu.find('i').each(function() {
-					if($(this).hasClass('selected')) {
+			$(nav).on('click', function (){
+				sideBar.find('i').each(function() {
+					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
@@ -400,7 +413,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ($(document).width() < 600) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -421,10 +434,10 @@ function sideBarNav() {
 }
 
 function siteNav() {
-	let menu = $('#siteNav');
-	if ($(document).width() >= 435) {
-		menu.find('a').each(function() {
-			if($(this).hasClass('mainNav')) {
+	let siteNav = $('#siteNav');
+	if (screen.availWidth >= 435) {
+		siteNav.find('a').each(function() {
+			if ($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '1.1rem', '3px');
@@ -432,9 +445,9 @@ function siteNav() {
 			}
 		});
 	}
-	if ($(document).width() < 435) {
-		menu.find('a').each(function() {
-		if($(this).hasClass('mainNav')) {
+	if (screen.availWidth < 435) {
+		siteNav.find('a').each(function() {
+		if ($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
 				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '1.0rem', '2px');
@@ -442,9 +455,9 @@ function siteNav() {
 			}
 		});
 	}
-	if ($(document).width() < 400) {
-		menu.find('a').each(function() {
-		if($(this).hasClass('mainNav')) {
+	if (screen.availWidth < 400) {
+		siteNav.find('a').each(function() {
+		if ($(this).hasClass('mainNav')) {
 			let font = document.getElementsByClassName('mainNav');
 				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.9rem', '0px');
@@ -452,9 +465,9 @@ function siteNav() {
 			}
 		});
 	}
-	if ($(document).width() < 360) {
-		menu.find('a').each(function() {
-			if($(this).hasClass('mainNav')) {
+	if (screen.availWidth < 360) {
+		siteNav.find('a').each(function() {
+			if ($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.8rem', '-2px');
@@ -462,9 +475,9 @@ function siteNav() {
 			}
 		});
 	}
-	if ($(document).width() < 325) {
-		menu.find('a').each(function() {
-			if($(this).hasClass('mainNav')) {
+	if (screen.availWidth < 325) {
+		siteNav.find('a').each(function() {
+			if ($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.7rem', '-4px');
@@ -472,9 +485,9 @@ function siteNav() {
 			}
 		});
 	}
-	if ($(document).width() <= 280) {
-		menu.find('a').each(function() {
-			if($(this).hasClass('mainNav')) {
+	if (screen.availWidth <= 280) {
+		siteNav.find('a').each(function() {
+			if ($(this).hasClass('mainNav')) {
 				let font = document.getElementsByClassName('mainNav');
 				for(let i = 0; i < font.length; i++){
 					changeFont(font[i], '.7rem', '-4px');
@@ -482,10 +495,10 @@ function siteNav() {
 			}
 		});
 	}
-	menu.find('a').each(function() {
-		if($(this).hasClass('accolades')) {
+	siteNav.find('a').each(function() {
+		if ($(this).hasClass('accolades')) {
 			let nav = document.getElementsByClassName('accolades')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -500,8 +513,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -514,9 +527,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('biography')) {
+		if ($(this).hasClass('biography')) {
 			let nav = document.getElementsByClassName('biography')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -531,8 +544,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -545,9 +558,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('main')) {
+		if ($(this).hasClass('main')) {
 			let nav = document.getElementsByClassName('main')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -562,8 +575,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -576,9 +589,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('future')) {
+		if ($(this).hasClass('future')) {
 			let nav = document.getElementsByClassName('future')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -593,8 +606,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -607,9 +620,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('core')) {
+		if ($(this).hasClass('core')) {
 			let nav = document.getElementsByClassName('core')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -624,8 +637,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -638,9 +651,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('hrenovator')) {
+		if ($(this).hasClass('hrenovator')) {
 			let nav = document.getElementsByClassName('hrenovator')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -655,8 +668,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -669,9 +682,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('neirman')) {
+		if ($(this).hasClass('neirman')) {
 			let nav = document.getElementsByClassName('neirman')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -686,8 +699,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -700,9 +713,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('maven')) {
+		if ($(this).hasClass('maven')) {
 			let nav = document.getElementsByClassName('maven')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -717,8 +730,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -731,9 +744,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('linkedin')) {
+		if ($(this).hasClass('linkedin')) {
 			let nav = document.getElementsByClassName('linkedin')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -748,8 +761,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -762,9 +775,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('reddit')) {
+		if ($(this).hasClass('reddit')) {
 			let nav = document.getElementsByClassName('reddit')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -779,8 +792,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -793,9 +806,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('github')) {
+		if ($(this).hasClass('github')) {
 			let nav = document.getElementsByClassName('github')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -810,8 +823,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -824,9 +837,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('stackoverflow')) {
+		if ($(this).hasClass('stackoverflow')) {
 			let nav = document.getElementsByClassName('stackoverflow')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -841,8 +854,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -855,9 +868,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('contract')) {
+		if ($(this).hasClass('contract')) {
 			let nav = document.getElementsByClassName('contract')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -872,8 +885,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -886,9 +899,9 @@ function siteNav() {
 				});
 			});
 		}
-		if($(this).hasClass('email')) {
+		if ($(this).hasClass('email')) {
 			let nav = document.getElementsByClassName('email')[0];
-			nav.addEventListener('click', function (){
+			$(nav).on('click', function (){
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -903,8 +916,8 @@ function siteNav() {
 					document.getElementById("mainContent").outerHTML = str;
 				})
 				.then(() => {
-					let menu = $('#siteNav');
-					menu.find('li').each(function() {
+					let siteNav = $('#siteNav');
+					siteNav.find('li').each(function() {
 						$(this).find('a').each(function() {
 							setTimeout(function() {
 								$(this).removeClass('current');
@@ -948,6 +961,11 @@ $(document).ready(function(){
 	pullTabClick();
 });
 $(window).resize(function() {
+	let highestId = window.setTimeout(() => {
+		for (let i = highestId; i >= 0; i--) {
+			window.clearTimeout(i);
+		}
+	}, 0);
  	enableMenus();
 	sideBarNav();
 	siteNav();
