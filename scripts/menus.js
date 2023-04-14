@@ -106,6 +106,7 @@ function sideBarNav() {
 	let touchStartPosY = 0;
 	let touchStartPosX = 0;
 	let head = 4;
+	$(menu)[0].style.top = head + 'px';
 	if (screen.availHeight > 509) {
 		pt.on('touchmove', (el) => {
 			console.log('touched');
