@@ -280,7 +280,7 @@ function sideBarNav() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://www.linkedin.com/in/chris-hren/", '_blank');
+				window.open("https://www.linkedin.com/in/chris-hren/");
 			});
 		}
 
@@ -303,7 +303,7 @@ function sideBarNav() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://www.reddit.com/user/Richard_Musk/", '_blank');
+				window.open("https://www.reddit.com/user/Richard_Musk/");
 			});
 		}		
 		if($(this).hasClass('sideBarGitHub')) {
@@ -325,7 +325,7 @@ function sideBarNav() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://github.com/Maven158", '_blank');
+				window.open("https://github.com/Maven158");
 			});
 		}		
 		if($(this).hasClass('sideBarStackOverflow')) {
@@ -347,7 +347,7 @@ function sideBarNav() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://stackoverflow.com/users/18815704/maven", '_blank');
+				window.open("https://stackoverflow.com/users/18815704/maven");
 			});
 		}
 		if($(this).hasClass('sideBarEmail')) {
