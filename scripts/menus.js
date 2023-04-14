@@ -434,13 +434,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -465,13 +465,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -496,13 +496,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -527,13 +527,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -558,13 +558,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -589,13 +589,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -620,13 +620,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -651,13 +651,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -682,13 +682,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -713,13 +713,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -744,13 +744,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -775,13 +775,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -806,13 +806,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-								$(this).find('ul').stop(true, true).fadeOut(1000);
-								$(this).find('a').each(function() {
-									setTimeout(function() {
-										$(this).removeClass('current');
-									}, 600);
-								});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
@@ -837,13 +837,13 @@ function siteNav() {
 				.then(() => {
 					let menu = $('#siteNav');
 					menu.find('li').each(function() {
+						$(this).find('a').each(function() {
+							setTimeout(function() {
+								$(this).removeClass('current');
+							}, 600);
+						});
 						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').stop(true, true).fadeOut(1000);
-							$(this).find('a').each(function() {
-								setTimeout(function() {
-									$(this).removeClass('current');
-								}, 600);
-							});
+							$(this).find('ul').fadeOut(1000);
 						};
 					});
 				});
