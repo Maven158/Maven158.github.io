@@ -87,23 +87,61 @@ function pullTabClick() {
 				$(sideBar).addClass('toggle');
 				$(sideBar)[0].style.transition = '1s';
 				$(sideBar)[0].style.left = '4px';
+				setTimeout(function() {
+					if ($(sideBar).hasClass('toggle')) {
+						$(sideBar).removeClass('toggle');
+						$(sideBar)[0].style.transition = '1s';
+						$(sideBar)[0].style.left = '-62px';
+					}
+				}, 7000);
 			}
 		});
 	}
 };
 function sideBarNav() {
 	let menu = $('#sideBar');
+	let pt = $('#pullTab-Wrapper');
+	let touchStartPosY = 0;
 	let touchStartPosX = 0;
 	let head = 4;
 	if (screen.availHeight > 509) {
+		pt.on('touchmove', (el) => {
+			console.log('touched');
+			el.stopPropagation();
+			el.preventDefault();
+			const currentPageX = Math.round(el.originalEvent.touches[0].screenX);
+			if (touchStartPosX === currentPageX) return;
+			if (touchStartPosX - currentPageX > 0) {
+				if ($(sideBar).hasClass('toggle')) {
+					$(sideBar).removeClass('toggle');
+					$(sideBar)[0].style.transition = '1s';
+					$(sideBar)[0].style.left = '-62px';
+				}
+			} else {
+				if (!$(sideBar).hasClass('toggle')) {
+					$(sideBar).addClass('toggle');
+					$(sideBar)[0].style.transition = '1s';
+					$(sideBar)[0].style.left = '4px';
+					setTimeout(function() {
+						if ($(sideBar).hasClass('toggle')) {
+							$(sideBar).removeClass('toggle');
+							$(sideBar)[0].style.transition = '1s';
+							$(sideBar)[0].style.left = '-62px';
+						}
+					}, 7000);
+				}
+			}
+			touchStartPosX = currentPageX;
+		});
 		$(menu).off();
 	}
 	if (screen.availHeight < 510) {
 		menu.on('touchmove', (el) => {
+			el.stopPropagation();
 			el.preventDefault();
-			const currentPageX = Math.round(el.originalEvent.touches[0].screenY);
-			if (touchStartPosX === currentPageX) return;
-			if (touchStartPosX - currentPageX > 0) {
+			const currentPageY = Math.round(el.originalEvent.touches[0].screenY);
+			if (touchStartPosY === currentPageY) return;
+			if (touchStartPosY - currentPageY > 0) {
 				$(menu)[0].style.transition = '.2s';
 				head = screen.availHeight - 504;
 				$(menu)[0].style.top = head + 'px';
@@ -112,7 +150,7 @@ function sideBarNav() {
 				head = 4;		
 				$(menu)[0].style.top = head + 'px';
 			}
-			touchStartPosX = currentPageX;
+			touchStartPosY = currentPageY;
 		});
 	}
 	if ($(document).width() < 600 && $(sideBar).hasClass('toggle')) {
