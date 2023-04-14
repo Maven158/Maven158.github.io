@@ -56,17 +56,17 @@ function enableMenus() {
 var lastScrollTop = 0;
 
 window.addEventListener('scroll', function() {
-	var state = window.pageYOffset || document.documentElement.scrollTop;
-	if (state > lastScrollTop) {
+	let state = window.pageYOffset || document.documentElement.scrollTop;
+	if (state > lastScrollTop || state < lastScrollTop) {
 		$('.fixedBanner').fadeOut(1000);
-   	} else if (state < lastScrollTop) {
-    	$('.fixedBanner').fadeIn(1000);
-   	} 
-		lastScrollTop = state <= 0 ? 0 : state;
-		clearTimeout($.data(this, 'scrollTimer'));
-		$.data(this, 'scrollTimer', setTimeout(function() {
-			$('.fixedBanner').fadeIn(1000);
-  }, 250));
+	} // else if (state < lastScrollTop) {
+	// 	$('.fixedBanner').fadeIn(1000);
+	// } 
+	lastScrollTop = state <= 0 ? 0 : state;
+	clearTimeout($.data(this, 'scrollTimer'));
+	$.data(this, 'scrollTimer', setTimeout(function() {
+		$('.fixedBanner').fadeIn(1000);
+	}, 750));
 }, false);
 
 function changeFont(element, size, margin){
@@ -93,6 +93,26 @@ function pullTabClick() {
 };
 function sideBarNav() {
 	let menu = $('#sideBar');
+	let touchStartPosX = 0;
+	let head = 4;
+	let tail = 512;
+	if (screen.availHeight < 512) {
+		menu.on('touchmove', (el) => {
+			el.preventDefault();
+			const currentPageX = Math.round(el.originalEvent.touches[0].screenY);
+			if (touchStartPosX === currentPageX) return;
+			if (touchStartPosX - currentPageX > 0) {
+				$(menu)[0].style.transition = '.2s';
+				head = screen.availHeight - 504;
+				$(menu)[0].style.top = head + 'px';
+			} else {
+				$(menu)[0].style.transition = '.2s';
+				head = 4;		
+				$(menu)[0].style.top = head + 'px';
+			}
+			touchStartPosX = currentPageX;
+		});
+	}
 	if ($(document).width() < 600 && $(sideBar).hasClass('toggle')) {
 		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
