@@ -88,10 +88,12 @@ function pullTabClick() {
 				$(sideBar)[0].style.transition = '1s';
 				$(sideBar)[0].style.left = '4px';
 				setTimeout(function() {
-					if ($(sideBar).hasClass('toggle')) {
-						$(sideBar).removeClass('toggle');
-						$(sideBar)[0].style.transition = '1s';
-						$(sideBar)[0].style.left = '-62px';
+					if (screen.availWidth < 600) {
+						if ($(sideBar).hasClass('toggle')) {
+							$(sideBar).removeClass('toggle');
+							$(sideBar)[0].style.transition = '1s';
+							$(sideBar)[0].style.left = '-62px';
+						}
 					}
 				}, 5000);
 			}
