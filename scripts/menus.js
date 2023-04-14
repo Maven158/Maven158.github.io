@@ -95,8 +95,10 @@ function sideBarNav() {
 	let menu = $('#sideBar');
 	let touchStartPosX = 0;
 	let head = 4;
-	let tail = 512;
-	if (screen.availHeight < 512) {
+	if (screen.availHeight > 509) {
+		$(menu).off();
+	}
+	if (screen.availHeight < 510) {
 		menu.on('touchmove', (el) => {
 			el.preventDefault();
 			const currentPageX = Math.round(el.originalEvent.touches[0].screenY);
