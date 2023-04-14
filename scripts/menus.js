@@ -52,26 +52,24 @@ function enableMenus() {
 	// 	};
 	// };
 };
+
 var lastScrollTop = 0;
-window.addEventListener("scroll", function() {
-	var st = window.pageYOffset || document.documentElement.scrollTop;
-   if (st > lastScrollTop) {
+
+window.addEventListener('scroll', function() {
+	var state = window.pageYOffset || document.documentElement.scrollTop;
+	if (state > lastScrollTop) {
 		$('.fixedBanner').fadeOut(1000);
-   } else if (st < lastScrollTop) {
-    $('.fixedBanner').fadeIn(1000);
-   } // else was horizontal scroll
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+   	} else if (state < lastScrollTop) {
+    	$('.fixedBanner').fadeIn(1000);
+   	} 
+		lastScrollTop = state <= 0 ? 0 : state;
+		clearTimeout($.data(this, 'scrollTimer'));
+		$.data(this, 'scrollTimer', setTimeout(function() {
+			$('.fixedBanner').fadeIn(1000);
+  }, 250));
 }, false);
-// 	if (window.scroll > 25) {
-// 			$('.fixedBanner').fadeOut(1000);
-// 	}
-// 	else {
-// 			$('.fixedBanner').fadeIn(1000);
-// 	}
-// },false);
 
 function changeFont(element, size, margin){
-	// console.log(element.parentElement.children[1].children[0]);
 	element.style.fontSize = size;
 	element.style.transition = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
