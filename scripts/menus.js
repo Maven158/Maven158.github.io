@@ -76,6 +76,7 @@ function changeFont(element, size, margin){
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 }
 function pullTabClick() {
+	clearTimeout($.data(this));
 	let pullTab = document.getElementsByClassName('pullTab-Wrapper')[0];
 	if ($(document).width() < 635 ) {
 		pullTab.addEventListener('click', pullTab.fn = function clicked() {
@@ -87,7 +88,8 @@ function pullTabClick() {
 				$(sideBar).addClass('toggle');
 				$(sideBar)[0].style.transition = '1s';
 				$(sideBar)[0].style.left = '4px';
-				setTimeout(function() {
+				clearTimeout($.data(this));
+				let delay = setTimeout(function() {
 					if (screen.availWidth < 600) {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
@@ -106,6 +108,8 @@ function sideBarNav() {
 	let touchStartPosY = 0;
 	let touchStartPosX = 0;
 	let head = 4;
+	clearTimeout($.data(this));
+	$(menu)[0].style.transition = '0s';
 	$(menu)[0].style.top = head + 'px';
 	if (screen.availHeight > 509) {
 		pt.on('touchmove', (el) => {
@@ -125,7 +129,8 @@ function sideBarNav() {
 					$(sideBar).addClass('toggle');
 					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.left = '4px';
-					setTimeout(function() {
+					clearTimeout($.data(this));
+					let delay = setTimeout(function() {
 						if (screen.availWidth < 600) {
 							if ($(sideBar).hasClass('toggle')) {
 								$(sideBar).removeClass('toggle');
