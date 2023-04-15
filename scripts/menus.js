@@ -78,7 +78,7 @@ function changeFont(element, size, margin){
 function pullTabClick() {
 	clearTimeout($.data(this));
 	let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
-	if (screen.availWidth < 635 ) {
+	if ((screen.availWidth < 635 || $(window).width() < 635) ) {
 		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked() {
 			if ($(sideBar).hasClass('toggle')) {
 				$(sideBar).removeClass('toggle');
@@ -90,7 +90,7 @@ function pullTabClick() {
 				$(sideBar)[0].style.left = '4px';
 				clearTimeout($.data(this));
 				setTimeout(function() {
-					if (screen.availWidth < 635) {
+					if ((screen.availWidth < 635 || $(window).width() < 635)) {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
 							$(sideBar)[0].style.transition = '1s';
@@ -118,7 +118,7 @@ function sideBarNav() {
 		$(sideBar)[0].style.transition = '0s';
 		$(sideBar)[0].style.top = head + 'px';
 	}, 0);
-	if (screen.availWidth < 635) {	
+	if ((screen.availWidth < 635 || $(window).width() < 635)) {	
 		pullTabWrapper.on('touchmove', (element) => {
 			element.stopPropagation();
 			element.preventDefault();
@@ -141,7 +141,7 @@ function sideBarNav() {
 						}
 					}, 0);
 					setTimeout(function() {
-						if (screen.availWidth < 635) {
+						if ((screen.availWidth < 635 || $(window).width() < 635)) {
 							if ($(sideBar).hasClass('toggle')) {
 								$(sideBar).removeClass('toggle');
 								$(sideBar)[0].style.transition = '1s';
@@ -173,12 +173,12 @@ function sideBarNav() {
 			touchStartPosY = currentPageY;
 		});
 	}
-	if (screen.availWidth < 635 && !$(sideBar).hasClass('toggle')) {
+	if ((screen.availWidth < 635 || $(window).width() < 635) && !$(sideBar).hasClass('toggle')) {
 		let pullTab = document.getElementsByClassName('pullTab')[0];
 		pullTab.style.opacity = '1';
 		pullTabClick();
 	}  
-	if (screen.availWidth < 635 && $(sideBar).hasClass('toggle')) {
+	if ((screen.availWidth < 635 || $(window).width() < 635) && $(sideBar).hasClass('toggle')) {
 		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '-62px';
@@ -186,21 +186,21 @@ function sideBarNav() {
 		pullTab.style.opacity = '1';
 		pullTabClick();
 	 } else {
-		if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
+		if ((screen.availWidth < 635 || $(window).width() >= 635) && !$(sideBar).hasClass('toggle')) {
 			$(sideBar).addClass('toggle');
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
-			if (screen.availWidth >= 635) {
+			if ((screen.availWidth < 635 || $(window).width() >= 635)) {
 				let pullTab = document.getElementsByClassName('pullTab')[0];
 				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
 				pullTab.style.opacity = '0';
 				$(pullTabWrapper).off('click', pullTabWrapper.fn);
 			}
 		}
-		if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
+		if ((screen.availWidth < 635 || $(window).width() >= 635) && $(sideBar).hasClass('toggle')) {
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
-			if (screen.availWidth >= 635) {
+			if ((screen.availWidth < 635 || $(window).width() >= 635)) {
 				let pullTab = document.getElementsByClassName('pullTab')[0];
 				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
 				pullTab.style.opacity = '0';
@@ -225,7 +225,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if (screen.availWidth < 600) {
+				if ((screen.availWidth < 635 || $(window).width() < 635)) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -258,7 +258,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if (screen.availWidth < 600) {
+				if ((screen.availWidth < 635 || $(window).width() < 635)) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -282,7 +282,7 @@ function sideBarNav() {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if (screen.availWidth < 600) {
+					if ((screen.availWidth < 635 || $(window).width() < 635)) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -304,7 +304,7 @@ function sideBarNav() {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if (screen.availWidth < 600) {
+					if ((screen.availWidth < 635 || $(window).width() < 635)) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -326,7 +326,7 @@ function sideBarNav() {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if (screen.availWidth < 600) {
+					if ((screen.availWidth < 635 || $(window).width() < 635)) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -348,7 +348,7 @@ function sideBarNav() {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if (screen.availWidth < 600) {
+					if ((screen.availWidth < 635 || $(window).width() < 635)) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -379,7 +379,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if (screen.availWidth < 600) {
+				if ((screen.availWidth < 635 || $(window).width() < 635)) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -413,7 +413,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if (screen.availWidth < 600) {
+				if ((screen.availWidth < 635 || $(window).width() < 635)) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
