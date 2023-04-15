@@ -408,9 +408,9 @@ a:link, a:visited {
 	box-shadow: 0px 0px 4px 4px #fdcb6e;
 }
 a:hover, a:active {
+	transition: 1s;
 	color: #e84393;
 	font-size: inherit;
-	transition: 1s;
 }
 p + h1 {
 	margin-top: 1em;
@@ -800,7 +800,12 @@ span.accent {
 #siteNav > div > ul > li:nth-child(1), #siteNav > div > ul > li:nth-child(2), #siteNav > div > ul > li:nth-child(3), #siteNav > div > ul > li:nth-child(4) {
 	border-radius: 10px;
 }
+#siteNav > div > ul > li > a, #siteNav > div > ul > li > a:hover {
+	transition: 1s !important;
+	color: #e84393;
+}
 #siteNav > div > ul > li:nth-child(1) > a, #siteNav > div > ul > li:nth-child(1) > a:hover {
+	transition: 1s !important;
 	border-width: 2px;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
@@ -808,6 +813,7 @@ span.accent {
 	background: #000000;
 }
 #siteNav > div > ul > li:nth-child(4) > a, #siteNav > div > ul > li:nth-child(4) > a:hover, #siteNav li:nth-child(4) a.current, #siteNav li:nth-child(4) a.current:hover {
+	transition: 1s !important;
 	border-width: 2px;
 	padding: 0 .5em 0 .5em;
 	border-top-right-radius: 10px;
@@ -837,7 +843,7 @@ span.accent {
 	display: block;
 	padding: 0em .25em;
 	background: #000000;
-	/* font: 1.1rem Arial, sans-serif; */
+	transition: 1s;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #55efc4;
@@ -846,7 +852,6 @@ span.accent {
 }
 #siteNav > div > ul > li > ul > li > a {
 	line-height: 2em;
-  /* font-size: auto; */
 	font-size: .7rem;
 	margin-bottom: .6em;
 	border-right: 2px;
@@ -871,9 +876,11 @@ span.accent {
 }
 #siteNav li a.current, #siteNav li a.current:hover, #siteNav a span:hover {
 	border-width: 2px;
+	transition: 1s !important;
 	color: #e84393;
 }
 #siteNav li a:hover, #siteNav li a:active, #siteNav a span:hover {
+	transition: 1s !important;
 	color: #e84393;
 	border-bottom: none;
 }
@@ -917,6 +924,7 @@ span.accent {
 	letter-spacing: 0;
 }
 #siteNav li ul a:hover, #siteNav li ul a:active, #siteNav li ul svg:hover {
+	transition: 1s;
 	fill: #e84393;
 	color: #e84393;
 	display: flex;

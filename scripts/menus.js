@@ -120,7 +120,7 @@ function sideBarNav() {
 		$(sideBar)[0].style.top = head + 'px';
 	}, 0);
 	if (screen.availWidth < 635) {	
-		pullTabWrapper.on('touchmove', (element) => {
+		pullTabWrapper.on('touchmove', pullTabWrapper.fn = function swiped() {
 			element.stopPropagation();
 			element.preventDefault();
 			const currentPageX = Math.round(element.originalEvent.touches[0].screenX);
@@ -722,7 +722,7 @@ function createSiteNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('maven')[2];
+						let flash = document.getElementsByClassName('maven')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
@@ -732,7 +732,7 @@ function createSiteNavLinks() {
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[0];
+						let list = document.getElementsByClassName('list')[2];
 						$(list).fadeOut(600);
 					}, 400);
 				})
