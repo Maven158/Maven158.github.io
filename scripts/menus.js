@@ -78,6 +78,7 @@ function changeFont(element, size, margin){
 function pullTabClick() {
 	clearTimeout($.data(this));
 	let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
+	$(pullTabWrapper).off('click');
 	if (screen.availWidth < 635 ) {
 		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked() {
 			if ($(sideBar).hasClass('toggle')) {
@@ -177,37 +178,33 @@ function sideBarNav() {
 		let pullTab = document.getElementsByClassName('pullTab')[0];
 		pullTab.style.opacity = '1';
 		pullTabClick();
-	}  
-	if (screen.availWidth < 635 && $(sideBar).hasClass('toggle')) {
+	}  else if (screen.availWidth < 635 && $(sideBar).hasClass('toggle')) {
 		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '-62px';
 		let pullTab = document.getElementsByClassName('pullTab')[0];
 		pullTab.style.opacity = '1';
 		pullTabClick();
-	 } else {
-		if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
-			$(sideBar).addClass('toggle');
-			$(sideBar)[0].style.transition = '1s';
-			$(sideBar)[0].style.left = '4px';
-			if (screen.availWidth >= 635) {
-				let pullTab = document.getElementsByClassName('pullTab')[0];
-				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
-				pullTab.style.opacity = '0';
-				$(pullTabWrapper).off('click', pullTabWrapper.fn);
-			}
+	} else if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
+		$(sideBar).addClass('toggle');
+		$(sideBar)[0].style.transition = '1s';
+		$(sideBar)[0].style.left = '4px';
+		if (screen.availWidth >= 635) {
+			let pullTab = document.getElementsByClassName('pullTab')[0];
+			let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
+			pullTab.style.opacity = '0';
+			$(pullTabWrapper).off('click', pullTabWrapper.fn);
 		}
-		if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
-			$(sideBar)[0].style.transition = '1s';
-			$(sideBar)[0].style.left = '4px';
-			if (screen.availWidth >= 635) {
-				let pullTab = document.getElementsByClassName('pullTab')[0];
-				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
-				pullTab.style.opacity = '0';
-				$(pullTabWrapper).off('click', pullTabWrapper.fn);
-			}
-		} 
-	}
+	} else if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
+		$(sideBar)[0].style.transition = '1s';
+		$(sideBar)[0].style.left = '4px';
+		if (screen.availWidth >= 635) {
+			let pullTab = document.getElementsByClassName('pullTab')[0];
+			let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
+			pullTab.style.opacity = '0';
+			$(pullTabWrapper).off('click', pullTabWrapper.fn);
+		}
+	} 
 }
 
 function createSideBarLinks() {
