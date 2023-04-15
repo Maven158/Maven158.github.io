@@ -78,7 +78,7 @@ function changeFont(element, size, margin){
 function pullTabClick() {
 	clearTimeout($.data(this));
 	let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
-	if ((screen.availWidth < 635 || $(window).width() < 635) ) {
+	if (screen.availWidth < 635 ) {
 		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked() {
 			if ($(sideBar).hasClass('toggle')) {
 				$(sideBar).removeClass('toggle');
@@ -90,7 +90,7 @@ function pullTabClick() {
 				$(sideBar)[0].style.left = '4px';
 				clearTimeout($.data(this));
 				setTimeout(function() {
-					if ((screen.availWidth < 635 || $(window).width() < 635)) {
+					if (screen.availWidth < 635) {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
 							$(sideBar)[0].style.transition = '1s';
@@ -118,7 +118,7 @@ function sideBarNav() {
 		$(sideBar)[0].style.transition = '0s';
 		$(sideBar)[0].style.top = head + 'px';
 	}, 0);
-	if ((screen.availWidth < 635 || $(window).width() < 635)) {	
+	if (screen.availWidth < 635) {	
 		pullTabWrapper.on('touchmove', (element) => {
 			element.stopPropagation();
 			element.preventDefault();
@@ -141,7 +141,7 @@ function sideBarNav() {
 						}
 					}, 0);
 					setTimeout(function() {
-						if ((screen.availWidth < 635 || $(window).width() < 635)) {
+						if (screen.availWidth < 635) {
 							if ($(sideBar).hasClass('toggle')) {
 								$(sideBar).removeClass('toggle');
 								$(sideBar)[0].style.transition = '1s';
@@ -173,12 +173,12 @@ function sideBarNav() {
 			touchStartPosY = currentPageY;
 		});
 	}
-	if ((screen.availWidth < 635 || $(window).width() < 635) && !$(sideBar).hasClass('toggle')) {
+	if (screen.availWidth < 635 && !$(sideBar).hasClass('toggle')) {
 		let pullTab = document.getElementsByClassName('pullTab')[0];
 		pullTab.style.opacity = '1';
 		pullTabClick();
 	}  
-	if ((screen.availWidth < 635 || $(window).width() < 635) && $(sideBar).hasClass('toggle')) {
+	if (screen.availWidth < 635 && $(sideBar).hasClass('toggle')) {
 		$(sideBar).removeClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '-62px';
@@ -186,21 +186,21 @@ function sideBarNav() {
 		pullTab.style.opacity = '1';
 		pullTabClick();
 	 } else {
-		if ((screen.availWidth < 635 || $(window).width() >= 635) && !$(sideBar).hasClass('toggle')) {
+		if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
 			$(sideBar).addClass('toggle');
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
-			if ((screen.availWidth < 635 || $(window).width() >= 635)) {
+			if (screen.availWidth >= 635) {
 				let pullTab = document.getElementsByClassName('pullTab')[0];
 				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
 				pullTab.style.opacity = '0';
 				$(pullTabWrapper).off('click', pullTabWrapper.fn);
 			}
 		}
-		if ((screen.availWidth < 635 || $(window).width() >= 635) && $(sideBar).hasClass('toggle')) {
+		if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
 			$(sideBar)[0].style.transition = '1s';
 			$(sideBar)[0].style.left = '4px';
-			if ((screen.availWidth < 635 || $(window).width() >= 635)) {
+			if (screen.availWidth >= 635) {
 				let pullTab = document.getElementsByClassName('pullTab')[0];
 				let pullTabWrapper = document.getElementsByClassName('pullTab-Wrapper')[0];
 				pullTab.style.opacity = '0';
@@ -208,11 +208,15 @@ function sideBarNav() {
 			}
 		} 
 	}
+}
+
+function createSideBarLinks() {
+	let sideBar = $('#sideBar');
 	sideBar.find('a').each(function() {
 		if ($(this).hasClass('sideBarHome')) {
 			let nav = document.getElementsByClassName('sideBarHome')[0];
 			let flash = document.getElementsByClassName('fas fa-house-user')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -225,7 +229,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ((screen.availWidth < 635 || $(window).width() < 635)) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -245,7 +249,7 @@ function sideBarNav() {
 		if ($(this).hasClass('sideBarCode')) {
 			let nav = document.getElementsByClassName('sideBarCode')[0];
 			let flash = document.getElementsByClassName('fa fa-code')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -258,7 +262,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ((screen.availWidth < 635 || $(window).width() < 635)) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -278,11 +282,11 @@ function sideBarNav() {
 		if ($(this).hasClass('sideBarLinkedIn')) {
 			let nav = document.getElementsByClassName('sideBarLinkedIn')[0];
 			let flash = document.getElementsByClassName('fa fa-linkedin')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ((screen.availWidth < 635 || $(window).width() < 635)) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -300,11 +304,11 @@ function sideBarNav() {
 		if ($(this).hasClass('sideBarReddit')) {
 			let nav = document.getElementsByClassName('sideBarReddit')[0];
 			let flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ((screen.availWidth < 635 || $(window).width() < 635)) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -322,11 +326,11 @@ function sideBarNav() {
 		if ($(this).hasClass('sideBarGitHub')) {
 			let nav = document.getElementsByClassName('sideBarGitHub')[0];
 			let flash = document.getElementsByClassName('fa fa-github-alt')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ((screen.availWidth < 635 || $(window).width() < 635)) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -344,11 +348,16 @@ function sideBarNav() {
 		if ($(this).hasClass('sideBarStackOverflow')) {
 			let nav = document.getElementsByClassName('sideBarStackOverflow')[0];
 			let flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
-			$(nav).on('click', function (){
+			if ($(nav).fn != '') {
+				$(nav).fn = '';
+			}
+			$(nav).on('click', function () {
+				console.log($(nav));
+				window.open("https://stackoverflow.com/users/18815704/maven");
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
-					if ((screen.availWidth < 635 || $(window).width() < 635)) {
+					if (screen.availWidth < 600) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -360,13 +369,13 @@ function sideBarNav() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://stackoverflow.com/users/18815704/maven");
+				
 			});
 		}
 		if ($(this).hasClass('sideBarEmail')) {
 			let nav = document.getElementsByClassName('sideBarEmail')[0];
 			let flash = document.getElementsByClassName('fa fa-send')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -379,7 +388,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ((screen.availWidth < 635 || $(window).width() < 635)) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -400,7 +409,7 @@ function sideBarNav() {
 		if ($(this).hasClass('sideBarResume')) {
 			let nav = document.getElementsByClassName('sideBarResume')[0];
 			let flash = document.getElementsByClassName('fa fa-file-alt')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -413,7 +422,7 @@ function sideBarNav() {
 				$(flash).addClass('selected');
 				toolTip = flash.getElementsByClassName('tt');
 				toolTip[0].style.opacity = '0';
-				if ((screen.availWidth < 635 || $(window).width() < 635)) {
+				if (screen.availWidth < 600) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
 				}
@@ -495,443 +504,420 @@ function siteNav() {
 			}
 		});
 	}
+}
+
+function createSiteNavLinks() {
+	let siteNav = $('#siteNav');
 	siteNav.find('a').each(function() {
 		if ($(this).hasClass('accolades')) {
 			let nav = document.getElementsByClassName('accolades')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('accolades')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('accolades')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[0];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('biography')) {
 			let nav = document.getElementsByClassName('biography')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('biography')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('biography')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[0];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('main')) {
 			let nav = document.getElementsByClassName('main')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('main')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('main')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[0];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('future')) {
 			let nav = document.getElementsByClassName('future')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('future')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('future')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[1];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('core')) {
 			let nav = document.getElementsByClassName('core')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('core')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('core')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[1];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('hrenovator')) {
 			let nav = document.getElementsByClassName('hrenovator')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('hrenovator')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('hrenovator')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[2];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('neirman')) {
 			let nav = document.getElementsByClassName('neirman')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('neirman')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('neirman')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[2];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('maven')) {
 			let nav = document.getElementsByClassName('maven')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('maven')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('maven')[2];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[0];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('linkedin')) {
 			let nav = document.getElementsByClassName('linkedin')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('linkedin')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('linkedin')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[3];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('reddit')) {
 			let nav = document.getElementsByClassName('reddit')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('reddit')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('reddit')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[3];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('github')) {
 			let nav = document.getElementsByClassName('github')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('github')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('github')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[3];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('stackoverflow')) {
 			let nav = document.getElementsByClassName('stackoverflow')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('stackoverflow')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('stackoverflow')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[3];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('contract')) {
 			let nav = document.getElementsByClassName('contract')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('contract')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('contract')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[3];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 		if ($(this).hasClass('email')) {
 			let nav = document.getElementsByClassName('email')[0];
-			$(nav).on('click', function (){
+			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
 					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					let flash = document.getElementsByClassName('email')[0];
 					$(flash).addClass('flash');
-					setTimeout(function() {
-						$(flash).removeClass('flash');
-					}, 600);
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					document.getElementById("mainContent").outerHTML = str;
+					setTimeout(function() {
+						let flash = document.getElementsByClassName('email')[0];
+						$(flash).removeClass('flash');
+					}, 600);
 				})
 				.then(() => {
-					let siteNav = $('#siteNav');
-					siteNav.find('li').each(function() {
-						$(this).find('a').each(function() {
-							setTimeout(function() {
-								$(this).removeClass('current');
-							}, 600);
+					setTimeout(function() {
+						let siteNav = $('#siteNav');
+						siteNav.find('a').each(function() {
+							$(this).removeClass('current');				
 						});
-						if ($(this).find('ul').length > 0 ) {
-							$(this).find('ul').fadeOut(1000);
-						};
-					});
-				});
+						let list = document.getElementsByClassName('list')[3];
+						$(list).fadeOut(600);
+					}, 400);
+				})
 			});
 		}
 	});
 }
+
 function loadScript(src) {
   return new Promise(function (resolve, reject) {
     if ($("script[src='" + src + "']").length === 0) {
@@ -950,16 +936,21 @@ function loadScript(src) {
     }
 	});
 }
+
 function reload_js(src) {
 	$('script[src="' + src + '"]').remove();
 	$('<script>').attr('src', src).appendTo('head');
 }
-$(document).ready(function(){
+
+$(document).ready(function() {
 	enableMenus();
 	sideBarNav();
 	siteNav();
+	createSideBarLinks();
+	createSiteNavLinks();
 	pullTabClick();
 });
+
 $(window).resize(function() {
 	let highestId = window.setTimeout(() => {
 		for (let i = highestId; i >= 0; i--) {
