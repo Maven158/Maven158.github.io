@@ -7,9 +7,7 @@ html, body {
   height: 100vh;
 	margin: 0;
 	padding: 0;
-	/* font-size: calc(15px + 0.390625vw); */
 	font: 100% Arial, sans-serif;
-  /* overflow: hidden; */
 }
 body {
 	text-align: center;
@@ -39,7 +37,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	position: absolute;
 }
 #field > article > div.hero > div > div > span.bio {
-	/* margin-top: -115px; */
 	position: absolute;
 }
 #field > article > div.hero > div > img.banner {
@@ -70,7 +67,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   font-family: Arial, sans-serif;
   display: block;
 	color: #e84393;
-  /* font-size: 1.35em; */
 	font-size: clamp(.5rem, 1vw + .75rem, 1.35rem);;
   letter-spacing: 0;
   font-weight: normal;
@@ -88,7 +84,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   white-space: pre-line;
   padding: 0;
   margin: 0 auto;
-  /* font-size: 0.95em; */
 	font-size: clamp(.5rem, 1vw + .5rem, .95rem);;
   font-weight: 100;
   line-height: 1.5;
@@ -127,7 +122,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   font-family: Arial, sans-serif;
   display: block;
   align-items: center;
-  /* font-size: 1em; */
 	font-size: clamp(.25rem, 2vw + .25rem, 1rem);
   font-weight: 500;
   padding: 2px 3px 8px 3px;
@@ -136,7 +130,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   display: inline-flex;
   -webkit-box-align: center;
   align-items: center;
-  /* font-size: 1em; */
 	font-size: clamp(.25rem, 2vw + .25rem, 1rem);
   font-weight: 500;
   padding: 2px 3px 8px 0;
@@ -171,7 +164,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 }
 .onePage .item span {
   margin: 0 0 -6px;
-  /* font-size: 1em; */
 	font-size: clamp(.5rem, 1vw + .5rem, 1rem);;
   font-weight: 600;
   text-align: left;
@@ -207,7 +199,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   white-space: pre-line;
   padding: 0;
   margin: 0 auto;
-  /* font-size: 1em; */
 	font-size: clamp(.5rem, 2vw + .25rem, 1rem);
   font-weight: 400;
   line-height: 1.6em;
@@ -332,7 +323,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	to   { color: default; border: 2px solid #ffeaa7; box-shadow: 0px 0px 4px 4px #fdcb6e;}
 }
 a:link, a:visited {
-	/* transition: 1s; */
 	text-align: center;
 	font-weight: bold;
 	justify-content: center;
@@ -364,7 +354,6 @@ a:link, a:visited {
 	box-shadow: 0px 0px 4px 4px #fdcb6e;
 }
 a:hover, a:active {
-	/* transition: 1s; */
 	color: #e84393;
 	font-size: inherit;
 }
@@ -466,11 +455,9 @@ span.accent {
 }
 #home #mainContent {
 	float: right;
-	/* display:flex; */
 	width: 100vw;
 	padding-right: 0;
 	margin-right: 0;
-	/* z-index: -2; */
 }
 #home #secondaryContent {
 	float: left;
@@ -588,7 +575,6 @@ span.accent {
 #specials > h2 > img {
 	border-radius: 10px;
 	border: 2px solid #a29bfe;
-	/* transition: all 1s; */
 	opacity: 1;
 	pointer-events: none;
 	box-shadow: 0px 0px 4px 4px #6c5ce7;
@@ -676,11 +662,9 @@ span.accent {
 }
 #sideBar {
 	position: fixed;
-	/* height: calc(100vh / 2); */
-	left: 4px;
+	left: -62px;
 	top: 4px;
 	display: block;
-	/* background: #000000bf; */
 	background: linear-gradient(90deg, #000000, 75%, #e84393);
 	border-radius: 10px;
 	border-right: 2px solid #fd79a8;;
@@ -688,10 +672,9 @@ span.accent {
 	padding-bottom: 0em;
 }
 #sideBar .toggle {
-	left: -62px;
+	left: 4px;
 }
 #sideBar > div > ul > li > a > i.selected {
-	/* color: #e84393; */
 	color: #e84393;
 	border: 2px solid #ffeaa7;
 	border-radius: 10px;
@@ -707,7 +690,7 @@ span.accent {
 	list-style: none;
 }
 #sideBar li a i {
-	transition: 1s;
+	transition: 0s;
 	color: #55efc4;
 	border-radius: 10px;
 	border: 2px solid transparent;
@@ -718,7 +701,7 @@ span.accent {
 	padding: 6.5px 2px 6.5px 2px;
 }
 #sideBar ul li a i:hover, #sideBar li a i:active {
-	transition: 1s;
+	transition: 0s;
 	color: #e84393;
 	border-radius: 10px;
 }
