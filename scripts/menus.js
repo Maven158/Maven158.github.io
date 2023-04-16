@@ -4,6 +4,8 @@ var sideBar = $('#sideBar');
 var siteNav = $('#siteNav');
 var pullTabWrapper = $('#pullTab-Wrapper');
 var pullTab = $('#pullTab');
+var font = $('.mainNav');
+var newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 var head = 4;
 var lastScrollTop = 0;
 var touchStartPosX = 0;
@@ -25,7 +27,7 @@ window.addEventListener('scroll', function() {
 	// }, 750));
 }, false);
 
-function enableMenus() {
+function enableNav() {
 	// let sideBar = $('#sideBar');
 	//check to see if we are on desktop .vs tablet or mobile
 	// if (screen.availWidth > 300) {
@@ -74,24 +76,12 @@ function enableMenus() {
 	// };
 };
 
-function changeFont(element, size, margin){
+function changeFont(element, size, margin) {
 	element.style.fontSize = size;
 	element.style.transition = '0s !important';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 
-};
-
-function pullTabPosition() {
-	if (screen.availHeight < 510) {
-		let pullTabPosition = (((screen.availHeight - 60) / 2) / 510) * 100;
-		console.log(pullTabPosition);
-		$(pullTabWrapper)[0].style.top = pullTabPosition + '%';
-	} else {
-		let pullTabPosition = (((510 - 60) / 2) / 510) * 100;
-		console.log(pullTabPosition);
-		$(pullTabWrapper)[0].style.top = pullTabPosition + '%';
-	}
 };
 
 function sideBarNav() {
@@ -107,6 +97,16 @@ function sideBarNav() {
 	sideBarPullTabClick();
 	sideBarPullTabSwipe();
 	pullTabPosition();
+};
+
+function pullTabPosition() {
+	if (screen.availHeight < 510) {
+		let pullTabPosition = (((screen.availHeight - 60) / 2) / 510) * 100;
+		$(pullTabWrapper)[0].style.top = pullTabPosition + '%';
+	} else {
+		let pullTabPosition = (((510 - 60) / 2) / 510) * 100;
+		$(pullTabWrapper)[0].style.top = pullTabPosition + '%';
+	}
 };
 
 function sideBarPullTabClick() {
@@ -283,11 +283,10 @@ function sideBarSwipe() {
 };
 
 function sideBarNavLinks() {
-	let sideBar = $('#sideBar');
 	sideBar.find('a').each(function() {
 		if ($(this).hasClass('sideBarHome')) {
-			let nav = document.getElementsByClassName('sideBarHome')[0];
-			let flash = document.getElementsByClassName('fas fa-house-user')[0];
+			let nav = $('.sideBarHome')[0];
+			let flash = $('.fas fa-house-user')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
@@ -308,10 +307,9 @@ function sideBarNavLinks() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 				});
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
@@ -319,8 +317,8 @@ function sideBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('sideBarCode')) {
-			let nav = document.getElementsByClassName('sideBarCode')[0];
-			let flash = document.getElementsByClassName('fa fa-code')[0];
+			let nav = $('.sideBarCode')[0];
+			let flash = $('.fa fa-code')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
@@ -341,10 +339,9 @@ function sideBarNavLinks() {
 				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 				});
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
@@ -352,8 +349,8 @@ function sideBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('sideBarLinkedIn')) {
-			let nav = document.getElementsByClassName('sideBarLinkedIn')[0];
-			let flash = document.getElementsByClassName('fa fa-linkedin')[0];
+			let nav = $('.sideBarLinkedIn')[0];
+			let flash = $('.fa fa-linkedin')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
@@ -370,12 +367,12 @@ function sideBarNavLinks() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://www.linkedin.com/in/chris-hren/");
+				window.open('https://www.linkedin.com/in/chris-hren/');
 			});
 		}
 		if ($(this).hasClass('sideBarReddit')) {
-			let nav = document.getElementsByClassName('sideBarReddit')[0];
-			let flash = document.getElementsByClassName('fa fa-reddit-alien')[0];
+			let nav = $('.sideBarReddit')[0];
+			let flash = $('.fa fa-reddit-alien')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
@@ -392,12 +389,12 @@ function sideBarNavLinks() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://www.reddit.com/user/Richard_Musk/");
+				window.open('https://www.reddit.com/user/Richard_Musk/');
 			});
 		}		
 		if ($(this).hasClass('sideBarGitHub')) {
-			let nav = document.getElementsByClassName('sideBarGitHub')[0];
-			let flash = document.getElementsByClassName('fa fa-github-alt')[0];
+			let nav = $('.sideBarGitHub')[0];
+			let flash = $('.fa fa-github-alt')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
@@ -414,18 +411,18 @@ function sideBarNavLinks() {
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
 				});
-				window.open("https://github.com/Maven158");
+				window.open('https://github.com/Maven158');
 			});
 		}		
 		if ($(this).hasClass('sideBarStackOverflow')) {
-			let nav = document.getElementsByClassName('sideBarStackOverflow')[0];
-			let flash = document.getElementsByClassName('fa fa-stack-overflow')[0];
+			let nav = $('.sideBarStackOverflow')[0];
+			let flash = $('.fa fa-stack-overflow')[0];
 			if ($(nav).fn != '') {
 				$(nav).fn = '';
 			}
 			$(nav).on('click', function () {
 				console.log($(nav));
-				window.open("https://stackoverflow.com/users/18815704/maven");
+				window.open('https://stackoverflow.com/users/18815704/maven');
 				sideBar.find('i').each(function() {
 					toolTip = flash.getElementsByClassName('tt');
 					toolTip[0].style.opacity = '0';
@@ -445,8 +442,8 @@ function sideBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('sideBarEmail')) {
-			let nav = document.getElementsByClassName('sideBarEmail')[0];
-			let flash = document.getElementsByClassName('fa fa-send')[0];
+			let nav = $('.sideBarEmail')[0];
+			let flash = $('.fa fa-send')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
@@ -467,11 +464,10 @@ function sideBarNavLinks() {
 				fetch('/site/contact.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
-					loadScript("app.js");
+					$('#mainContent').outerHTML = str;
+					loadScript('app.js');
 				});
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
@@ -479,8 +475,8 @@ function sideBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('sideBarResume')) {
-			let nav = document.getElementsByClassName('sideBarResume')[0];
-			let flash = document.getElementsByClassName('fa fa-file-alt')[0];
+			let nav = $('.sideBarResume')[0];
+			let flash = $('.fa fa-file-alt')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
@@ -501,10 +497,9 @@ function sideBarNavLinks() {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 				});
 				$(flash).mouseleave(function() {
 					toolTip[0].style.opacity = null;
@@ -514,474 +509,408 @@ function sideBarNavLinks() {
 	});
 };
 
-function siteFixedNav() {
-	let siteNav = $('#siteNav');
-	if (screen.availWidth >= 435) {
-		siteNav.find('a').each(function() {
-			if ($(this).hasClass('mainNav')) {
-				let font = document.getElementsByClassName('mainNav');
-				for(let i = 0; i < font.length; i++){
-					changeFont(font[i], '1.1rem', '3px');
+function topBarNav() {
+	siteNav.find('a').each(function() {	
+		for(let i = 0; i < $(font).length; i++) {
+			if ($(this).hasClass('mainNav')) {	
+				if (screen.availWidth >= 435) {	
+					changeFont($(font)[i], '1.1rem', '3px');
+				}
+				if (screen.availWidth < 435) {	
+					changeFont($(font)[i], '1.0rem', '2px');
+				}
+				if (screen.availWidth < 400) {	
+					changeFont($(font)[i], '0.9rem', '0px');
+				}
+				if (screen.availWidth < 360) {	
+					changeFont($(font)[i], '0.8rem', '-2px');
+				}
+				if (screen.availWidth < 325) {	
+					changeFont($(font)[i], '0.7rem', '-4px');
+				}
+				if (screen.availWidth < 280) {	
+					changeFont($(font)[i], '0.7rem', '-4px');
 				}
 			}
-		});
-	}
-	if (screen.availWidth < 435) {
-		siteNav.find('a').each(function() {
-		if ($(this).hasClass('mainNav')) {
-			let font = document.getElementsByClassName('mainNav');
-				for(let i = 0; i < font.length; i++){
-					changeFont(font[i], '1.0rem', '2px');
-				}
-			}
-		});
-	}
-	if (screen.availWidth < 400) {
-		siteNav.find('a').each(function() {
-		if ($(this).hasClass('mainNav')) {
-			let font = document.getElementsByClassName('mainNav');
-				for(let i = 0; i < font.length; i++){
-					changeFont(font[i], '.9rem', '0px');
-				}
-			}
-		});
-	}
-	if (screen.availWidth < 360) {
-		siteNav.find('a').each(function() {
-			if ($(this).hasClass('mainNav')) {
-				let font = document.getElementsByClassName('mainNav');
-				for(let i = 0; i < font.length; i++){
-					changeFont(font[i], '.8rem', '-2px');
-				}
-			}
-		});
-	}
-	if (screen.availWidth < 325) {
-		siteNav.find('a').each(function() {
-			if ($(this).hasClass('mainNav')) {
-				let font = document.getElementsByClassName('mainNav');
-				for(let i = 0; i < font.length; i++){
-					changeFont(font[i], '.7rem', '-4px');
-				}
-			}
-		});
-	}
-	if (screen.availWidth <= 280) {
-		siteNav.find('a').each(function() {
-			if ($(this).hasClass('mainNav')) {
-				let font = document.getElementsByClassName('mainNav');
-				for(let i = 0; i < font.length; i++){
-					changeFont(font[i], '.7rem', '-4px');
-				}
-			}
-		});
-	}
+		}
+	});
 };
 
-function siteNavLinks() {
-	let siteNav = $('#siteNav');
+function topBarNavLinks() {
 	siteNav.find('a').each(function() {
 		if ($(this).hasClass('accolades')) {
-			let nav = document.getElementsByClassName('accolades')[0];
+			let nav = $('.accolades')[0];
 			$(nav).on('click', function () {
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('accolades')[0];
+					let flash = $('.accolades')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('accolades')[0];
+						let flash = $('.accolades')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[0];
+						let list = $('.list')[0];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('biography')) {
-			let nav = document.getElementsByClassName('biography')[0];
+			let nav = $('.biography')[0];
 			$(nav).on('click', function () {
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('biography')[0];
+					let flash = $('.biography')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('biography')[0];
+						let flash = $('.biography')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[0];
+						let list = $('.list')[0];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('main')) {
-			let nav = document.getElementsByClassName('main')[0];
+			let nav = $('.main')[0];
 			$(nav).on('click', function () {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('main')[0];
+					let flash = $('.main')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('main')[0];
+						let flash = $('.main')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[0];
+						let list = $('.list')[0];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('future')) {
-			let nav = document.getElementsByClassName('future')[0];
+			let nav = $('.future')[0];
 			$(nav).on('click', function () {
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('future')[0];
+					let flash = $('.future')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('future')[0];
+						let flash = $('.future')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[1];
+						let list = $('.list')[1];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('core')) {
-			let nav = document.getElementsByClassName('core')[0];
+			let nav = $('.core')[0];
 			$(nav).on('click', function () {
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('core')[0];
+					let flash = $('.core')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('core')[0];
+						let flash = $('.core')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[1];
+						let list = $('.list')[1];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('hrenovator')) {
-			let nav = document.getElementsByClassName('hrenovator')[0];
+			let nav = $('.hrenovator')[0];
 			$(nav).on('click', function () {
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('hrenovator')[0];
+					let flash = $('.hrenovator')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('hrenovator')[0];
+						let flash = $('.hrenovator')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[2];
+						let list = $('.list')[2];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('neirman')) {
-			let nav = document.getElementsByClassName('neirman')[0];
+			let nav = $('.neirman')[0];
 			$(nav).on('click', function () {
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('neirman')[0];
+					let flash = $('.neirman')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('neirman')[0];
+						let flash = $('.neirman')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[2];
+						let list = $('.list')[2];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('maven')) {
-			let nav = document.getElementsByClassName('maven')[0];
+			let nav = $('.maven')[0];
 			$(nav).on('click', function () {
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('maven')[0];
+					let flash = $('.maven')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('maven')[0];
+						let flash = $('.maven')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[2];
+						let list = $('.list')[2];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('linkedin')) {
-			let nav = document.getElementsByClassName('linkedin')[0];
+			let nav = $('.linkedin')[0];
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('linkedin')[0];
+					let flash = $('.linkedin')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('linkedin')[0];
+						let flash = $('.linkedin')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[3];
+						let list = $('.list')[3];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('reddit')) {
-			let nav = document.getElementsByClassName('reddit')[0];
+			let nav = $('.reddit')[0];
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('reddit')[0];
+					let flash = $('.reddit')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('reddit')[0];
+						let flash = $('.reddit')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[3];
+						let list = $('.list')[3];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('github')) {
-			let nav = document.getElementsByClassName('github')[0];
+			let nav = $('.github')[0];
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('github')[0];
+					let flash = $('.github')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('github')[0];
+						let flash = $('.github')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[3];
+						let list = $('.list')[3];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('stackoverflow')) {
-			let nav = document.getElementsByClassName('stackoverflow')[0];
+			let nav = $('.stackoverflow')[0];
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('stackoverflow')[0];
+					let flash = $('.stackoverflow')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('stackoverflow')[0];
+						let flash = $('.stackoverflow')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[3];
+						let list = $('.list')[3];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('contract')) {
-			let nav = document.getElementsByClassName('contract')[0];
+			let nav = $('.contract')[0];
 			$(nav).on('click', function () {
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('contract')[0];
+					let flash = $('.contract')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('contract')[0];
+						let flash = $('.contract')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[3];
+						let list = $('.list')[3];
 						$(list).fadeOut(600);
 					}, 400);
 				})
 			});
 		}
 		if ($(this).hasClass('email')) {
-			let nav = document.getElementsByClassName('email')[0];
+			let nav = $('.email')[0];
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					const newDoc = document.implementation.createHTMLDocument('doc').documentElement;
-					let flash = document.getElementsByClassName('email')[0];
+					let flash = $('.email')[0];
 					$(flash).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					document.getElementById("mainContent").outerHTML = str;
+					$('#mainContent').outerHTML = str;
 					setTimeout(function() {
-						let flash = document.getElementsByClassName('email')[0];
+						let flash = $('.email')[0];
 						$(flash).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						let siteNav = $('#siteNav');
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
-						let list = document.getElementsByClassName('list')[3];
+						let list = $('.list')[3];
 						$(list).fadeOut(600);
 					}, 400);
 				})
@@ -1003,27 +932,21 @@ function loadScript(src) {
         script.src = src;
         document.body.appendChild(script);
     } else {
-    		reload_js(src);
         resolve();
     }
 	});
 };
 
-function reload_js(src) {
-	$('script[src="' + src + '"]').remove();
-	$('<script>').attr('src', src).appendTo('head');
-};
-
 $(document).ready(function() {
-	enableMenus()
-	siteFixedNav();
-	siteNavLinks();
+	enableNav()
+	topBarNav();
+	topBarNavLinks();
 	sideBarNav();
 	sideBarNavLinks();
 });
 
 $(window).resize(function() {
- 	enableMenus();
-	siteFixedNav();
+ 	enableNav();
+	topBarNav();
 	sideBarNav();
 });
