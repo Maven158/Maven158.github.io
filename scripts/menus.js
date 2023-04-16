@@ -269,6 +269,7 @@ function sideBarSwipe() {
 					$(sideBar)[0].style.transition = '.2s';
 					$(sideBar)[0].style.top = '4px';
 				}, 5000);
+				pullTabPosition();
 			} else {
 				$(sideBar)[0].style.transition = '.2s';
 				$(sideBar)[0].style.top = '4px';
