@@ -86,11 +86,6 @@ function changeFont(element, size, margin) {
 };
 
 function sideBarNav() {
-	let highestId = window.setTimeout(() => {
-		for (let i = highestId; i >= 0; i--) {
-			window.clearTimeout(i);
-		}
-	}, 0);
 	setTimeout(function() {
 		$(sideBar)[0].style.transition = '0s';
 		$(sideBar)[0].style.top = '4px';
@@ -106,6 +101,11 @@ function sideBarNavPullTabPosition() {
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	} else {
 		let sideBarNavPullTabPosition = (((510 - 60) / 2) / 510) * 100;
+		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+	}
+	console.log(head)
+	if (head != 4) {
+		let sideBarNavPullTabPosition = 100 - ((((window.innerHeight - 60) / 2) / (510 - Math.abs(head))) * 100);
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	}
 };
@@ -143,6 +143,8 @@ function sideBarNavPullTabClick() {
 							$(sideBar)[0].style.transition = '.2s';
 							$(sideBar)[0].style.left = '-62px';
 							$(sideBar)[0].style.top = '4px';
+							head = 4;
+							sideBarNavPullTabPosition();
 						}
 					}
 				}, 5000);
@@ -212,6 +214,8 @@ function sideBarNavPullTabSwipe() {
 						$(sideBar)[0].style.transition = '.2s';
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
+						head = 4;
+						sideBarNavPullTabPosition();
 					}
 				}
 			}, 5000);
@@ -260,8 +264,10 @@ function sideBarNavSwipe() {
 				$(sideBar)[0].style.top = head + 'px';
 				sideBarNavPullTabPosition();
 			} else {
+				head = 4;
 				$(sideBar)[0].style.transition = '.2s';
-				$(sideBar)[0].style.top = '4px';
+				$(sideBar)[0].style.top = head + 'px';
+				sideBarNavPullTabPosition();
 			}
 			touchStartPosY = currentPageY;
 		});
@@ -271,6 +277,8 @@ function sideBarNavSwipe() {
 				if (window.innerWidth >= 635) {
 					$(sideBar)[0].style.transition = '.2s';
 					$(sideBar)[0].style.top = '4px';
+					head = 4;
+					sideBarNavPullTabPosition();
 				} else {
 					if ($(sideBar).hasClass('toggle')) {
 						$(sideBar).removeClass('toggle');
@@ -278,6 +286,8 @@ function sideBarNavSwipe() {
 						$(sideBar)[0].style.transition = '.2s';
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
+						head = 4;
+						sideBarNavPullTabPosition();
 					}
 				}
 			}, 5000);
@@ -479,6 +489,7 @@ function sideBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 				});
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
