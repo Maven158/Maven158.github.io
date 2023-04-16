@@ -31,7 +31,7 @@ window.addEventListener('scroll', function() {
 function enableNav() {
 	// let sideBar = $('#sideBar');
 	//check to see if we are on desktop .vs tablet or mobile
-	// if (screen.availWidth > 300) {
+	// if (window.innerWidth > 300) {
 	//strip out no-js class if jQuery is running the animation
 	if ($('body').hasClass('no-js')) {
 		$('body').removeClass('no-js');
@@ -113,7 +113,7 @@ function sideBarNavPullTabPosition() {
 function sideBarNavPullTabClick() {
 	clearTimeout(revert);
 	$(pullTabWrapper).off('click');
-	if (screen.availWidth < 635) {
+	if (window.innerWidth < 635) {
 		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked(element) {
 			element.stopPropagation();
 			element.preventDefault();
@@ -136,7 +136,7 @@ function sideBarNavPullTabClick() {
 					}
 				}, 0);
 				revert = setTimeout(function() {
-					if (screen.availWidth < 635) {
+					if (window.innerWidth < 635) {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
 							$(pullTabWrapper)[0].style.display = 'flex';
@@ -148,7 +148,7 @@ function sideBarNavPullTabClick() {
 				}, 5000);
 			}
 		});
-	} else if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
+	} else if (window.innerWidth >= 635 && !$(sideBar).hasClass('toggle')) {
 		$(sideBar).addClass('toggle');
 		$(pullTabWrapper)[0].style.display = 'none';
 		$(sideBar)[0].style.transition = '1s';
@@ -156,7 +156,7 @@ function sideBarNavPullTabClick() {
 		$(sideBar)[0].style.top = '4px';
 		$(pullTabWrapper).off('click');
 		$(pullTabWrapper).off('touchmove');
-	} else if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
+	} else if (window.innerWidth >= 635 && $(sideBar).hasClass('toggle')) {
 		$(pullTabWrapper)[0].style.display = 'none';
 		$(sideBar)[0].style.transition = '1s';
 		$(sideBar)[0].style.left = '4px';
@@ -164,7 +164,7 @@ function sideBarNavPullTabClick() {
 		$(pullTabWrapper).off('click');
 		$(pullTabWrapper).off('touchmove');
 	}
-	if (screen.availWidth < 635) {
+	if (window.innerWidth < 635) {
 		if ($(sideBar).hasClass('toggle')) {
 			$(sideBar).removeClass('toggle');
 			$(pullTabWrapper)[0].style.display = 'flex';
@@ -179,7 +179,7 @@ function sideBarNavPullTabClick() {
 function sideBarNavPullTabSwipe() {
 	pullTabWrapper.off('touchmove');
 	pullTabWrapper.off('touchend');
-	if (screen.availWidth < 635) {
+	if (window.innerWidth < 635) {
 		pullTabWrapper.on('touchmove', pullTabWrapper.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
@@ -205,7 +205,7 @@ function sideBarNavPullTabSwipe() {
 		pullTabWrapper.on('touchend', pullTabWrapper.fn = function swipeEnd(element) {
 			clearTimeout(revert);
 			revert = setTimeout(function() {
-				if (screen.availWidth < 635) {
+				if (window.innerWidth < 635) {
 					if ($(sideBar).hasClass('toggle')) {
 						$(sideBar).removeClass('toggle');
 						$(pullTabWrapper)[0].style.display = 'flex';
@@ -216,7 +216,7 @@ function sideBarNavPullTabSwipe() {
 				}
 			}, 5000);
 		});
-	} else if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
+	} else if (window.innerWidth >= 635 && !$(sideBar).hasClass('toggle')) {
 		$(sideBar).addClass('toggle');
 		$(sideBar)[0].style.transition = '1s';
 		$(pullTabWrapper)[0].style.display = 'none';
@@ -224,7 +224,7 @@ function sideBarNavPullTabSwipe() {
 		$(sideBar)[0].style.top = '4px';
 		$(pullTabWrapper).off('click');
 		$(pullTabWrapper).off('touchmove');
-	} else if (screen.availWidth >= 635 && $(sideBar).hasClass('toggle')) {
+	} else if (window.innerWidth >= 635 && $(sideBar).hasClass('toggle')) {
 		$(sideBar)[0].style.transition = '1s';
 		$(pullTabWrapper)[0].style.display = 'none';
 		$(pullTab)[0].style.opacity
@@ -233,7 +233,7 @@ function sideBarNavPullTabSwipe() {
 		$(pullTabWrapper).off('click');
 		$(pullTabWrapper).off('touchmove');
 	}
-	if (screen.availWidth < 635) {
+	if (window.innerWidth < 635) {
 		if ($(sideBar).hasClass('toggle')) {
 			$(sideBar).removeClass('toggle');
 			$(pullTabWrapper)[0].style.display = 'flex';
@@ -248,7 +248,7 @@ function sideBarNavPullTabSwipe() {
 function sideBarNavSwipe() {
 	sideBar.off('touchmove');
 	sideBar.off('touchend');
-	if (screen.availHeight < 510 && $(sideBar).hasClass('toggle')) {
+	if (window.innerHeight < 510 && $(sideBar).hasClass('toggle')) {
 		sideBar.on('touchmove', sideBar.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
@@ -256,7 +256,7 @@ function sideBarNavSwipe() {
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
 				$(sideBar)[0].style.transition = '.2s';
-				head = screen.availHeight - 504;
+				head = window.innerHeight - 504;
 				$(sideBar)[0].style.top = head + 'px';
 				sideBarNavPullTabPosition();
 			} else {
@@ -268,7 +268,7 @@ function sideBarNavSwipe() {
 		sideBar.on('touchend', sideBar.fn = function swipeEnd(element) {
 			clearTimeout(revert);
 			revert = setTimeout(function() {
-				if (screen.availWidth >= 635) {
+				if (window.innerWidth >= 635) {
 					$(sideBar)[0].style.transition = '.2s';
 					$(sideBar)[0].style.top = '4px';
 				} else {
@@ -283,7 +283,7 @@ function sideBarNavSwipe() {
 			}, 5000);
 		});
 	}
-	else if (screen.availHeight < 510 && !$(sideBar).hasClass('toggle')) {
+	else if (window.innerHeight < 510 && !$(sideBar).hasClass('toggle')) {
 		sideBar.off('touchmove');
 	}
 };
@@ -305,7 +305,7 @@ function sideBarNavLinks() {
 				$(nav).addClass('selected');
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (screen.availWidth < 635) {
+				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar)[0].style.top = '4px';
@@ -338,7 +338,7 @@ function sideBarNavLinks() {
 				$(nav).addClass('selected');
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (screen.availWidth < 635) {
+				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s'
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar)[0].style.top = '4px';
@@ -362,7 +362,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (screen.availWidth < 635) {
+					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
@@ -384,7 +384,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (screen.availWidth < 635) {
+					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
@@ -407,7 +407,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (screen.availWidth < 635) {
+					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
@@ -435,7 +435,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (screen.availWidth < 635) {
+					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
@@ -467,7 +467,7 @@ function sideBarNavLinks() {
 				$(nav).addClass('selected');
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (screen.availWidth < 635) {
+				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s'
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar)[0].style.top = '4px';
@@ -500,7 +500,7 @@ function sideBarNavLinks() {
 				$(nav).addClass('selected');
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (screen.availWidth < 635) {
+				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s'
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar)[0].style.top = '4px';
@@ -526,22 +526,22 @@ function topBarNav() {
 	siteNav.find('a').each(function() {	
 		for(let i = 0; i < $(font).length; i++) {
 			if ($(this).hasClass('mainNav')) {	
-				if (screen.availWidth >= 435) {	
+				if (window.innerWidth >= 435) {	
 					changeFont($(font)[i], '1.1rem', '3px');
 				}
-				if (screen.availWidth < 435) {	
+				if (window.innerWidth < 435) {	
 					changeFont($(font)[i], '1.0rem', '2px');
 				}
-				if (screen.availWidth < 400) {	
+				if (window.innerWidth < 400) {	
 					changeFont($(font)[i], '0.9rem', '0px');
 				}
-				if (screen.availWidth < 360) {	
+				if (window.innerWidth < 360) {	
 					changeFont($(font)[i], '0.8rem', '-2px');
 				}
-				if (screen.availWidth < 325) {	
+				if (window.innerWidth < 325) {	
 					changeFont($(font)[i], '0.7rem', '-4px');
 				}
-				if (screen.availWidth < 280) {	
+				if (window.innerWidth < 280) {	
 					changeFont($(font)[i], '0.7rem', '-4px');
 				}
 			}
