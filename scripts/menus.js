@@ -94,22 +94,22 @@ function sideBarNav() {
 		$(sideBar)[0].style.transition = '0s';
 		$(sideBar)[0].style.top = '4px';
 	}, 0);
-	sideBarPullTabClick();
-	sideBarPullTabSwipe();
-	pullTabPosition();
+	sideBarNavPullTabClick();
+	sideBarNavPullTabSwipe();
+	sideBarNavPullTabPosition();
 };
 
-function pullTabPosition() {
+function sideBarNavPullTabPosition() {
 	if (screen.availHeight < 510) {
-		let pullTabPosition = (((screen.availHeight - 60) / 2) / 510) * 100;
-		$(pullTabWrapper)[0].style.top = pullTabPosition + '%';
+		let sideBarNavPullTabPosition = (((screen.availHeight - 60) / 2) / 510) * 100;
+		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	} else {
-		let pullTabPosition = (((510 - 60) / 2) / 510) * 100;
-		$(pullTabWrapper)[0].style.top = pullTabPosition + '%';
+		let sideBarNavPullTabPosition = (((510 - 60) / 2) / 510) * 100;
+		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	}
 };
 
-function sideBarPullTabClick() {
+function sideBarNavPullTabClick() {
 	clearTimeout($.data(this));
 	$(pullTabWrapper).off('click');
 	if (screen.availWidth < 635) {
@@ -124,7 +124,7 @@ function sideBarPullTabClick() {
 				$(sideBar)[0].style.top = '4px';
 			} else if (!$(sideBar).hasClass('toggle')) {
 				$(sideBar).addClass('toggle');
-				sideBarSwipe();
+				sideBarNavSwipe();
 				$(pullTabWrapper)[0].style.display = 'flex';
 				$(sideBar)[0].style.transition = '1s';
 				$(sideBar)[0].style.left = '4px';
@@ -172,10 +172,10 @@ function sideBarPullTabClick() {
 			$(sideBar)[0].style.top = '4px';
 		}
 	}
-	sideBarSwipe();
+	sideBarNavSwipe();
 };
 
-function sideBarPullTabSwipe() {
+function sideBarNavPullTabSwipe() {
 	clearTimeout($.data(this));
 	$(pullTabWrapper).off('touchmove');
 	if (screen.availWidth < 635) {
@@ -194,7 +194,7 @@ function sideBarPullTabSwipe() {
 				}
 			} else if (!$(sideBar).hasClass('toggle')) {
 					$(sideBar).addClass('toggle');
-					sideBarSwipe();
+					sideBarNavSwipe();
 					$(pullTabWrapper)[0].style.display = 'flex';
 					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.left = '4px';
@@ -244,10 +244,10 @@ function sideBarPullTabSwipe() {
 			$(sideBar)[0].style.top = '4px';
 		}
 	}
-	sideBarSwipe();
+	sideBarNavSwipe();
 };
 
-function sideBarSwipe() {
+function sideBarNavSwipe() {
 	let touchStartPosY = 0;
 	let highestId = window.setTimeout(() => {
 		for (let i = highestId; i >= 0; i--) {
@@ -269,7 +269,7 @@ function sideBarSwipe() {
 					$(sideBar)[0].style.transition = '.2s';
 					$(sideBar)[0].style.top = '4px';
 				}, 5000);
-				pullTabPosition();
+				sideBarNavPullTabPosition();
 			} else {
 				$(sideBar)[0].style.transition = '.2s';
 				$(sideBar)[0].style.top = '4px';
@@ -283,23 +283,22 @@ function sideBarSwipe() {
 };
 
 function sideBarNavLinks() {
-	sideBar.find('a').each(function() {
-		if ($(this).hasClass('sideBarHome')) {
-			let nav = $('.sideBarHome')[0];
-			let flash = $('.fas fa-house-user')[0];
+	sideBar.find('i').each(function() {
+		if ($(this).hasClass('fas fa-house-user')) {
+			let nav = $('.fas.fa-house-user');
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).addClass('selected');
-				toolTip = flash.getElementsByClassName('tt');
-				toolTip[0].style.opacity = '0';
+				$(nav).addClass('selected');
+				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
@@ -309,29 +308,28 @@ function sideBarNavLinks() {
 				.then((text) => {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 				});
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
 			});
 		}
-		if ($(this).hasClass('sideBarCode')) {
-			let nav = $('.sideBarCode')[0];
-			let flash = $('.fa fa-code')[0];
+		if ($(this).hasClass('fa fa-code')) {
+			let nav = $('.fa.fa-code');
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).addClass('selected');
-				toolTip = flash.getElementsByClassName('tt');
-				toolTip[0].style.opacity = '0';
+				$(nav).addClass('selected');
+				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
@@ -341,122 +339,117 @@ function sideBarNavLinks() {
 				.then((text) => {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 				});
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
 			});
 		}
-		if ($(this).hasClass('sideBarLinkedIn')) {
-			let nav = $('.sideBarLinkedIn')[0];
-			let flash = $('.fa fa-linkedin')[0];
+		if ($(this).hasClass('fa fa-linkedin')) {
+			let nav = $('.fa.fa-linkedin');
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
-					toolTip = flash.getElementsByClassName('tt');
-					toolTip[0].style.opacity = '0';
+					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
-				window.open('https://www.linkedin.com/in/chris-hren/');
+				window.open("https://www.linkedin.com/in/chris-hren/");
 			});
 		}
-		if ($(this).hasClass('sideBarReddit')) {
-			let nav = $('.sideBarReddit')[0];
-			let flash = $('.fa fa-reddit-alien')[0];
+		if ($(this).hasClass('fa fa-reddit-alien')) {
+			let nav = $('.fa.fa-reddit-alien')[0];
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
-					toolTip = flash.getElementsByClassName('tt');
-					toolTip[0].style.opacity = '0';
+					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
-				window.open('https://www.reddit.com/user/Richard_Musk/');
+				window.open("https://www.reddit.com/user/Richard_Musk/");
 			});
 		}		
-		if ($(this).hasClass('sideBarGitHub')) {
-			let nav = $('.sideBarGitHub')[0];
-			let flash = $('.fa fa-github-alt')[0];
+		if ($(this).hasClass('fa fa-github-alt')) {
+			let nav = $('.fa.fa-github-alt');
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
-					toolTip = flash.getElementsByClassName('tt');
-					toolTip[0].style.opacity = '0';
+					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
-				window.open('https://github.com/Maven158');
+				window.open("https://github.com/Maven158");
 			});
 		}		
-		if ($(this).hasClass('sideBarStackOverflow')) {
-			let nav = $('.sideBarStackOverflow')[0];
-			let flash = $('.fa fa-stack-overflow')[0];
+		if ($(this).hasClass('fa fa-stack-overflow')) {
+			let nav = $('.fa.fa-stack-overflow');
 			if ($(nav).fn != '') {
 				$(nav).fn = '';
 			}
 			$(nav).on('click', function () {
 				console.log($(nav));
-				window.open('https://stackoverflow.com/users/18815704/maven');
+				window.open("https://stackoverflow.com/users/18815704/maven");
 				sideBar.find('i').each(function() {
-					toolTip = flash.getElementsByClassName('tt');
-					toolTip[0].style.opacity = '0';
+					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
 				
 			});
 		}
-		if ($(this).hasClass('sideBarEmail')) {
-			let nav = $('.sideBarEmail')[0];
-			let flash = $('.fa fa-send')[0];
+		if ($(this).hasClass('.fa fa-send')) {
+			let nav = $('.fa.fa-send');
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).addClass('selected');
-				toolTip = flash.getElementsByClassName('tt');
-				toolTip[0].style.opacity = '0';
+				$(nav).addClass('selected');
+				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
@@ -466,30 +459,29 @@ function sideBarNavLinks() {
 				.then((text) => {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
-					loadScript('app.js');
+					$('#mainContent')[0].outerHTML = str;
+					loadScript("app.js");
 				});
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
 			});
 		}
-		if ($(this).hasClass('sideBarResume')) {
-			let nav = $('.sideBarResume')[0];
-			let flash = $('.fa fa-file-alt')[0];
+		if ($(this).hasClass('fa fa-file-alt')) {
+			let nav = $('.fa.fa-file-alt');
 			$(nav).on('click', function () {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(flash).addClass('flash');
+				$(nav).addClass('flash');
 				setTimeout(function() {
-					$(flash).removeClass('flash');
+					$(nav).removeClass('flash');
 				}, 600);
-				$(flash).addClass('selected');
-				toolTip = flash.getElementsByClassName('tt');
-				toolTip[0].style.opacity = '0';
+				$(nav).addClass('selected');
+				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
 					$(sideBar)[0].style.left = '-62px';
 					$(sideBar).removeClass('toggle');
@@ -499,10 +491,10 @@ function sideBarNavLinks() {
 				.then((text) => {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 				});
-				$(flash).mouseleave(function() {
-					toolTip[0].style.opacity = null;
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
 				});
 			});
 		}
@@ -539,19 +531,17 @@ function topBarNav() {
 function topBarNavLinks() {
 	siteNav.find('a').each(function() {
 		if ($(this).hasClass('accolades')) {
-			let nav = $('.accolades')[0];
+			let nav = $('.accolades');
 			$(nav).on('click', function () {
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.accolades')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.accolades')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -566,19 +556,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('biography')) {
-			let nav = $('.biography')[0];
+			let nav = $('.biography');
 			$(nav).on('click', function () {
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.biography')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.biography')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -593,19 +581,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('main')) {
-			let nav = $('.main')[0];
+			let nav = $('.main');
 			$(nav).on('click', function () {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.main')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.main')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -620,19 +606,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('future')) {
-			let nav = $('.future')[0];
+			let nav = $('.future');
 			$(nav).on('click', function () {
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.future')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.future')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -647,19 +631,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('core')) {
-			let nav = $('.core')[0];
+			let nav = $('.core');
 			$(nav).on('click', function () {
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.core')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.core')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -674,19 +656,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('hrenovator')) {
-			let nav = $('.hrenovator')[0];
+			let nav = $('.hrenovator');
 			$(nav).on('click', function () {
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.hrenovator')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.hrenovator')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -701,19 +681,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('neirman')) {
-			let nav = $('.neirman')[0];
+			let nav = $('.neirman');
 			$(nav).on('click', function () {
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.neirman')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.neirman')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -728,19 +706,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('maven')) {
-			let nav = $('.maven')[0];
+			let nav = $('.maven');
 			$(nav).on('click', function () {
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.maven')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.maven')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -755,19 +731,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('linkedin')) {
-			let nav = $('.linkedin')[0];
+			let nav = $('.linkedin');
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.linkedin')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.linkedin')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -782,19 +756,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('reddit')) {
-			let nav = $('.reddit')[0];
+			let nav = $('.reddit');
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.reddit')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.reddit')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -809,19 +781,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('github')) {
-			let nav = $('.github')[0];
+			let nav = $('.github');
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.github')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.github')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -836,19 +806,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('stackoverflow')) {
-			let nav = $('.stackoverflow')[0];
+			let nav = $('.stackoverflow');
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.stackoverflow')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.stackoverflow')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -863,19 +831,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('contract')) {
-			let nav = $('.contract')[0];
+			let nav = $('.contract');
 			$(nav).on('click', function () {
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.contract')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.contract')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -890,19 +856,17 @@ function topBarNavLinks() {
 			});
 		}
 		if ($(this).hasClass('email')) {
-			let nav = $('.email')[0];
+			let nav = $('.email');
 			$(nav).on('click', function () {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					let flash = $('.email')[0];
-					$(flash).addClass('flash');
+					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent').outerHTML = str;
+					$('#mainContent')[0].outerHTML = str;
 					setTimeout(function() {
-						let flash = $('.email')[0];
-						$(flash).removeClass('flash');
+						$(nav).removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
