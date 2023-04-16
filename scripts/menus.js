@@ -10,6 +10,7 @@ var head = 4;
 var lastScrollTop = 0;
 var touchStartPosX = 0;
 var touchStartPosY = 0;
+var revert;
 
 //enable menu animation if the screen is set to desktop
 
@@ -110,7 +111,7 @@ function sideBarNavPullTabPosition() {
 };
 
 function sideBarNavPullTabClick() {
-	clearTimeout($.data(this));
+	clearTimeout(revert);
 	$(pullTabWrapper).off('click');
 	if (screen.availWidth < 635) {
 		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked(element) {
@@ -134,12 +135,12 @@ function sideBarNavPullTabClick() {
 						window.clearInterval(i);
 					}
 				}, 0);
-				setTimeout(function() {
+				revert = setTimeout(function() {
 					if (screen.availWidth < 635) {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
 							$(pullTabWrapper)[0].style.display = 'flex';
-							$(sideBar)[0].style.transition = '1s';
+							$(sideBar)[0].style.transition = '.2s';
 							$(sideBar)[0].style.left = '-62px';
 							$(sideBar)[0].style.top = '4px';
 						}
@@ -176,10 +177,10 @@ function sideBarNavPullTabClick() {
 };
 
 function sideBarNavPullTabSwipe() {
-	clearTimeout($.data(this));
-	$(pullTabWrapper).off('touchmove');
+	pullTabWrapper.off('touchmove');
+	pullTabWrapper.off('touchend');
 	if (screen.availWidth < 635) {
-		pullTabWrapper.on('touchmove', pullTabWrapper.fn = function swiped(element) {
+		pullTabWrapper.on('touchmove', pullTabWrapper.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
 			const currentPageX = Math.round(element.originalEvent.touches[0].screenX);
@@ -198,25 +199,22 @@ function sideBarNavPullTabSwipe() {
 					$(pullTabWrapper)[0].style.display = 'flex';
 					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.left = '4px';
-					clearTimeout($.data(this));
-					let highestId = window.setTimeout(() => {
-						for (let i = highestId; i >= 0; i--) {
-							window.clearInterval(i);
-						}
-					}, 0);
-					setTimeout(function() {
-						if (screen.availWidth < 635) {
-							if ($(sideBar).hasClass('toggle')) {
-								$(sideBar).removeClass('toggle');
-								$(pullTabWrapper)[0].style.display = 'flex';
-								$(sideBar)[0].style.transition = '1s';
-								$(sideBar)[0].style.left = '-62px';
-								$(sideBar)[0].style.top = '4px';
-							}
-						}
-					}, 5000);
 				}
 			touchStartPosX = currentPageX;
+		});
+		pullTabWrapper.on('touchend', pullTabWrapper.fn = function swipeEnd(element) {
+			clearTimeout(revert);
+			revert = setTimeout(function() {
+				if (screen.availWidth < 635) {
+					if ($(sideBar).hasClass('toggle')) {
+						$(sideBar).removeClass('toggle');
+						$(pullTabWrapper)[0].style.display = 'flex';
+						$(sideBar)[0].style.transition = '.2s';
+						$(sideBar)[0].style.left = '-62px';
+						$(sideBar)[0].style.top = '4px';
+					}
+				}
+			}, 5000);
 		});
 	} else if (screen.availWidth >= 635 && !$(sideBar).hasClass('toggle')) {
 		$(sideBar).addClass('toggle');
@@ -248,15 +246,10 @@ function sideBarNavPullTabSwipe() {
 };
 
 function sideBarNavSwipe() {
-	let touchStartPosY = 0;
-	let highestId = window.setTimeout(() => {
-		for (let i = highestId; i >= 0; i--) {
-			window.clearInterval(i);
-		}
-	}, 0);
 	sideBar.off('touchmove');
+	sideBar.off('touchend');
 	if (screen.availHeight < 510 && $(sideBar).hasClass('toggle')) {
-		sideBar.on('touchmove', sideBar.fn = function (element) {
+		sideBar.on('touchmove', sideBar.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
 			const currentPageY = Math.round(element.originalEvent.touches[0].screenY);
@@ -265,16 +258,29 @@ function sideBarNavSwipe() {
 				$(sideBar)[0].style.transition = '.2s';
 				head = screen.availHeight - 504;
 				$(sideBar)[0].style.top = head + 'px';
-				setTimeout(function() {
-					$(sideBar)[0].style.transition = '.2s';
-					$(sideBar)[0].style.top = '4px';
-				}, 5000);
 				sideBarNavPullTabPosition();
 			} else {
 				$(sideBar)[0].style.transition = '.2s';
 				$(sideBar)[0].style.top = '4px';
 			}
 			touchStartPosY = currentPageY;
+		});
+		sideBar.on('touchend', sideBar.fn = function swipeEnd(element) {
+			clearTimeout(revert);
+			revert = setTimeout(function() {
+				if (screen.availWidth >= 635) {
+					$(sideBar)[0].style.transition = '.2s';
+					$(sideBar)[0].style.top = '4px';
+				} else {
+					if ($(sideBar).hasClass('toggle')) {
+						$(sideBar).removeClass('toggle');
+						$(pullTabWrapper)[0].style.display = 'flex';
+						$(sideBar)[0].style.transition = '.2s';
+						$(sideBar)[0].style.left = '-62px';
+						$(sideBar)[0].style.top = '4px';
+					}
+				}
+			}, 5000);
 		});
 	}
 	else if (screen.availHeight < 510 && !$(sideBar).hasClass('toggle')) {
@@ -300,7 +306,9 @@ function sideBarNavLinks() {
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
+					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
 					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/home.html')
@@ -331,7 +339,9 @@ function sideBarNavLinks() {
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
+					$(sideBar)[0].style.transition = '1s'
 					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
 					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/code.html')
@@ -353,6 +363,7 @@ function sideBarNavLinks() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
+						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar).removeClass('toggle');
 					}
@@ -374,7 +385,9 @@ function sideBarNavLinks() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
+						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
+						$(sideBar)[0].style.top = '4px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
@@ -395,7 +408,9 @@ function sideBarNavLinks() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
+						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
+						$(sideBar)[0].style.top = '4px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
@@ -421,7 +436,9 @@ function sideBarNavLinks() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (screen.availWidth < 635) {
+						$(sideBar)[0].style.transition = '1s'
 						$(sideBar)[0].style.left = '-62px';
+						$(sideBar)[0].style.top = '4px';
 						$(sideBar).removeClass('toggle');
 					}
 				});
@@ -451,7 +468,9 @@ function sideBarNavLinks() {
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
+					$(sideBar)[0].style.transition = '1s'
 					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
 					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/contact.html')
@@ -483,7 +502,9 @@ function sideBarNavLinks() {
 				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (screen.availWidth < 635) {
+					$(sideBar)[0].style.transition = '1s'
 					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
 					$(sideBar).removeClass('toggle');
 				}
 				fetch('/site/resume.html')
