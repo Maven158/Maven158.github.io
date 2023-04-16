@@ -101,8 +101,8 @@ function sideBarNav() {
 };
 
 function sideBarNavPullTabPosition() {
-	if (screen.availHeight < 510) {
-		let sideBarNavPullTabPosition = (((screen.availHeight - 60) / 2) / 510) * 100;
+	if (window.innerHeight < 510) {
+		let sideBarNavPullTabPosition = (((window.innerHeight - 60) / 2) / 510) * 100;
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	} else {
 		let sideBarNavPullTabPosition = (((510 - 60) / 2) / 510) * 100;
@@ -452,6 +452,39 @@ function sideBarNavLinks() {
 				
 			});
 		}
+		if ($(this).hasClass('fa fa-file-alt')) {
+			let nav = $('.fa.fa-file-alt');
+			$(nav).on('click', function () {
+				sideBar.find('i').each(function() {
+					if ($(this).hasClass('selected')) {
+						$(this).removeClass('selected');
+					}
+				});
+				$(nav).addClass('flash');
+				setTimeout(function() {
+					$(nav).removeClass('flash');
+				}, 600);
+				$(nav).addClass('selected');
+				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
+				if (screen.availWidth < 635) {
+					$(sideBar)[0].style.transition = '1s'
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
+					$(sideBar).removeClass('toggle');
+				}
+				fetch('/site/resume.html')
+				.then((response) => response.text())
+				.then((text) => {
+					newDoc.innerHTML = text;
+					let str = newDoc.querySelector('#mainContent').outerHTML;
+					$('#mainContent')[0].outerHTML = str;
+				});
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
+				});
+			});
+		}
 		if ($(this).hasClass('.fa fa-send')) {
 			let nav = $('.fa.fa-send');
 			$(nav).on('click', function () {
@@ -480,39 +513,6 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					loadScript("app.js");
-				});
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
-				});
-			});
-		}
-		if ($(this).hasClass('fa fa-file-alt')) {
-			let nav = $('.fa.fa-file-alt');
-			$(nav).on('click', function () {
-				sideBar.find('i').each(function() {
-					if ($(this).hasClass('selected')) {
-						$(this).removeClass('selected');
-					}
-				});
-				$(nav).addClass('flash');
-				setTimeout(function() {
-					$(nav).removeClass('flash');
-				}, 600);
-				$(nav).addClass('selected');
-				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
-				toolTip.style.opacity = '0';
-				if (screen.availWidth < 635) {
-					$(sideBar)[0].style.transition = '1s'
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
-				}
-				fetch('/site/resume.html')
-				.then((response) => response.text())
-				.then((text) => {
-					newDoc.innerHTML = text;
-					let str = newDoc.querySelector('#mainContent').outerHTML;
-					$('#mainContent')[0].outerHTML = str;
 				});
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
@@ -603,10 +603,21 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('main')) {
 			let nav = $('.main');
+			let sideNav = $('.fa.fa-file-alt');
 			$(nav).on('click', function () {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
+					sideBar.find('i').each(function() {
+						if ($(this).hasClass('selected')) {
+							$(this).removeClass('selected');
+						}
+					});
+					$(sideNav).addClass('flash');
+					setTimeout(function() {
+						$(sideNav).removeClass('flash');
+					}, 600);
+					$(sideNav).addClass('selected');
 					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
@@ -678,10 +689,21 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('hrenovator')) {
 			let nav = $('.hrenovator');
+			let sideNav = $('.fa.fa-code');
 			$(nav).on('click', function () {
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
+					sideBar.find('i').each(function() {
+						if ($(this).hasClass('selected')) {
+							$(this).removeClass('selected');
+						}
+					});
+					$(sideNav).addClass('flash');
+					setTimeout(function() {
+						$(sideNav).removeClass('flash');
+					}, 600);
+					$(sideNav).addClass('selected');
 					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
@@ -703,10 +725,21 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('neirman')) {
 			let nav = $('.neirman');
+			let sideNav = $('.fa.fa-code');
 			$(nav).on('click', function () {
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
+					sideBar.find('i').each(function() {
+						if ($(this).hasClass('selected')) {
+							$(this).removeClass('selected');
+						}
+					});
+					$(sideNav).addClass('flash');
+					setTimeout(function() {
+						$(sideNav).removeClass('flash');
+					}, 600);
+					$(sideNav).addClass('selected');
 					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
@@ -728,10 +761,21 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('maven')) {
 			let nav = $('.maven');
+			let sideNav = $('.fa.fa-code');
 			$(nav).on('click', function () {
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
+					sideBar.find('i').each(function() {
+						if ($(this).hasClass('selected')) {
+							$(this).removeClass('selected');
+						}
+					});
+					$(sideNav).addClass('flash');
+					setTimeout(function() {
+						$(sideNav).removeClass('flash');
+					}, 600);
+					$(sideNav).addClass('selected');
 					$(nav).addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
