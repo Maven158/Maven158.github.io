@@ -327,6 +327,7 @@ function sideBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 				});
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
@@ -360,6 +361,7 @@ function sideBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 				});
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
@@ -523,6 +525,7 @@ function sideBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					loadScript("app.js");
 				});
 				$(nav).mouseleave(function() {
@@ -572,6 +575,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -597,6 +601,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -633,6 +638,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -658,6 +664,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -683,6 +690,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -719,6 +727,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -755,6 +764,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -791,6 +801,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -816,6 +827,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -841,6 +853,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -866,6 +879,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -891,6 +905,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -916,6 +931,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
@@ -941,6 +957,7 @@ function topBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
+					window.scrollTo(0, 0);
 					setTimeout(function() {
 						$(nav).removeClass('flash');
 					}, 600);
