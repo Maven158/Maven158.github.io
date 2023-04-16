@@ -97,17 +97,25 @@ function sideBarNav() {
 
 function sideBarNavPullTabPosition() {
 	if (window.innerHeight < 510) {
-		let sideBarNavPullTabPosition = (((window.innerHeight - 60) / 2) / 510) * 100;
-		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+		if (head == 4) {
+			let sideBarNavPullTabPosition = (((window.innerHeight - 60) / 2) / 510) * 100;
+			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+			console.log('FIRST', $(pullTabWrapper)[0].style.top);
+		} else {
+			let sideBarNavPullTabPosition = ((((window.innerHeight - 60) / 2) / 510) * 100) + ((510 - window.innerHeight) / 510) * 100;
+			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+			console.log('SECOND', $(pullTabWrapper)[0].style.top);
+		}
 	} else {
 		let sideBarNavPullTabPosition = (((510 - 60) / 2) / 510) * 100;
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+		console.log('THIRD', $(pullTabWrapper)[0].style.top);
 	}
-	console.log(head)
-	if (head != 4) {
-		let sideBarNavPullTabPosition = 100 - ((((window.innerHeight - 60) / 2) / (510 - Math.abs(head))) * 100);
-		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
-	}
+	// console.log(head)
+	// if (head != 4) {
+	// 	let sideBarNavPullTabPosition = 100 - ((((window.innerHeight - 60) / 2) / (510 - Math.abs(head))) * 100);
+	// 	$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+	// }
 };
 
 function sideBarNavPullTabClick() {
@@ -1003,6 +1011,7 @@ $(document).ready(function() {
 });
 
 $(window).resize(function() {
+	head = 4;
  	enableNav();
 	topBarNav();
 	sideBarNav();
