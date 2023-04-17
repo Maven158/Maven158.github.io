@@ -620,8 +620,8 @@ function topBarNavLinks() {
 				})
 			});
 		}
-		if ($(this).hasClass('main')) {
-			let nav = $('.main');
+		if ($(this).hasClass('resume')) {
+			let nav = $('.resume');
 			let sideNav = $('.fa.fa-file-alt');
 			$(nav).on('click', function () {
 				fetch('/site/resume.html')

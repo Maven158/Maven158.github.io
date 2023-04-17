@@ -1093,6 +1093,12 @@ span.accent {
 	display: inline;
 	width: 55%;
 }
+#mainContent .mainField {
+	padding: 20px !important;
+	border: 2px solid #55efc4;
+	display: inline;
+	width: 55%;
+}
 #mainContent .main {
 	padding: 20px !important;
 	border: 2px solid #55efc4;
