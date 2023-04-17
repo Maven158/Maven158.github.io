@@ -795,10 +795,15 @@ span.accent {
 #siteNav > div > ul > li:nth-child(1), #siteNav > div > ul > li:nth-child(2), #siteNav > div > ul > li:nth-child(3), #siteNav > div > ul > li:nth-child(4) {
 	border-radius: 10px;
 }
-#siteNav > div > ul > li > a, #siteNav > div > ul > li > a:hover {
+/* #siteNav > div > ul > li > a.mainNav {
+	transition: 1s;
+	color: #55efc4;
+}  */
+#siteNav > div > ul > li > a.mainNav:hover {
 	/* transition: 1s; */
 	color: #e84393;
 }
+/* #siteNav > div > ul > li:nth-child(4) > a, #siteNav > div > ul > li:nth-child(4) > a:hover */
 #siteNav > div > ul > li:nth-child(1) > a, #siteNav > div > ul > li:nth-child(1) > a:hover {
 	/* transition: 1s !important; */
 	border-width: 2px;
@@ -807,10 +812,10 @@ span.accent {
 	padding: 0 .25em 0 .5em;
 	background: #000000;
 }
-#siteNav > div > ul > li:nth-child(4) > a:hover, #siteNav li:nth-child(4) a.current, #siteNav li:nth-child(4) a.current:hover {
+#siteNav > div > ul > li:nth-child(4) > a, #siteNav li:nth-child(4) a.hover {
 	/* transition: 1s !important; */
 	border-width: 2px;
-	padding: 0 .25em 0 .25em;
+	padding: 0 .5em 0 .25em;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	background: #000000;
@@ -923,6 +928,8 @@ span.accent {
 	justify-content: center;
 	background: #000000;
 }
+
+
 /* mainContent ^5c */
 #mainContent #contentHeader {
 	margin-bottom: 6em;

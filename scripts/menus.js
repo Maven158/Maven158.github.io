@@ -50,6 +50,10 @@ function enableNav() {
 			  $(this).find('ul').stop(true, true).fadeOut(1000);
 				$(this).find('a').removeClass('current');
 			});
+			$(this).on('click', function() {
+				$(this).find('a').addClass('current');
+			  $(this).find('ul').stop(true, true).fadeIn(1000);
+			});
 		};
 	});
 	sideBar.find('li').each(function() {
@@ -82,6 +86,8 @@ function changeFont(element, size, margin) {
 	element.style.transition = '0s !important';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
+	element.parentElement.parentElement.style.height = 'fit-content';
+	element.parentElement.parentElement.style.padding = '.25em .25em';
 
 };
 
@@ -648,6 +654,8 @@ function topBarNavLinks() {
 				})
 				.then(() => {
 					setTimeout(function() {
+						$(nav).closest('div > ul > li')[0].children[0].style.transition = '1s !important';
+						console.log($(nav).closest('div > ul > li')[0].children[0].style)
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
