@@ -1088,19 +1088,21 @@ span.accent {
 	border-bottom-left-radius: 20px;
 }
 .block {
-	padding: 20px !important;
+	padding: 20px 20px 40px 20px !important;
 	border: 2px solid #55efc4;
 	display: inline;
+	text-align: justify;
 	width: 55%;
 }
 #mainContent .mainField {
-	padding: 20px !important;
+	padding: 20px 20px 40px 20px !important;
 	border: 2px solid #55efc4;
 	display: inline;
+	text-align: justify;
 	width: 55%;
 }
 #mainContent .main {
-	padding: 20px !important;
+	padding: 20px 20px 40px 20px !important;
 	border: 2px solid #55efc4;
 	display: inline;
 	width: 55%;
