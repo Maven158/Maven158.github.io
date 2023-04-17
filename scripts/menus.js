@@ -140,7 +140,7 @@ function sideBarNavPullTabClick() {
 						if ($(sideBar).hasClass('toggle')) {
 							$(sideBar).removeClass('toggle');
 							$(pullTabWrapper)[0].style.display = 'flex';
-							$(sideBar)[0].style.transition = '.2s';
+							$(sideBar)[0].style.transition = '1s';
 							$(sideBar)[0].style.left = '-62px';
 							$(sideBar)[0].style.top = '4px';
 							head = 4;
@@ -211,7 +211,7 @@ function sideBarNavPullTabSwipe() {
 					if ($(sideBar).hasClass('toggle')) {
 						$(sideBar).removeClass('toggle');
 						$(pullTabWrapper)[0].style.display = 'flex';
-						$(sideBar)[0].style.transition = '.2s';
+						$(sideBar)[0].style.transition = '1s';
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
 						head = 4;
@@ -278,7 +278,7 @@ function sideBarNavSwipe() {
 			touchStartPosY = 0;
 			revert = setTimeout(function() {
 				if (window.innerWidth >= 635) {
-					$(sideBar)[0].style.transition = '.2s';
+					$(sideBar)[0].style.transition = '1s';
 					$(sideBar)[0].style.top = '4px';
 					head = 4;
 					sideBarNavPullTabPosition();
@@ -286,7 +286,7 @@ function sideBarNavSwipe() {
 					if ($(sideBar).hasClass('toggle')) {
 						$(sideBar).removeClass('toggle');
 						$(pullTabWrapper)[0].style.display = 'flex';
-						$(sideBar)[0].style.transition = '.2s';
+						$(sideBar)[0].style.transition = '1s';
 						$(sideBar)[0].style.left = '-62px';
 						$(sideBar)[0].style.top = '4px';
 						head = 4;
