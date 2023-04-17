@@ -795,10 +795,10 @@ span.accent {
 #siteNav > div > ul > li:nth-child(1), #siteNav > div > ul > li:nth-child(2), #siteNav > div > ul > li:nth-child(3), #siteNav > div > ul > li:nth-child(4) {
 	border-radius: 10px;
 }
-/* #siteNav > div > ul > li > a.mainNav {
-	transition: 1s;
+#siteNav > div > ul > li > a {
+	/* transition: 1s; */
 	color: #55efc4;
-}  */
+} 
 #siteNav > div > ul > li > a.mainNav:hover {
 	/* transition: 1s; */
 	color: #e84393;

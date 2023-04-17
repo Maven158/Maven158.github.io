@@ -83,12 +83,14 @@ function enableNav() {
 
 function changeFont(element, size, margin) {
 	element.style.fontSize = size;
-	element.style.transition = '0s !important';
+	element.style.transitionDuration = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 	element.parentElement.parentElement.style.height = 'fit-content';
 	element.parentElement.parentElement.style.padding = '.25em .25em';
-
+	setTimeout(function() {
+		element.style.transitionDuration = '1s';
+	}, 1000);
 };
 
 function sideBarNav() {
@@ -311,7 +313,7 @@ function sideBarNavLinks() {
 	sideBar.find('i').each(function() {
 		if ($(this).hasClass('fas fa-house-user')) {
 			let nav = $('.fas.fa-house-user');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -345,7 +347,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('fa fa-code')) {
 			let nav = $('.fa.fa-code');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -379,7 +381,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('fa fa-linkedin')) {
 			let nav = $('.fa.fa-linkedin');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
@@ -401,7 +403,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('fa fa-reddit-alien')) {
 			let nav = $('.fa.fa-reddit-alien')[0];
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
@@ -424,7 +426,7 @@ function sideBarNavLinks() {
 		}		
 		if ($(this).hasClass('fa fa-github-alt')) {
 			let nav = $('.fa.fa-github-alt');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
@@ -450,7 +452,7 @@ function sideBarNavLinks() {
 			if ($(nav).fn != '') {
 				$(nav).fn = '';
 			}
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				console.log($(nav));
 				window.open("https://stackoverflow.com/users/18815704/maven");
 				sideBar.find('i').each(function() {
@@ -475,7 +477,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('fa fa-file-alt')) {
 			let nav = $('.fa.fa-file-alt');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -509,7 +511,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('.fa fa-send')) {
 			let nav = $('.fa.fa-send');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
@@ -576,7 +578,7 @@ function topBarNavLinks() {
 	siteNav.find('a').each(function() {
 		if ($(this).hasClass('accolades')) {
 			let nav = $('.accolades');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -602,7 +604,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('biography')) {
 			let nav = $('.biography');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -629,7 +631,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('resume')) {
 			let nav = $('.resume');
 			let sideNav = $('.fa.fa-file-alt');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -654,8 +656,8 @@ function topBarNavLinks() {
 				})
 				.then(() => {
 					setTimeout(function() {
-						$(nav).closest('div > ul > li')[0].children[0].style.transition = '1s !important';
-						console.log($(nav).closest('div > ul > li')[0].children[0].style)
+						$(nav).closest('div > ul > li')[0].children[0].style.transitionDuration = '1s !important';
+						console.log($(nav).closest('div > ul > li')[0].children[0])
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
@@ -667,7 +669,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('future')) {
 			let nav = $('.future');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -693,7 +695,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('core')) {
 			let nav = $('.core');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -720,7 +722,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('hrenovator')) {
 			let nav = $('.hrenovator');
 			let sideNav = $('.fa.fa-code');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -757,7 +759,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('neirman')) {
 			let nav = $('.neirman');
 			let sideNav = $('.fa.fa-code');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -794,7 +796,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('maven')) {
 			let nav = $('.maven');
 			let sideNav = $('.fa.fa-code');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -830,7 +832,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('linkedin')) {
 			let nav = $('.linkedin');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -856,7 +858,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('reddit')) {
 			let nav = $('.reddit');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -882,7 +884,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('github')) {
 			let nav = $('.github');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -908,7 +910,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('stackoverflow')) {
 			let nav = $('.stackoverflow');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -934,7 +936,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('contract')) {
 			let nav = $('.contract');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -960,7 +962,7 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('email')) {
 			let nav = $('.email');
-			$(nav).on('click', function () {
+			$(nav).on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -991,10 +993,10 @@ function loadScript(src) {
   return new Promise(function (resolve, reject) {
     if ($("script[src='" + src + "']").length === 0) {
         let script = document.createElement('script');
-        script.onload = function () {
+        script.onload = function() {
             resolve();
         };
-        script.onerror = function () {
+        script.onerror = function() {
             reject();
         };
         script.src = src;
