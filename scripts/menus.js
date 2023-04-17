@@ -87,7 +87,7 @@ function changeFont(element, size, margin) {
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 	element.parentElement.parentElement.style.height = 'fit-content';
-	element.parentElement.parentElement.style.padding = '.25em .25em';
+	element.parentElement.parentElement.style.padding = '.5em 0em';
 	setTimeout(function() {
 		element.style.transitionDuration = '1s';
 	}, 1000);
