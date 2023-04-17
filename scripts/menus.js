@@ -98,14 +98,14 @@ function sideBarNav() {
 function sideBarNavPullTabPosition() {
 	if (window.innerHeight < 510) {
 		if (head == 4) {
-			let sideBarNavPullTabPosition = (((window.innerHeight - 60) / 2) / 510) * 100;
+			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 510) * 100;
 			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 		} else {
-			let sideBarNavPullTabPosition = ((((window.innerHeight - 60) / 2) / 510) * 100) + ((510 - window.innerHeight) / 510) * 100;
+			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 510) * 100) + ((510 - window.innerHeight) / 510) * 100;
 			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 		}
 	} else {
-		let sideBarNavPullTabPosition = (((510 - 60) / 2) / 510) * 100;
+		let sideBarNavPullTabPosition = (((510 - 80) / 2) / 510) * 100;
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	}
 };
