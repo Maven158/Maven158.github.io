@@ -1,4 +1,3 @@
-
 // desktop version sliding menus
 var sideBar = $('#sideBar');
 var siteNav = $('#siteNav');
@@ -68,13 +67,6 @@ function enableNav() {
 			});
 		};
 	});
-	// } else {
-	// 	siteNav.find('li').each(function() {
-  //     if ($(this).find('ul').length > 0 ) {
-  //     	// strip any existing events
-  //     	$(this).unbind();
-  //     };
-	// 	});
 	// 	if ($('body').hasClass('no-js') == false) {
 	// 		$('body').addClass('no-js');
 	// 	};
@@ -104,16 +96,16 @@ function sideBarNav() {
 };
 
 function sideBarNavPullTabPosition() {
-	if (window.innerHeight < 510) {
+	if (window.innerHeight < 441) {
 		if (head == 4) {
-			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 510) * 100;
+			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 441) * 100;
 			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 		} else {
-			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 510) * 100) + ((510 - window.innerHeight) / 510) * 100;
+			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 441) * 100) + ((441 - window.innerHeight) / 441) * 100;
 			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 		}
 	} else {
-		let sideBarNavPullTabPosition = (((510 - 80) / 2) / 510) * 100;
+		let sideBarNavPullTabPosition = (((441 - 80) / 2) / 441) * 100;
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	}
 };
@@ -260,16 +252,15 @@ function sideBarNavPullTabSwipe() {
 function sideBarNavSwipe() {
 	sideBar.off('touchmove');
 	sideBar.off('touchend');
-	if (window.innerHeight < 510 && $(sideBar).hasClass('toggle')) {
+	if (window.innerHeight < 441 && $(sideBar).hasClass('toggle')) {
 		sideBar.on('touchmove', sideBar.fn = function swipe(element) {
-			// console.log(touchStartPosY);
 			element.stopPropagation();
 			element.preventDefault();
 			const currentPageY = Math.round(element.originalEvent.touches[0].screenY);
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
 				$(sideBar)[0].style.transition = '.2s';
-				head = window.innerHeight - 504;
+				head = window.innerHeight - 441;
 				$(sideBar)[0].style.top = head + 'px';
 				sideBarNavPullTabPosition();
 			} else {
@@ -304,7 +295,7 @@ function sideBarNavSwipe() {
 			}, 5000);
 		});
 	}
-	else if (window.innerHeight < 510 && !$(sideBar).hasClass('toggle')) {
+	else if (window.innerHeight < 441 && !$(sideBar).hasClass('toggle')) {
 		sideBar.off('touchmove');
 	}
 };
@@ -1008,11 +999,88 @@ function loadScript(src) {
 };
 
 $(document).ready(function() {
+
 	enableNav()
 	topBarNav();
 	topBarNavLinks();
 	sideBarNav();
 	sideBarNavLinks();
+	// console.log($('#pullTab-Wrapper').height());
+	// console.log(441);
+
+// const canvas = document.createElement('canvas');
+// const image = document.getElementsByClassName('block');
+// $(image).append(canvas);
+// $(canvas).addClass('burst');
+// // canvas.width = 200;
+// $(canvas).aspectRatio = 403 / 54;
+// const ctx = canvas.getContext('2d');
+// const size = [12, 16, 20, 24, 28, 32, 36, 40];
+// const colors = ['#fd79a8', '#e84393', '#ffeaa7', '#fdcb6e', '#55efc4', '#00b894', '#6c5ce7', '#a29bfe'];
+// const particles = Array.from({ length: 500 }, initializeParticle);
+
+// function initializeParticle() {
+//   return {
+//     x: (Math.random() * canvas.width/200) + canvas.width/2,
+//     y: canvas.height/2,
+//     dx: Math.random() * 3 - 0,
+//     dy: Math.random() * -3 - 0,
+// 		dirx: Math.random() * 2 - 1,
+//     diry: Math.random() * 2 - 1,
+// 		fillStyle: colors[Math.floor(Math.random() * 8)],
+//     font: size[Math.floor(Math.random() * 8)] + 'px bold sans-serif'
+//   }
+// }
+
+// function update(time) {
+//   particles.forEach(updateParticle);
+// 	// base_image = new Image();
+//   // base_image.src = '/images/banner.png';
+//   // base_image.onload = function(){
+//   //   ctx.drawImage(base_image, 0, 0);
+//   // }
+
+//   draw(time);
+//   requestAnimationFrame(update);
+// }
+
+// function updateParticle(particle) {
+//   if(particle.y < 0 || particle.x < 0 || particle.x > canvas.width || particle.y > canvas.height) {
+//     particle.x = (Math.random() * canvas.width/25) + canvas.width/2;
+//     particle.y = canvas.height/2;
+//   } 
+
+// 	if (particle.dirx > 0) {
+//   	particle.x = particle.x + particle.dx;
+//   	if (particle.diry > 0) {
+//   	  particle.y = particle.y + particle.dy;
+//   	} else {
+//   		particle.y = particle.y - particle.dy;
+//   	}
+// 	} else {
+//     particle.x = particle.x - particle.dx;
+//     if (particle.diry > 0) {
+//   	  particle.y = particle.y + particle.dy;
+//   	} else {
+//   		particle.y = particle.y - particle.dy;
+//   	}
+// 	}
+// }
+
+// function draw(time) {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   particles.forEach(drawParticle);
+// }
+
+// function drawParticle(particle) {
+// ctx.font = particle.font;
+//   ctx.fillText('•', particle.x, particle.y);
+// 	ctx.fillStyle = particle.fillStyle;
+  
+// }
+
+// update();
+
 });
 
 $(window).resize(function() {

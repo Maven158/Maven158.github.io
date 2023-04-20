@@ -43,9 +43,28 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	margin-top: 28px;
 	border-radius: 10px;
 	padding: 10px;
+	/* position: absolute; */
+	/* display: flex; */
+	/* text-align: center; */
 	width: clamp(160px, calc(100vw * .55), 440px);
 	border: 2px solid #f78da7;
 	box-shadow: 0px 0px 4px 4px #e84393;
+}
+.burst {
+	margin-top: 0px;
+	/* border-radius: 10px; */
+	/* padding: 10px; */
+	height: auto;
+	width: calc(100vw * .66) !important; 
+	/* border: 2px solid #f78da7;
+	box-shadow: 0px 0px 4px 4px #e84393; */
+	z-index: -1;
+}
+.burstBox {
+	display: flex;
+	position: relative; 
+	box-sizing: content-box;
+	align-items: center;
 }
 .main {
   position: relative;
@@ -90,6 +109,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   text-align: left;
   display: block;
   position: relative;
+	text-align: justify;
 }
 .onePage .item,
 .onePage .skills .item {
@@ -264,7 +284,8 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	font-size: clamp(.7rem, 1vw + .5rem, 1.1rem);
 	font-weight: bold;
 	font-variant-caps: all-small-caps;
-	bottom: 4px;
+	bottom: 0px;
+	height: 47px;
 	color:#e84393;
 }
 .pfp {
@@ -711,7 +732,7 @@ span.accent {
 	text-align: left;
 	overflow-x: auto;
 	overflow-y: hidden;
-	color: #a29bfe
+	color: #a29bfe;
 }
 .tt .tt-descr img {
 	margin-top: 0px;
@@ -724,6 +745,7 @@ span.accent {
 	position: fixed;
 	left: -62px;
 	top: 4px;
+	height:auto;
 	display: block;
 	background: linear-gradient(90deg, #000000, 75%, #e84393);
 	border-radius: 10px;
@@ -1042,7 +1064,7 @@ span.accent {
 }
 #mainContent fieldset {
 	/* padding: 0px 0px 0px 0px; */
-	margin: -47px 0 26px;
+	margin: -47px 0 47px;
 	background-color: transparent;
 	width: max-content !important;
 	min-width: 55vw !important;
