@@ -43,21 +43,20 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	margin-top: 28px;
 	border-radius: 10px;
 	padding: 10px;
-	/* position: absolute; */
-	/* display: flex; */
-	/* text-align: center; */
+	position: absolute;
+	display: flex;
+	text-align: center;
 	width: clamp(160px, calc(100vw * .55), 440px);
 	border: 2px solid #f78da7;
 	box-shadow: 0px 0px 4px 4px #e84393;
 }
 .burst {
-	margin-top: 0px;
-	/* border-radius: 10px; */
-	/* padding: 10px; */
+	margin-top: 28px;
+	border-radius: 10px;  
 	height: auto;
-	width: calc(100vw * .66) !important; 
-	/* border: 2px solid #f78da7;
-	box-shadow: 0px 0px 4px 4px #e84393; */
+	/* width: max-content; */
+	width: clamp(184px, calc((100vw * .55 + 24px)), 464px);
+	aspect-ratio: 440/79;
 	z-index: -1;
 }
 .burstBox {

@@ -1,4 +1,6 @@
 // desktop version sliding menus
+import { loadCanvas } from './burst.js';
+
 var sideBar = $('#sideBar');
 var siteNav = $('#siteNav');
 var pullTabWrapper = $('#pullTab-Wrapper');
@@ -273,8 +275,8 @@ function sideBarNavSwipe() {
 		});
 		sideBar.on('touchend', sideBar.fn = function swipeEnd(element) {
 			clearTimeout(revert);
-			currentPageY = 0;
-			touchStartPosY = 0;
+			// currentPageY = 0;
+			// touchStartPosY = 0;
 			revert = setTimeout(function() {
 				if (window.innerWidth >= 635) {
 					$(sideBar)[0].style.transition = '1s';
@@ -315,7 +317,7 @@ function sideBarNavLinks() {
 					$(nav).removeClass('flash');
 				}, 600);
 				$(nav).addClass('selected');
-				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s';
@@ -330,7 +332,9 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
+					loadCanvas();
 				});
+				
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
@@ -349,7 +353,7 @@ function sideBarNavLinks() {
 					$(nav).removeClass('flash');
 				}, 600);
 				$(nav).addClass('selected');
-				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s'
@@ -374,7 +378,7 @@ function sideBarNavLinks() {
 			let nav = $('.fa.fa-linkedin');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
-					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
@@ -396,7 +400,7 @@ function sideBarNavLinks() {
 			let nav = $('.fa.fa-reddit-alien')[0];
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
-					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
@@ -419,7 +423,7 @@ function sideBarNavLinks() {
 			let nav = $('.fa.fa-github-alt');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
-					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
@@ -447,7 +451,7 @@ function sideBarNavLinks() {
 				console.log($(nav));
 				window.open("https://stackoverflow.com/users/18815704/maven");
 				sideBar.find('i').each(function() {
-					toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
 						$(sideBar)[0].style.transition = '1s'
@@ -479,7 +483,7 @@ function sideBarNavLinks() {
 					$(nav).removeClass('flash');
 				}, 600);
 				$(nav).addClass('selected');
-				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s'
@@ -513,7 +517,7 @@ function sideBarNavLinks() {
 					$(nav).removeClass('flash');
 				}, 600);
 				$(nav).addClass('selected');
-				toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
 					$(sideBar)[0].style.transition = '1s'
@@ -1005,82 +1009,9 @@ $(document).ready(function() {
 	topBarNavLinks();
 	sideBarNav();
 	sideBarNavLinks();
-	// console.log($('#pullTab-Wrapper').height());
-	// console.log(441);
-
-// const canvas = document.createElement('canvas');
-// const image = document.getElementsByClassName('block');
-// $(image).append(canvas);
-// $(canvas).addClass('burst');
-// // canvas.width = 200;
-// $(canvas).aspectRatio = 403 / 54;
-// const ctx = canvas.getContext('2d');
-// const size = [12, 16, 20, 24, 28, 32, 36, 40];
-// const colors = ['#fd79a8', '#e84393', '#ffeaa7', '#fdcb6e', '#55efc4', '#00b894', '#6c5ce7', '#a29bfe'];
-// const particles = Array.from({ length: 500 }, initializeParticle);
-
-// function initializeParticle() {
-//   return {
-//     x: (Math.random() * canvas.width/200) + canvas.width/2,
-//     y: canvas.height/2,
-//     dx: Math.random() * 3 - 0,
-//     dy: Math.random() * -3 - 0,
-// 		dirx: Math.random() * 2 - 1,
-//     diry: Math.random() * 2 - 1,
-// 		fillStyle: colors[Math.floor(Math.random() * 8)],
-//     font: size[Math.floor(Math.random() * 8)] + 'px bold sans-serif'
-//   }
-// }
-
-// function update(time) {
-//   particles.forEach(updateParticle);
-// 	// base_image = new Image();
-//   // base_image.src = '/images/banner.png';
-//   // base_image.onload = function(){
-//   //   ctx.drawImage(base_image, 0, 0);
-//   // }
-
-//   draw(time);
-//   requestAnimationFrame(update);
-// }
-
-// function updateParticle(particle) {
-//   if(particle.y < 0 || particle.x < 0 || particle.x > canvas.width || particle.y > canvas.height) {
-//     particle.x = (Math.random() * canvas.width/25) + canvas.width/2;
-//     particle.y = canvas.height/2;
-//   } 
-
-// 	if (particle.dirx > 0) {
-//   	particle.x = particle.x + particle.dx;
-//   	if (particle.diry > 0) {
-//   	  particle.y = particle.y + particle.dy;
-//   	} else {
-//   		particle.y = particle.y - particle.dy;
-//   	}
-// 	} else {
-//     particle.x = particle.x - particle.dx;
-//     if (particle.diry > 0) {
-//   	  particle.y = particle.y + particle.dy;
-//   	} else {
-//   		particle.y = particle.y - particle.dy;
-//   	}
-// 	}
-// }
-
-// function draw(time) {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   particles.forEach(drawParticle);
-// }
-
-// function drawParticle(particle) {
-// ctx.font = particle.font;
-//   ctx.fillText('•', particle.x, particle.y);
-// 	ctx.fillStyle = particle.fillStyle;
-  
-// }
-
-// update();
-
+	loadCanvas();
+	// initializeParticle();
+	// update();	
 });
 
 $(window).resize(function() {
