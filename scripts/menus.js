@@ -1,5 +1,5 @@
 // desktop version sliding menus
-import { loadCanvas } from './burst.js';
+import { clearCanvas, loadCanvas } from './burst.js';
 
 var sideBar = $('#sideBar');
 var siteNav = $('#siteNav');
@@ -1010,8 +1010,6 @@ $(document).ready(function() {
 	sideBarNav();
 	sideBarNavLinks();
 	loadCanvas();
-	// initializeParticle();
-	// update();	
 });
 
 $(window).resize(function() {
@@ -1019,4 +1017,6 @@ $(window).resize(function() {
  	enableNav();
 	topBarNav();
 	sideBarNav();
+	clearCanvas();
+	loadCanvas();
 });

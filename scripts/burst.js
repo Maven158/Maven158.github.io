@@ -9,19 +9,15 @@ export function loadCanvas() {
     canvas[0].width = $(image).width() + 24;
 	  canvas[0].height = $(image).height() + 24;
     var ctx = canvas[0].getContext('2d');
-    var size = [8, 16, 24, 32, 36, 40, 44, 48];
-    var colors = ['#e84393', '#00b894', '#6c5ce7'];
-    // var colors = ['#fd79a8', '#e84393', '#ffeaa7', '#fdcb6e', '#55efc4', '#00b894', '#6c5ce7', '#a29bfe'];
-    var particles = Array.from({ length: 500 }, initializeParticle);
+    var size = [1, 2, 3, 4, 5, 6];
+    var borderColors = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e'];
+    var colors = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7'];
+    var particles = Array.from({ length: 750 }, initializeParticle);
     var doAnim = true;
-  } // else {
-  //   element[0].removeChild(canvas[0]);
-  //   particles = [];
-  //   ctx = null;
-  //   doAnim = false;
-  // }
+  }
 
   function initializeParticle() {
+    var index = Math.floor(Math.random() * 4);
     return {
       x: canvas[0].width/6.3,
       y: canvas[0].height/1.5,
@@ -29,8 +25,9 @@ export function loadCanvas() {
       dy: (Math.random()) * 5,
       dirx: Math.random() * 2 - 1,
       diry: Math.random() * 2 - 1,
-      fillStyle: colors[Math.floor(Math.random() * 3)],
-      font: size[Math.floor(Math.random() * 8)] + 'px bold sans-serif'
+      color: colors[index],
+      border: borderColors[index],
+      size: size[Math.floor(Math.random() * 6)], // + 'px bold sans-serif'
     }
   }
 
@@ -42,7 +39,6 @@ export function loadCanvas() {
       loadCanvas();
     }
     if (particles.length == 0 && document.getElementsByTagName('canvas').length == 0) {
-
       doAnim = false;
       ctx = null;
     }
@@ -54,7 +50,7 @@ export function loadCanvas() {
   }
 
   function updateParticle(particle) {
-    if ((particle.y < 0 || particle.y > canvas[0].height + 48) || (particle.x > canvas[0].width || particle.x < -48)) {
+    if ((particle.y < 0 || particle.y > canvas[0].height + 16) || (particle.x > canvas[0].width || particle.x < - 16)) {
       particles.splice(particles.indexOf(particle), 1);
     } 
     if (particle.dirx > 0) {
@@ -80,9 +76,21 @@ export function loadCanvas() {
   }
 
   function drawParticle(particle) {
-    ctx.font = particle.font;
-    ctx.fillText('•', particle.x, particle.y);
-    ctx.fillStyle = particle.fillStyle;
+    ctx.beginPath();
+    ctx.fillStyle = particle.color;
+    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI*2, true);
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = particle.border;
+    ctx.stroke();
+    // ctx.font = particle.font;
+    // ctx.fillText('•', particle.x, particle.y);
+    // ctx.fillStyle = particle.fillStyle;
   }
   update();
+}
+export function clearCanvas() {
+  var element = document.getElementsByClassName('burstBox');
+  element[0].removeChild($(element).find('canvas')[0]);
+  loadCanvas();
 }
