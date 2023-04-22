@@ -53,10 +53,9 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 .burst {
 	margin-top: 28px;
 	border-radius: 10px;  
-	height: auto;
-	/* width: max-content; */
-	width: clamp(184px, calc((100vw * .55 + 24px)), 464px);
-	aspect-ratio: 440/79;
+	/* height: auto; */
+	/* width: clamp(184px, calc((100vw * .55 + 24px)), 464px);
+	aspect-ratio: clamp(5.46, 4.088888888888889, 7.619047619047619); */
 	z-index: -1;
 }
 .burstBox {
