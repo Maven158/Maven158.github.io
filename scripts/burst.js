@@ -1,47 +1,47 @@
 export function loadCanvas() {
   if (document.getElementsByClassName('burst').length == 0) {
-    var canvas = document.createElement('canvas');
+    var cnvs = document.createElement('canvas');
     var element = document.getElementsByClassName('burstBox');
     var image = document.getElementsByClassName('banner');
-    $(element).append(canvas);
-    $(canvas).addClass('burst');
-    console.log($(image).width());
-    console.log($(image).height());
-    canvas.width = $(image).width() + 24;
-	  canvas.height = $(image).height() + 24;
-    var ctx = canvas.getContext('2d');
-    var size = [8, 12, 16, 20, 24, 28, 32, 36];
-    var colors = ['#fd79a8', '#e84393', '#ffeaa7', '#fdcb6e', '#55efc4', '#00b894', '#6c5ce7', '#a29bfe'];
+    element[0].appendChild(cnvs);
+    var canvas = $(element).find('canvas');
+    canvas.addClass('burst');
+    canvas[0].width = $(image).width() + 24;
+	  canvas[0].height = $(image).height() + 24;
+    var ctx = canvas[0].getContext('2d');
+    var size = [8, 16, 24, 32, 36, 40, 44, 48];
+    var colors = ['#e84393', '#00b894', '#6c5ce7'];
+    // var colors = ['#fd79a8', '#e84393', '#ffeaa7', '#fdcb6e', '#55efc4', '#00b894', '#6c5ce7', '#a29bfe'];
     var particles = Array.from({ length: 500 }, initializeParticle);
     var doAnim = true;
-  } else {
-    $(canvas).remove();
-    particles = [];
-    ctx = null;
-    doAnim = false;
-  }
+  } // else {
+  //   element[0].removeChild(canvas[0]);
+  //   particles = [];
+  //   ctx = null;
+  //   doAnim = false;
+  // }
 
   function initializeParticle() {
     return {
-      x: canvas.width/6.3,
-      y: canvas.height/1.8,
-      dx: (Math.random() * 4 - 1) + 1,
-      dy: (Math.random() * 4 - 1) + 1,
+      x: canvas[0].width/6.3,
+      y: canvas[0].height/1.5,
+      dx: (Math.random()) * 5,
+      dy: (Math.random()) * 5,
       dirx: Math.random() * 2 - 1,
       diry: Math.random() * 2 - 1,
-      fillStyle: colors[Math.floor(Math.random() * 8)],
+      fillStyle: colors[Math.floor(Math.random() * 3)],
       font: size[Math.floor(Math.random() * 8)] + 'px bold sans-serif'
     }
   }
 
   function update(time) {
-    if (particles.length == 0 && document.getElementsByClassName('burst').length != 0) {
-      $(canvas).remove();
+    if (particles.length == 0 && document.getElementsByTagName('canvas').length != 0) {
+      element[0].removeChild(canvas[0]);
       doAnim = false;
       ctx = null;
       loadCanvas();
     }
-    if (particles.length == 0 && document.getElementsByClassName('burst').length == 0) {
+    if (particles.length == 0 && document.getElementsByTagName('canvas').length == 0) {
 
       doAnim = false;
       ctx = null;
@@ -54,7 +54,7 @@ export function loadCanvas() {
   }
 
   function updateParticle(particle) {
-    if ((particle.y < 0 || particle.y > canvas.height) || (particle.x > canvas.width || particle.x < 0)) {
+    if ((particle.y < 0 || particle.y > canvas[0].height + 48) || (particle.x > canvas[0].width || particle.x < -48)) {
       particles.splice(particles.indexOf(particle), 1);
     } 
     if (particle.dirx > 0) {
@@ -75,7 +75,7 @@ export function loadCanvas() {
   }
 
   function draw(time) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
     particles.forEach(drawParticle);
   }
 
