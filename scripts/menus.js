@@ -332,6 +332,7 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
+					// clearCanvas();
 					loadCanvas();
 				});
 				
@@ -652,7 +653,6 @@ function topBarNavLinks() {
 				.then(() => {
 					setTimeout(function() {
 						$(nav).closest('div > ul > li')[0].children[0].style.transitionDuration = '1s !important';
-						console.log($(nav).closest('div > ul > li')[0].children[0])
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
@@ -1015,8 +1015,8 @@ $(document).ready(function() {
 $(window).resize(function() {
 	head = 4;
  	enableNav();
+	clearCanvas();
 	topBarNav();
 	sideBarNav();
-	clearCanvas();
 	loadCanvas();
 });

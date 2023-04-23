@@ -40,7 +40,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	position: absolute;
 }
 #field > article > div.hero > div > img.banner {
-	margin-top: 28px;
+	/* margin-top: 28px; */
 	border-radius: 10px;
 	padding: 10px;
 	position: absolute;
@@ -51,11 +51,8 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	box-shadow: 0px 0px 4px 4px #e84393;
 }
 .burst {
-	margin-top: 28px;
+	/* margin-top: 28px; */
 	border-radius: 10px;  
-	/* height: auto; */
-	/* width: clamp(184px, calc((100vw * .55 + 24px)), 464px);
-	aspect-ratio: clamp(5.46, 4.088888888888889, 7.619047619047619); */
 	z-index: -1;
 }
 .burstBox {
@@ -64,6 +61,9 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	box-sizing: content-box;
 	align-items: center;
 }
+.hero {
+	display: flex;
+}
 .main {
   position: relative;
 	justify-content: center;
@@ -71,6 +71,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 .onePage {
   font-family: Arial, sans-serif;
   color: #a29bfe;
+	margin-top: 28px;
   -webkit-font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   -o-font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
