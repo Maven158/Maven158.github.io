@@ -71,7 +71,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 .onePage {
   font-family: Arial, sans-serif;
   color: #a29bfe;
-	margin-top: 28px;
+	/* margin-top: 28px; */
   -webkit-font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   -o-font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
   font-feature-settings: "liga" 0, "onum" 1, "kern" 1;
@@ -772,7 +772,7 @@ span.accent {
 	list-style: none;
 }
 #sideBar li a i {
-	transition: 0s;
+	transition: 1s;
 	color: #55efc4;
 	border-radius: 10px;
 	border: 2px solid transparent;
@@ -783,7 +783,7 @@ span.accent {
 	padding: 6.5px 2px 6.5px 2px;
 }
 #sideBar ul li a i:hover, #sideBar li a i:active {
-	transition: 0s;
+	transition: 1s;
 	color: #e84393;
 	border-radius: 10px;
 }

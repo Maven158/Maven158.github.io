@@ -76,12 +76,14 @@ function enableNav() {
 };
 
 function changeFont(element, size, margin) {
+	var onePage = document.getElementsByClassName('onePage');
 	element.style.fontSize = size;
 	element.style.transitionDuration = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 	element.parentElement.parentElement.style.height = 'fit-content';
 	element.parentElement.parentElement.style.padding = '.5em 0em';
+	onePage[0].style.marginTop = 28 + (2 * parseFloat(margin)) + 'px';
 	setTimeout(function() {
 		element.style.transitionDuration = '1s';
 	}, 1000);
@@ -333,6 +335,8 @@ function sideBarNavLinks() {
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					// clearCanvas();
+					topBarNav();
+					sideBarNav();
 					loadCanvas();
 				});
 				
