@@ -782,7 +782,7 @@ span.accent {
 	justify-content: center;
 	padding: 6.5px 2px 6.5px 2px;
 }
-#sideBar ul li a i:hover, #sideBar li a i:active {
+#sideBar ul li a i:hover {
 	transition: 1s;
 	color: #e84393;
 	border-radius: 10px;

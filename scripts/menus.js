@@ -1,4 +1,3 @@
-// desktop version sliding menus
 import { resizeCanvas, loadCanvas, killCanvas } from './burst.js';
 
 var sideBar = $('#sideBar');
@@ -12,8 +11,6 @@ var lastScrollTop = 0;
 var touchStartPosX = 0;
 var touchStartPosY = 0;
 var revert;
-
-//enable menu animation if the screen is set to desktop
 
 window.addEventListener('scroll', function() {
 	let state = window.pageYOffset || document.documentElement.scrollTop;
@@ -30,18 +27,12 @@ window.addEventListener('scroll', function() {
 }, false);
 
 function enableNav() {
-	// let sideBar = $('#sideBar');
-	//check to see if we are on desktop .vs tablet or mobile
-	// if (window.innerWidth > 300) {
-	//strip out no-js class if jQuery is running the animation
 	if ($('body').hasClass('no-js')) {
 		$('body').removeClass('no-js');
 	};
 
-	//attach a listener to each li that has a child ul, and then slide submenus down or up depending upon mouse position
 	siteNav.find('li').each(function() {
 		if ($(this).find('ul').length > 0 ) {
-			// strip any existing events
 			$(this).off();
 			$(this).mouseenter(function() {
 				$(this).find('a').addClass('current');
@@ -59,7 +50,6 @@ function enableNav() {
 	});
 	sideBar.find('li').each(function() {
 		if ($(this).find('ul').length > 0 ) {
-			// strip any existing events
 			$(this).off();
 			$(this).mouseenter(function() {
 				$(this).find('a').addClass('current');
@@ -69,10 +59,6 @@ function enableNav() {
 			});
 		};
 	});
-	// 	if ($('body').hasClass('no-js') == false) {
-	// 		$('body').addClass('no-js');
-	// 	};
-	// };
 };
 
 function changeFont(element, size, margin) {
@@ -86,8 +72,19 @@ function changeFont(element, size, margin) {
 	onePage[0].style.marginTop = 28 + (2 * parseFloat(margin)) + 'px';
 	setTimeout(function() {
 		element.style.transitionDuration = '1s';
-	}, 1000);
+	}, 5);
 };
+
+function bannerJustify() {
+	if (document.getElementsByClassName('hero').length != 0) {
+		var div = $('.hero');
+		if (window.innerWidth < 600) {
+			div[0].style.justifyContent = 'center';
+		} else {
+			div[0].style.justifyContent = 'left';
+		}
+	}
+}
 
 function sideBarNav() {
 	setTimeout(function() {
@@ -342,6 +339,7 @@ function sideBarNavLinks() {
 					setTimeout(function() {
 						loadCanvas();
 					}, 5);
+					bannerJustify();
 				});
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
@@ -1020,15 +1018,15 @@ $(document).ready(function() {
 	topBarNavLinks();
 	sideBarNav();
 	sideBarNavLinks();
+	bannerJustify();
 	loadCanvas();
 });
 
 $(window).resize(function() {
 	head = 4;
  	enableNav();
-	if ($(document).find('canvas').length != 0) {
-		resizeCanvas();
-	}
+	bannerJustify();
+	resizeCanvas();
 	topBarNav();
 	sideBarNav();
 	if ($(document).find('canvas').length != 0) {

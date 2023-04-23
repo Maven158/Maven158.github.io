@@ -10,25 +10,24 @@ export function loadCanvas() {
     canvas[0].width = $(image).width() + 24;
 	  canvas[0].height = $(image).height() + 24;
     var ctx = canvas[0].getContext('2d');
-    var size = [1, 2, 3, 4, 5, 6];
-    var borderColors = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e'];
-    var colors = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7'];
-    var particles = Array.from({ length: 1000 }, initializeParticle);
+    var borderColors = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3', '#d63031', '#e17055'];
+    var colors = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7', '#81ecec', '#74b9ff', '#ff7675', '#fab1a0'];
+    var particles = Array.from({ length: 750 }, initializeParticle);
     var doAnim = true;
   }
 
   function initializeParticle() {
-    var index = Math.floor(Math.random() * 4);
+    var index = Math.floor(Math.random() * 8);
     return {
       x: canvas[0].width/6,
       y: canvas[0].height/2,
-      dx: (Math.random()) * 2,
-      dy: (Math.random()) * 2,
+      dx: (Math.random() * 5) + .01,
+      dy: (Math.random() * 5) + .01,
       dirx: Math.random() * 2 - 1,
       diry: Math.random() * 2 - 1,
       color: colors[index],
       border: borderColors[index],
-      size: $(image).width() > 200 ? size[Math.floor(Math.random() * 6)] : size[Math.floor(Math.random() * 6)] / 2
+      size: Math.floor(Math.random() * 5)
     }
   }
 
@@ -36,7 +35,7 @@ export function loadCanvas() {
     if (particles && document.getElementsByTagName('canvas')) {
       if (particles.length == 0 && document.getElementsByTagName('canvas').length != 0) {
         ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
-        particles = Array.from({ length: 1000 }, initializeParticle);
+        particles = Array.from({ length: 750 }, initializeParticle);
       }
       if (doAnim) {
         particles.forEach(updateParticle);
@@ -92,11 +91,13 @@ export function loadCanvas() {
   update();
 }
 export function resizeCanvas() {
-  var burstBox = document.getElementsByClassName('burstBox');
-  var canvas = $(burstBox).find('canvas');
-  var image = document.getElementsByClassName('banner');
-  canvas[0].width = $(image).width() + 24;
-	canvas[0].height = $(image).height() + 24;
+  if ($(document).find('canvas').length != 0) {
+    var burstBox = document.getElementsByClassName('burstBox');
+    var canvas = $(burstBox).find('canvas');
+    var image = document.getElementsByClassName('banner');
+    canvas[0].width = $(image).width() + 24;
+    canvas[0].height = $(image).height() + 24;
+  }
 }
 
 export function killCanvas() {
