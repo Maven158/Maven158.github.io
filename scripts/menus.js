@@ -69,7 +69,9 @@ function changeFont(element, size, margin) {
 	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
 	element.parentElement.parentElement.style.height = 'fit-content';
 	element.parentElement.parentElement.style.padding = '.5em 0em';
-	onePage[0].style.marginTop = 28 + (2 * parseFloat(margin)) + 'px';
+	if (document.getElementsByClassName('burstBox').length > 0) {
+		onePage[0].style.marginTop = 28 + (2 * parseFloat(margin)) + 'px';
+	}
 	setTimeout(function() {
 		element.style.transitionDuration = '1s';
 	}, 5);
@@ -274,8 +276,6 @@ function sideBarNavSwipe() {
 		});
 		sideBar.on('touchend', sideBar.fn = function swipeEnd(element) {
 			clearTimeout(revert);
-			// currentPageY = 0;
-			// touchStartPosY = 0;
 			revert = setTimeout(function() {
 				if (window.innerWidth >= 635) {
 					$(sideBar)[0].style.transition = '1s';
@@ -1027,9 +1027,11 @@ $(window).resize(function() {
  	enableNav();
 	bannerJustify();
 	resizeCanvas();
-	topBarNav();
-	sideBarNav();
 	if ($(document).find('canvas').length != 0) {
 		loadCanvas();
 	}
+	topBarNav();
+	topBarNavLinks();
+	sideBarNav();
+	
 });
