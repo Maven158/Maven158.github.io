@@ -22,41 +22,21 @@ export function loadCanvas() {
     return {
       x: canvas[0].width/6,
       y: canvas[0].height/2,
-      dx: (Math.random()) * 4,
-      dy: (Math.random()) * 4,
+      dx: (Math.random()) * 2,
+      dy: (Math.random()) * 2,
       dirx: Math.random() * 2 - 1,
       diry: Math.random() * 2 - 1,
       color: colors[index],
       border: borderColors[index],
-      size: size[Math.floor(Math.random() * 6)]
+      size: $(image).width() > 200 ? size[Math.floor(Math.random() * 6)] : size[Math.floor(Math.random() * 6)] / 2
     }
   }
 
   function update(time) {
     if (particles && document.getElementsByTagName('canvas')) {
       if (particles.length == 0 && document.getElementsByTagName('canvas').length != 0) {
-        doAnim = false;
         ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
-        ctx = null;
-        particles = [];
-        if (burstBox[0].lastChild.nodeName === 'CANVAS') {
-          doAnim = false;
-          // killCanvas();
-          // document.getElementsByTagName('canvas')[0].remove();
-          burstBox[0].removeChild(burstBox[0].lastChild);
-          // return;
-        }
-        if (document.getElementsByTagName('canvas').length != 0) {
-          document.getElementsByTagName('canvas')[0].remove();
-          doAnim = false;
-          killCanvas();
-          // return;
-        }
-        loadCanvas();
-      }
-      if (particles.length == 0 && document.getElementsByTagName('canvas').length == 0) {
-        doAnim = false;
-        ctx = null;
+        particles = Array.from({ length: 1000 }, initializeParticle);
       }
       if (doAnim) {
         particles.forEach(updateParticle);
@@ -87,6 +67,11 @@ export function loadCanvas() {
         particle.y = particle.y - particle.dy;
       }
     }
+    // if (particles.length < 75) {
+    //   canvas[0].style.zIndex = 1;
+    // } else {
+    //   canvas[0].style.zIndex = -1;
+    // }
   }
 
   function draw(time) {
