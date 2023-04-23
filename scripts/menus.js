@@ -1,5 +1,5 @@
 // desktop version sliding menus
-import { clearCanvas, loadCanvas } from './burst.js';
+import { resizeCanvas, loadCanvas, killCanvas } from './burst.js';
 
 var sideBar = $('#sideBar');
 var siteNav = $('#siteNav');
@@ -330,16 +330,19 @@ function sideBarNavLinks() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
+					if ($(document).find('canvas').length != 0) {
+						killCanvas();
+					}
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// clearCanvas();
 					topBarNav();
 					sideBarNav();
-					loadCanvas();
+					setTimeout(function() {
+						loadCanvas();
+					}, 5);
 				});
-				
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
@@ -369,6 +372,10 @@ function sideBarNavLinks() {
 				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
+					if ($(document).find('canvas').length != 0) {
+						// killCanvas();
+						document.getElementsByTagName('canvas')[0].remove();
+					}
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
@@ -1019,8 +1026,12 @@ $(document).ready(function() {
 $(window).resize(function() {
 	head = 4;
  	enableNav();
-	clearCanvas();
+	if ($(document).find('canvas').length != 0) {
+		resizeCanvas();
+	}
 	topBarNav();
 	sideBarNav();
-	loadCanvas();
+	if ($(document).find('canvas').length != 0) {
+		loadCanvas();
+	}
 });

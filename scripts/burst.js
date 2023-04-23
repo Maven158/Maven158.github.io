@@ -1,5 +1,6 @@
 export function loadCanvas() {
   if (document.getElementsByClassName('burst').length == 0) {
+    killCanvas();
     var element = document.createElement('canvas');
     var burstBox = document.getElementsByClassName('burstBox');
     var image = document.getElementsByClassName('banner');
@@ -15,11 +16,6 @@ export function loadCanvas() {
     var particles = Array.from({ length: 1000 }, initializeParticle);
     var doAnim = true;
   }
-
-  // window.addEventListener('resize', function() {
-  //   canvas[0].width = $(image).width() + 24;
-  //   canvas[0].height = $(image).height() + 24;
-  // });
 
   function initializeParticle() {
     var index = Math.floor(Math.random() * 4);
@@ -39,10 +35,23 @@ export function loadCanvas() {
   function update(time) {
     if (particles && document.getElementsByTagName('canvas')) {
       if (particles.length == 0 && document.getElementsByTagName('canvas').length != 0) {
-        burstBox[0].removeChild(canvas[0]);
         doAnim = false;
         ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
         ctx = null;
+        particles = [];
+        if (burstBox[0].lastChild.nodeName === 'CANVAS') {
+          doAnim = false;
+          // killCanvas();
+          // document.getElementsByTagName('canvas')[0].remove();
+          burstBox[0].removeChild(burstBox[0].lastChild);
+          // return;
+        }
+        if (document.getElementsByTagName('canvas').length != 0) {
+          document.getElementsByTagName('canvas')[0].remove();
+          doAnim = false;
+          killCanvas();
+          // return;
+        }
         loadCanvas();
       }
       if (particles.length == 0 && document.getElementsByTagName('canvas').length == 0) {
@@ -53,6 +62,8 @@ export function loadCanvas() {
         particles.forEach(updateParticle);
         draw(time);
         requestAnimationFrame(update);
+      } else {
+        return;
       }
     }
   }
@@ -95,10 +106,17 @@ export function loadCanvas() {
   }
   update();
 }
-export function clearCanvas() {
+export function resizeCanvas() {
   var burstBox = document.getElementsByClassName('burstBox');
   var canvas = $(burstBox).find('canvas');
   var image = document.getElementsByClassName('banner');
   canvas[0].width = $(image).width() + 24;
 	canvas[0].height = $(image).height() + 24;
+}
+
+export function killCanvas() {
+  $(document).find('canvas').each(function() {
+    $(this).remove();
+  });
+  return;
 }
