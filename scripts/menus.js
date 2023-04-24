@@ -99,16 +99,16 @@ function sideBarNav() {
 };
 
 function sideBarNavPullTabPosition() {
-	if (window.innerHeight < 441) {
+	if (window.innerHeight < 508) {
 		if (head == 4) {
-			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 441) * 100;
+			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 504) * 100;
 			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 		} else {
-			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 441) * 100) + ((441 - window.innerHeight) / 441) * 100;
+			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 504) * 100) + ((512 - window.innerHeight) / 504) * 100;
 			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 		}
 	} else {
-		let sideBarNavPullTabPosition = (((441 - 80) / 2) / 441) * 100;
+		let sideBarNavPullTabPosition = (((512 - 80) / 2) / 504) * 100;
 		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
 	}
 };
@@ -255,21 +255,23 @@ function sideBarNavPullTabSwipe() {
 function sideBarNavSwipe() {
 	sideBar.off('touchmove');
 	sideBar.off('touchend');
-	if (window.innerHeight < 441 && $(sideBar).hasClass('toggle')) {
+	if (window.innerHeight < 508 && $(sideBar).hasClass('toggle')) {
 		sideBar.on('touchmove', sideBar.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
 			const currentPageY = Math.round(element.originalEvent.touches[0].screenY);
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
+				head = window.innerHeight - 508;
 				$(sideBar)[0].style.transition = '.2s';
-				head = window.innerHeight - 441;
 				$(sideBar)[0].style.top = head + 'px';
+				// $(sideBar)[0].style.transition = '0s';
 				sideBarNavPullTabPosition();
 			} else {
 				head = 4;
 				$(sideBar)[0].style.transition = '.2s';
 				$(sideBar)[0].style.top = head + 'px';
+				// $(sideBar)[0].style.transition = '0s';
 				sideBarNavPullTabPosition();
 			}
 			touchStartPosY = currentPageY;
@@ -296,13 +298,67 @@ function sideBarNavSwipe() {
 			}, 5000);
 		});
 	}
-	else if (window.innerHeight < 441 && !$(sideBar).hasClass('toggle')) {
+	else if (window.innerHeight < 508 && !$(sideBar).hasClass('toggle')) {
 		sideBar.off('touchmove');
 	}
 };
 
 function sideBarNavLinks() {
 	sideBar.find('i').each(function() {
+		if ($(this).hasClass('fa-solid fa-sun')) {
+			let nav = $('.fa-solid.fa-sun');
+			$(nav).on('click', function() {
+				$(this).removeClass('fa-sun selectedLight');
+				$(this).addClass('fa-moon flashDark');
+				$(this).addClass('flashDark');
+				let nav = $('.fa-solid.fa-moon');
+				setTimeout(function() {
+					let navNew = document.getElementsByClassName('flashDark')[0];
+					$(navNew).removeClass('flashDark');
+				}, 600);
+				$(this).addClass('selectedDark');
+				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
+				if (window.innerWidth < 635) {
+					$(sideBar)[0].style.transition = '1s';
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
+					$(sideBar).removeClass('toggle');
+				}
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
+				});
+				$(nav).off();
+				sideBarNavLinks();
+			});
+		}
+		if ($(this).hasClass('fa-solid fa-moon')) {
+			let nav = $('.fa-solid.fa-moon');
+			$(nav).on('click', function() {
+				$(this).removeClass('fa-moon selectedDark');
+				$(this).addClass('fa-sun');
+				$(this).addClass('flashLight');
+				let nav = $('.fa-solid.fa-sun');
+				setTimeout(function() {
+					let navNew = document.getElementsByClassName('flashLight')[0];
+					$(navNew).removeClass('flashLight');
+				}, 600);
+				$(this).addClass('selectedLight');
+				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				toolTip.style.opacity = '0';
+				if (window.innerWidth < 635) {
+					$(sideBar)[0].style.transition = '1s';
+					$(sideBar)[0].style.left = '-62px';
+					$(sideBar)[0].style.top = '4px';
+					$(sideBar).removeClass('toggle');
+				}
+				$(nav).mouseleave(function() {
+					toolTip.style.opacity = null;
+				});
+				$(nav).off();
+				sideBarNavLinks();
+			});
+		}
 		if ($(this).hasClass('fas fa-house-user')) {
 			let nav = $('.fas.fa-house-user');
 			$(nav).on('click', function() {

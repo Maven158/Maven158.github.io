@@ -15,12 +15,7 @@
       <header id="mainHeader"">  
         <nav id="siteNav" class="fixed-header">
           <h1>CODEMAVEN</h1>
-          <!-- <section>
-            <fieldset id="field" class="header"></fieldset>
-          </section> -->
           <div class="box">
-            <!-- <i class="fa-solid fa-sun"></i>
-            <i class="fa-solid fa-moon"></i> -->
             <ul class="fixedBanner">
               <li><a href="#" title="About" class="mainNav" id="about">maven<br /><span class="tagline">about</span></a>
                 <ul class="list">
@@ -46,7 +41,6 @@
                 <ul class="list">
                   <li><a href="#" title="contract" class="contract">contract</a></li>
                   <li><a href="#" title="linkedin" class="linkedin">linkedin</a></li>
-                  <!-- <li><a href="#" title="reddit" class="reddit">reddit</a></li> -->
                   <li><a href="#" title="github" class="github">github</a></li>
                   <li><a href="#" title="stackoverflow" class="stackoverflow">stack</a></li>
                   <li><a href="mailto:chris.hren@icloud.com" title="@email" class="email">email</a></li>
@@ -56,8 +50,22 @@
           </div>          
         </nav>
         <section id="sideBar" class="toggle">
-          <div class="sideBar-Wrapper">
+          <div class="sideBar-Wrapper" >
             <ul>
+              <li>
+                <a href="#" title="Home" class="sideBarHome">
+                  <i class="fa-solid fa-moon selectedDark">
+                    <ul>
+                      <li>
+                        <div class="tt">
+                          <span class="tt-title">Mode</span>
+                          <span class="tt-descr">Dark/Light Mode Toggle</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </i>
+                </a>
+              </li>
               <li>
                 <a href="#" title="Home" class="sideBarHome">
                   <i class="fas fa-house-user selected">
@@ -100,20 +108,6 @@
                   </i>
                 </a>
               </li>
-              <!-- <li>
-                <a href="#" title="Reddit" class="sideBarReddit">
-                  <i class="fa fa-reddit-alien">
-                    <ul>
-                      <li>
-                        <div class="tt">
-                          <span class="tt-title">Reddit</span>
-                          <span class="tt-descr">View my Reddit Profile</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </i>
-                </a>
-              </li> -->
               <li>
                 <a href="#" title="GitHub" class="sideBarGitHub">
                   <i class="fa fa-github-alt">
@@ -171,11 +165,16 @@
                 </a>
               </li>
             </ul>
-            <div id="pullTab-Wrapper" class="pullTab-Wrapper">
+            <!-- <div id="pullTab-Wrapper" class="pullTab-Wrapper">
               <div id="pullTab-CornerTop" class="pullTab-CornerTop"></div>
               <div id="pullTab" class="pullTab">II</div>
               <div id="pullTab-CornerBottom" class="pullTab-CornerBottom"></div>
-            </div>
+            </div> -->
+          </div>
+          <div id="pullTab-Wrapper" class="pullTab-Wrapper">
+            <div id="pullTab-CornerTop" class="pullTab-CornerTop"></div>
+            <div id="pullTab" class="pullTab">II</div>
+            <div id="pullTab-CornerBottom" class="pullTab-CornerBottom"></div>
           </div>
         </section>
       </header>
