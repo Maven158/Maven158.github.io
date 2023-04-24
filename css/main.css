@@ -1,5 +1,52 @@
 @charset "UTF-8";
 
+:root {
+	--green1: #55efc4;
+	--green2: #00b894;
+	--blue1: #81ecec;
+	--blue2: #00cec9;
+	--blue3: #74b9ff;
+	--blue4: #0984e3;
+	--purple1: #a29bfe;
+	--purple2: #6c5ce7;
+	--yellow1: #ffeaa7;
+	--yellow2: #fdcb6e;
+	--orange1: #fab1a0;
+	--orange2: #e17055;
+	--red1: #ff7675;
+	--red2: #d63031;
+	--pink1: #e84393;
+	--pink2: #fd79a8;
+	--gray1: #dfe6e9;
+	--gray2: #b2bec3;
+	--gray3: #636e72;
+	--gray4: #2d3436;
+	--bg: #ffffff;
+}
+
+[data-theme="dark"] {
+	--green1: #55efc4;
+	--green2: #00b894;
+	--blue1: #81ecec;
+	--blue2: #00cec9;
+	--blue3: #74b9ff;
+	--blue4: #0984e3;
+	--purple1: #a29bfe;
+	--purple2: #6c5ce7;
+	--yellow1: #ffeaa7;
+	--yellow2: #fdcb6e;
+	--orange1: #fab1a0;
+	--orange2: #e17055;
+	--red1: #ff7675;
+	--red2: #d63031;
+	--pink1: #e84393;
+	--pink2: #fd79a8;
+	--gray1: #dfe6e9;
+	--gray2: #b2bec3;
+	--gray3: #636e72;
+	--gray4: #2d3436;
+	--bg: #000000;
+}
 /*--------------------------- global constants -------------------------*/
 /*limited reset*/
 html, body {
@@ -11,7 +58,7 @@ html, body {
 }
 body {
 	text-align: center;
-	background: #000000;
+	background: var(--bg);
 }
 div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
 	margin: 0;

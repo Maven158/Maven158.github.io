@@ -308,6 +308,7 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fa-solid fa-sun')) {
 			let nav = $('.fa-solid.fa-sun');
 			$(nav).on('click', function() {
+				document.documentElement.setAttribute('data-theme', 'dark');
 				$(this).removeClass('fa-sun selectedLight');
 				$(this).addClass('fa-moon flashDark');
 				$(this).addClass('flashDark');
@@ -335,6 +336,7 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fa-solid fa-moon')) {
 			let nav = $('.fa-solid.fa-moon');
 			$(nav).on('click', function() {
+				document.documentElement.setAttribute('data-theme', 'light');
 				$(this).removeClass('fa-moon selectedDark');
 				$(this).addClass('fa-sun');
 				$(this).addClass('flashLight');
