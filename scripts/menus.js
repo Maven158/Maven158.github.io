@@ -307,12 +307,21 @@ function sideBarNavLinks() {
 	sideBar.find('i').each(function() {
 		if ($(this).hasClass('fa-solid fa-sun')) {
 			let nav = $('.fa-solid.fa-sun');
+			$(nav).off('click');
 			$(nav).on('click', function() {
 				document.documentElement.setAttribute('data-theme', 'dark');
+				$(this).off('mouseenter');
+				$(this).off('mouseout');
 				$(this).removeClass('fa-sun selectedLight');
 				$(this).addClass('fa-moon flashDark');
 				$(this).addClass('flashDark');
 				let nav = $('.fa-solid.fa-moon');
+				$(nav).on('mouseout', nav.fn = function(e) {
+					toolTip.style.opacity = 0;
+				});
+				$(nav).on('mouseenter', nav.fn = function(e) {
+					toolTip.style.opacity = 1;
+				});
 				setTimeout(function() {
 					let navNew = document.getElementsByClassName('flashDark')[0];
 					$(navNew).removeClass('flashDark');
@@ -326,21 +335,26 @@ function sideBarNavLinks() {
 					$(sideBar)[0].style.top = '4px';
 					$(sideBar).removeClass('toggle');
 				}
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
-				});
-				$(nav).off();
 				sideBarNavLinks();
 			});
 		}
 		if ($(this).hasClass('fa-solid fa-moon')) {
 			let nav = $('.fa-solid.fa-moon');
+			$(nav).off('click');
 			$(nav).on('click', function() {
 				document.documentElement.setAttribute('data-theme', 'light');
+				$(this).off('mouseenter');
+				$(this).off('mouseout');
 				$(this).removeClass('fa-moon selectedDark');
 				$(this).addClass('fa-sun');
 				$(this).addClass('flashLight');
 				let nav = $('.fa-solid.fa-sun');
+				$(nav).on('mouseout', nav.fn = function(e) {
+					toolTip.style.opacity = 0;
+				});
+				$(nav).on('mouseenter', nav.fn = function(e) {
+					toolTip.style.opacity = 1;
+				});
 				setTimeout(function() {
 					let navNew = document.getElementsByClassName('flashLight')[0];
 					$(navNew).removeClass('flashLight');
@@ -354,21 +368,20 @@ function sideBarNavLinks() {
 					$(sideBar)[0].style.top = '4px';
 					$(sideBar).removeClass('toggle');
 				}
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
-				});
-				$(nav).off();
 				sideBarNavLinks();
 			});
 		}
 		if ($(this).hasClass('fas fa-house-user')) {
 			let nav = $('.fas.fa-house-user');
+			nav.off('click');
+			nav.off('mouseout');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
+				$(this).off('mouseout');
 				$(nav).addClass('flash');
 				setTimeout(function() {
 					$(nav).removeClass('flash');
@@ -399,19 +412,21 @@ function sideBarNavLinks() {
 					bannerJustify();
 					window.scrollTo(0, 0);
 				});
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
+				$(nav).on('mouseout', function(e) {
+					toolTip.style.opacity = 0;
 				});
 			});
 		}
 		if ($(this).hasClass('fa fa-code')) {
 			let nav = $('.fa.fa-code');
+			nav.off('click');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
+				$(this).off('mouseout');
 				$(nav).addClass('flash');
 				setTimeout(function() {
 					$(nav).removeClass('flash');
@@ -438,12 +453,13 @@ function sideBarNavLinks() {
 					window.scrollTo(0, 0);
 				});
 				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
+					toolTip.style.opacity = 0;
 				});
 			});
 		}
 		if ($(this).hasClass('fa fa-linkedin')) {
 			let nav = $('.fa.fa-linkedin');
+			nav.off('click');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
@@ -454,6 +470,7 @@ function sideBarNavLinks() {
 						$(sideBar).removeClass('toggle');
 					}
 				});
+				$(this).off('mouseout');
 				$(nav).addClass('flash');
 				setTimeout(function() {
 					$(nav).removeClass('flash');
@@ -466,6 +483,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('fa fa-reddit-alien')) {
 			let nav = $('.fa.fa-reddit-alien')[0];
+			nav.off('click');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
@@ -489,6 +507,7 @@ function sideBarNavLinks() {
 		}		
 		if ($(this).hasClass('fa fa-github-alt')) {
 			let nav = $('.fa.fa-github-alt');
+			nav.off('click');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
@@ -540,6 +559,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('fa fa-file-alt')) {
 			let nav = $('.fa.fa-file-alt');
+			nav.off('click');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
@@ -574,6 +594,7 @@ function sideBarNavLinks() {
 		}
 		if ($(this).hasClass('.fa fa-send')) {
 			let nav = $('.fa.fa-send');
+			nav.off('click');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
