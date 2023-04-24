@@ -391,13 +391,13 @@ function sideBarNavLinks() {
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
-					window.scrollTo(0, 0);
 					topBarNav();
 					sideBarNav();
 					setTimeout(function() {
 						loadCanvas();
 					}, 5);
 					bannerJustify();
+					window.scrollTo(0, 0);
 				});
 				$(nav).mouseleave(function() {
 					toolTip.style.opacity = null;

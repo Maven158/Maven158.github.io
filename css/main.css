@@ -21,7 +21,7 @@
 	--gray2: #b2bec3;
 	--gray3: #636e72;
 	--gray4: #2d3436;
-	--bg: #ffffff;
+	--bg: #dfe6e9;
 }
 
 [data-theme="dark"] {
@@ -406,12 +406,16 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   animation-timing-function: ease;
 }
 @-webkit-keyframes flashLight {  
-	from { color: #a29bfe; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
-	to   { color: #fab1a0; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
+	from { color: #fdcb6e; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
+	to   { color: #fdcb6e; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
+	/* from { color: #6c5ce7; }
+	to   { color: #fdcb6e; } */
 }
 @keyframes flashLight {  
-	from { color: #a29bfe; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
-	to   { color: #fab1a0; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
+	from { color: #fdcb6e; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
+	to   { color: #fdcb6e; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
+	/* from { color: #6c5ce7; }
+	to   { color: #fdcb6e; } */
 }
 .flashDark {
 	-webkit-animation-name: flashDark;
@@ -430,12 +434,16 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
   animation-timing-function: ease;
 }
 @-webkit-keyframes flashDark {  
-	from { color: #fab1a0; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
-	to   { color: #a29bfe; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
+	from { color: #6c5ce7; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
+	to   { color: #6c5ce7; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
+	/* from { color: #fdcb6e; }
+	to   { color: #6c5ce7; } */
 }
 @keyframes flashDark {  
-	from { color: #fab1a0; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
-	to   { color: #a29bfe; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
+	from { color: #6c5ce7; border: 2px solid #fab1a0; box-shadow: 0px 0px 4px 4px #e17055; }
+	to   { color: #6c5ce7; border: 2px solid #a29bfe; box-shadow: 0px 0px 4px 4px #6c5ce7; }
+	/* from { color: #fdcb6e; }
+	to   { color: #6c5ce7; } */
 }
 a:link, a:visited {
 	text-align: center;
@@ -848,6 +856,19 @@ span.accent {
 	padding-bottom: 0em;
 	z-index: 1;
 }
+html[data-theme=light] #sideBar {
+	position: fixed;
+	left: -62px;
+	top: 4px;
+	height:auto;
+	display: block;
+	background: linear-gradient(90deg, #000000, 75%, #000000);
+	border-radius: 10px;
+	border-right: 2px solid var(--pink1);
+	margin-top: 0em;
+	padding-bottom: 0em;
+	z-index: 1;
+}
 #sideBar .toggle {
 	left: 4px;
 }
@@ -857,17 +878,29 @@ span.accent {
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #fdcb6e;
 }
+html[data-theme=light] #sideBar > div > ul > li > a > i.selected {
+	color: var(--pink1);
+	border: 2px solid var(--blue3);
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 4px var(--blue4);
+}
 #sideBar > div > ul > li > a > i.selectedDark {
-	color: #a29bfe;
+	color: #6c5ce7;
 	border: 2px solid #a29bfe;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #6c5ce7;
 }
 #sideBar > div > ul > li > a > i.selectedLight {
-	color: #fab1a0;
+	color: #fdcb6e;
 	border: 2px solid #fab1a0;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px #e17055;
+}
+html[data-theme=light] #sideBar > div > ul > li > a > i.selectedLight {
+	color: var(--yellow1);
+	border: 2px solid var(--yellow1);
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 4px var(--yellow2);
 }
 #sideBar > div  > ul > li > a.current > i > ul > li > div, #sideBar > div  > ul > li > a.current > i > ul > li > div > .tt {
 	display: block;
@@ -881,6 +914,17 @@ span.accent {
 #sideBar li a i {
 	transition: 1s;
 	color: #55efc4;
+	border-radius: 10px;
+	border: 2px solid transparent;
+	display: flex;
+	font-size: 36px;
+	text-align: center;
+	justify-content: center;
+	padding: 6.5px 2px 6.5px 2px;
+}
+html[data-theme=light] #sideBar li a i {
+	transition: 1s;
+	color: var(--pink1);
 	border-radius: 10px;
 	border: 2px solid transparent;
 	display: flex;
