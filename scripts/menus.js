@@ -15,9 +15,9 @@ var revert;
 window.addEventListener('scroll', function() {
 	let state = window.pageYOffset || document.documentElement.scrollTop;
 	if (state > lastScrollTop && Math.abs(state - lastScrollTop) > 5) {
-		$('.fixedBanner').fadeOut(1000);
+		$('.box').fadeOut(1000);
 	}  else if (state < lastScrollTop) {
-		$('.fixedBanner').fadeIn(1000);
+		$('.box').fadeIn(1000);
 	} 
 	lastScrollTop = state <= 0 ? 0 : state;
 	// clearTimeout($.data(this, 'scrollTimer'));
@@ -66,7 +66,8 @@ function changeFont(element, size, margin) {
 	element.style.fontSize = size;
 	element.style.transitionDuration = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
-	element.parentElement.children[1].children[0].style.fontSize = '.7rem';
+	element.parentElement.children[1].style.fontSize = size == '0.7rem' || size == '0.8rem' ? '.5rem' : '0.7rem';
+	console.log(element.parentElement.children[1].children[0]);
 	element.parentElement.parentElement.style.height = 'fit-content';
 	element.parentElement.parentElement.style.padding = '.5em 0em';
 	if (document.getElementsByClassName('burstBox').length > 0) {
@@ -313,8 +314,8 @@ function sideBarNavLinks() {
 				$(this).off('mouseenter');
 				$(this).off('mouseout');
 				$(this).removeClass('fa-sun selectedLight');
-				$(this).addClass('fa-moon flashDark');
-				$(this).addClass('flashDark');
+				$(this).addClass('fa-moon flashMode');
+				$(this).addClass('flashMode');
 				let nav = $('.fa-solid.fa-moon');
 				$(nav).on('mouseout', nav.fn = function(e) {
 					toolTip.style.opacity = 0;
@@ -323,8 +324,8 @@ function sideBarNavLinks() {
 					toolTip.style.opacity = 1;
 				});
 				setTimeout(function() {
-					let navNew = document.getElementsByClassName('flashDark')[0];
-					$(navNew).removeClass('flashDark');
+					let navNew = document.getElementsByClassName('flashMode')[0];
+					$(navNew).removeClass('flashMode');
 				}, 600);
 				$(this).addClass('selectedDark');
 				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
@@ -347,7 +348,7 @@ function sideBarNavLinks() {
 				$(this).off('mouseout');
 				$(this).removeClass('fa-moon selectedDark');
 				$(this).addClass('fa-sun');
-				$(this).addClass('flashLight');
+				$(this).addClass('flashMode');
 				let nav = $('.fa-solid.fa-sun');
 				$(nav).on('mouseout', nav.fn = function(e) {
 					toolTip.style.opacity = 0;
@@ -356,8 +357,8 @@ function sideBarNavLinks() {
 					toolTip.style.opacity = 1;
 				});
 				setTimeout(function() {
-					let navNew = document.getElementsByClassName('flashLight')[0];
-					$(navNew).removeClass('flashLight');
+					let navNew = document.getElementsByClassName('flashMode')[0];
+					$(navNew).removeClass('flashMode');
 				}, 600);
 				$(this).addClass('selectedLight');
 				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
@@ -374,7 +375,7 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fas fa-house-user')) {
 			let nav = $('.fas.fa-house-user');
 			nav.off('click');
-			nav.off('mouseout');
+			// nav.off('mouseout');
 			$(nav).on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
@@ -414,6 +415,9 @@ function sideBarNavLinks() {
 				});
 				$(nav).on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
+				});
+				$(nav).on('mouseenter', function(e) {
+					toolTip.style.opacity = 1;
 				});
 			});
 		}
@@ -636,22 +640,22 @@ function topBarNav() {
 		for(let i = 0; i < $(font).length; i++) {
 			if ($(this).hasClass('mainNav')) {	
 				if (window.innerWidth >= 435) {	
-					changeFont($(font)[i], '1.1rem', '3px');
+					changeFont($(font)[i], '1.1rem', '4px');
 				}
 				if (window.innerWidth < 435) {	
-					changeFont($(font)[i], '1.0rem', '2px');
+					changeFont($(font)[i], '1.0rem', '0px');
 				}
 				if (window.innerWidth < 400) {	
-					changeFont($(font)[i], '0.9rem', '0px');
+					changeFont($(font)[i], '0.9rem', '-4px');
 				}
 				if (window.innerWidth < 360) {	
-					changeFont($(font)[i], '0.8rem', '-2px');
+					changeFont($(font)[i], '0.8rem', '-8px');
 				}
 				if (window.innerWidth < 325) {	
-					changeFont($(font)[i], '0.7rem', '-4px');
+					changeFont($(font)[i], '0.7rem', '-10px');
 				}
 				if (window.innerWidth < 280) {	
-					changeFont($(font)[i], '0.7rem', '-4px');
+					changeFont($(font)[i], '0.7rem', '-10px');
 				}
 			}
 		}
