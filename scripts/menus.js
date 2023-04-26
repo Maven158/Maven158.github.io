@@ -67,7 +67,6 @@ function changeFont(element, size, margin) {
 	element.style.transitionDuration = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].style.fontSize = size == '0.7rem' || size == '0.8rem' ? '.5rem' : '0.7rem';
-	console.log(element.parentElement.children[1].children[0]);
 	element.parentElement.parentElement.style.height = 'fit-content';
 	element.parentElement.parentElement.style.padding = '.5em 0em';
 	if (document.getElementsByClassName('burstBox').length > 0) {
@@ -91,8 +90,8 @@ function bannerJustify() {
 
 function sideBarNav() {
 	setTimeout(function() {
-		$(sideBar)[0].style.transition = '0s';
-		$(sideBar)[0].style.top = '4px';
+		sideBar[0].style.transition = '0s';
+		sideBar[0].style.top = '4px';
 	}, 0);
 	sideBarNavPullTabClick();
 	sideBarNavPullTabSwipe();
@@ -103,36 +102,36 @@ function sideBarNavPullTabPosition() {
 	if (window.innerHeight < 508) {
 		if (head == 4) {
 			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 504) * 100;
-			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+			pullTabWrapper[0].style.top = sideBarNavPullTabPosition + '%';
 		} else {
 			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 504) * 100) + ((512 - window.innerHeight) / 504) * 100;
-			$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+			pullTabWrapper[0].style.top = sideBarNavPullTabPosition + '%';
 		}
 	} else {
 		let sideBarNavPullTabPosition = (((512 - 80) / 2) / 504) * 100;
-		$(pullTabWrapper)[0].style.top = sideBarNavPullTabPosition + '%';
+		pullTabWrapper[0].style.top = sideBarNavPullTabPosition + '%';
 	}
 };
 
 function sideBarNavPullTabClick() {
 	clearTimeout(revert);
-	$(pullTabWrapper).off('click');
+	pullTabWrapper.off('click');
 	if (window.innerWidth < 635) {
-		$(pullTabWrapper).on('click', pullTabWrapper.fn = function clicked(element) {
+		pullTabWrapper.on('click', pullTabWrapper.fn = function clicked(element) {
 			element.stopPropagation();
 			element.preventDefault();
-			if ($(sideBar).hasClass('toggle')) {
-				$(sideBar).removeClass('toggle');
-				$(pullTabWrapper)[0].style.display = 'flex';
-				$(sideBar)[0].style.transition = '1s';
-				$(sideBar)[0].style.left = '-62px';
-				$(sideBar)[0].style.top = '4px';
-			} else if (!$(sideBar).hasClass('toggle')) {
-				$(sideBar).addClass('toggle');
+			if (sideBar.hasClass('toggle')) {
+				sideBar.removeClass('toggle');
+				pullTabWrapper[0].style.display = 'flex';
+				sideBar[0].style.transition = '1s';
+				sideBar[0].style.left = '-62px';
+				sideBar[0].style.top = '4px';
+			} else if (!sideBar.hasClass('toggle')) {
+				sideBar.addClass('toggle');
 				sideBarNavSwipe();
-				$(pullTabWrapper)[0].style.display = 'flex';
-				$(sideBar)[0].style.transition = '1s';
-				$(sideBar)[0].style.left = '4px';
+				pullTabWrapper[0].style.display = 'flex';
+				sideBar[0].style.transition = '1s';
+				sideBar[0].style.left = '4px';
 				clearTimeout($.data(this));
 				let highestId = window.setTimeout(() => {
 					for (let i = highestId; i >= 0; i--) {
@@ -141,12 +140,12 @@ function sideBarNavPullTabClick() {
 				}, 0);
 				revert = setTimeout(function() {
 					if (window.innerWidth < 635) {
-						if ($(sideBar).hasClass('toggle')) {
-							$(sideBar).removeClass('toggle');
-							$(pullTabWrapper)[0].style.display = 'flex';
-							$(sideBar)[0].style.transition = '1s';
-							$(sideBar)[0].style.left = '-62px';
-							$(sideBar)[0].style.top = '4px';
+						if (sideBar.hasClass('toggle')) {
+							sideBar.removeClass('toggle');
+							pullTabWrapper[0].style.display = 'flex';
+							sideBar[0].style.transition = '1s';
+							sideBar[0].style.left = '-62px';
+							sideBar[0].style.top = '4px';
 							head = 4;
 							sideBarNavPullTabPosition();
 						}
@@ -154,29 +153,29 @@ function sideBarNavPullTabClick() {
 				}, 5000);
 			}
 		});
-	} else if (window.innerWidth >= 635 && !$(sideBar).hasClass('toggle')) {
-		$(sideBar).addClass('toggle');
-		$(pullTabWrapper)[0].style.display = 'none';
-		$(sideBar)[0].style.transition = '1s';
-		$(sideBar)[0].style.left = '4px';
-		$(sideBar)[0].style.top = '4px';
-		$(pullTabWrapper).off('click');
-		$(pullTabWrapper).off('touchmove');
-	} else if (window.innerWidth >= 635 && $(sideBar).hasClass('toggle')) {
-		$(pullTabWrapper)[0].style.display = 'none';
-		$(sideBar)[0].style.transition = '1s';
-		$(sideBar)[0].style.left = '4px';
-		$(sideBar)[0].style.top = '4px';
-		$(pullTabWrapper).off('click');
-		$(pullTabWrapper).off('touchmove');
+	} else if (window.innerWidth >= 635 && !sideBar.hasClass('toggle')) {
+		sideBar.addClass('toggle');
+		pullTabWrapper[0].style.display = 'none';
+		sideBar[0].style.transition = '1s';
+		sideBar[0].style.left = '4px';
+		sideBar[0].style.top = '4px';
+		pullTabWrapper.off('click');
+		pullTabWrapper.off('touchmove');
+	} else if (window.innerWidth >= 635 && sideBar.hasClass('toggle')) {
+		pullTabWrapper[0].style.display = 'none';
+		sideBar[0].style.transition = '1s';
+		sideBar[0].style.left = '4px';
+		sideBar[0].style.top = '4px';
+		pullTabWrapper.off('click');
+		pullTabWrapper.off('touchmove');
 	}
 	if (window.innerWidth < 635) {
-		if ($(sideBar).hasClass('toggle')) {
-			$(sideBar).removeClass('toggle');
-			$(pullTabWrapper)[0].style.display = 'flex';
-			$(sideBar)[0].style.transition = '1s';
-			$(sideBar)[0].style.left = '-62px';
-			$(sideBar)[0].style.top = '4px';
+		if (sideBar.hasClass('toggle')) {
+			sideBar.removeClass('toggle');
+			pullTabWrapper[0].style.display = 'flex';
+			sideBar[0].style.transition = '1s';
+			sideBar[0].style.left = '-62px';
+			sideBar[0].style.top = '4px';
 		}
 	}
 	sideBarNavSwipe();
@@ -192,19 +191,19 @@ function sideBarNavPullTabSwipe() {
 			const currentPageX = Math.round(element.originalEvent.touches[0].screenX);
 			if (touchStartPosX === currentPageX) return;
 			if (touchStartPosX - currentPageX > 0) {
-				if ($(sideBar).hasClass('toggle')) {
-					$(sideBar).removeClass('toggle');
-					$(pullTabWrapper)[0].style.display = 'flex';
-					$(sideBar)[0].style.transition = '1s';
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
+				if (sideBar.hasClass('toggle')) {
+					sideBar.removeClass('toggle');
+					pullTabWrapper[0].style.display = 'flex';
+					sideBar[0].style.transition = '1s';
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
 				}
-			} else if (!$(sideBar).hasClass('toggle')) {
-					$(sideBar).addClass('toggle');
+			} else if (!sideBar.hasClass('toggle')) {
+					sideBar.addClass('toggle');
 					sideBarNavSwipe();
-					$(pullTabWrapper)[0].style.display = 'flex';
-					$(sideBar)[0].style.transition = '1s';
-					$(sideBar)[0].style.left = '4px';
+					pullTabWrapper[0].style.display = 'flex';
+					sideBar[0].style.transition = '1s';
+					sideBar[0].style.left = '4px';
 				}
 			touchStartPosX = currentPageX;
 		});
@@ -212,42 +211,42 @@ function sideBarNavPullTabSwipe() {
 			clearTimeout(revert);
 			revert = setTimeout(function() {
 				if (window.innerWidth < 635) {
-					if ($(sideBar).hasClass('toggle')) {
-						$(sideBar).removeClass('toggle');
-						$(pullTabWrapper)[0].style.display = 'flex';
-						$(sideBar)[0].style.transition = '1s';
-						$(sideBar)[0].style.left = '-62px';
-						$(sideBar)[0].style.top = '4px';
+					if (sideBar.hasClass('toggle')) {
+						sideBar.removeClass('toggle');
+						pullTabWrapper[0].style.display = 'flex';
+						sideBar[0].style.transition = '1s';
+						sideBar[0].style.left = '-62px';
+						sideBar[0].style.top = '4px';
 						head = 4;
 						sideBarNavPullTabPosition();
 					}
 				}
 			}, 5000);
 		});
-	} else if (window.innerWidth >= 635 && !$(sideBar).hasClass('toggle')) {
-		$(sideBar).addClass('toggle');
-		$(sideBar)[0].style.transition = '1s';
-		$(pullTabWrapper)[0].style.display = 'none';
-		$(sideBar)[0].style.left = '4px';
-		$(sideBar)[0].style.top = '4px';
-		$(pullTabWrapper).off('click');
-		$(pullTabWrapper).off('touchmove');
-	} else if (window.innerWidth >= 635 && $(sideBar).hasClass('toggle')) {
-		$(sideBar)[0].style.transition = '1s';
-		$(pullTabWrapper)[0].style.display = 'none';
-		$(pullTab)[0].style.opacity
-		$(sideBar)[0].style.left = '4px';
-		$(sideBar)[0].style.top = '4px';
-		$(pullTabWrapper).off('click');
-		$(pullTabWrapper).off('touchmove');
+	} else if (window.innerWidth >= 635 && !sideBar.hasClass('toggle')) {
+		sideBar.addClass('toggle');
+		sideBar[0].style.transition = '1s';
+		pullTabWrapper[0].style.display = 'none';
+		sideBar[0].style.left = '4px';
+		sideBar[0].style.top = '4px';
+		pullTabWrapper.off('click');
+		pullTabWrapper.off('touchmove');
+	} else if (window.innerWidth >= 635 && sideBar.hasClass('toggle')) {
+		sideBar[0].style.transition = '1s';
+		pullTabWrapper[0].style.display = 'none';
+		pullTab[0].style.opacity
+		sideBar[0].style.left = '4px';
+		sideBar[0].style.top = '4px';
+		pullTabWrapper.off('click');
+		pullTabWrapper.off('touchmove');
 	}
 	if (window.innerWidth < 635) {
-		if ($(sideBar).hasClass('toggle')) {
-			$(sideBar).removeClass('toggle');
-			$(pullTabWrapper)[0].style.display = 'flex';
-			$(sideBar)[0].style.transition = '1s';
-			$(sideBar)[0].style.left = '-62px';
-			$(sideBar)[0].style.top = '4px';
+		if (sideBar.hasClass('toggle')) {
+			sideBar.removeClass('toggle');
+			pullTabWrapper[0].style.display = 'flex';
+			sideBar[0].style.transition = '1s';
+			sideBar[0].style.left = '-62px';
+			sideBar[0].style.top = '4px';
 		}
 	}
 	sideBarNavSwipe();
@@ -256,7 +255,7 @@ function sideBarNavPullTabSwipe() {
 function sideBarNavSwipe() {
 	sideBar.off('touchmove');
 	sideBar.off('touchend');
-	if (window.innerHeight < 508 && $(sideBar).hasClass('toggle')) {
+	if (window.innerHeight < 508 && sideBar.hasClass('toggle')) {
 		sideBar.on('touchmove', sideBar.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
@@ -264,15 +263,15 @@ function sideBarNavSwipe() {
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
 				head = window.innerHeight - 508;
-				$(sideBar)[0].style.transition = '.2s';
-				$(sideBar)[0].style.top = head + 'px';
-				// $(sideBar)[0].style.transition = '0s';
+				sideBar[0].style.transition = '.2s';
+				sideBar[0].style.top = head + 'px';
+				// sideBar[0].style.transition = '0s';
 				sideBarNavPullTabPosition();
 			} else {
 				head = 4;
-				$(sideBar)[0].style.transition = '.2s';
-				$(sideBar)[0].style.top = head + 'px';
-				// $(sideBar)[0].style.transition = '0s';
+				sideBar[0].style.transition = '.2s';
+				sideBar[0].style.top = head + 'px';
+				// sideBar[0].style.transition = '0s';
 				sideBarNavPullTabPosition();
 			}
 			touchStartPosY = currentPageY;
@@ -281,17 +280,17 @@ function sideBarNavSwipe() {
 			clearTimeout(revert);
 			revert = setTimeout(function() {
 				if (window.innerWidth >= 635) {
-					$(sideBar)[0].style.transition = '1s';
-					$(sideBar)[0].style.top = '4px';
+					sideBar[0].style.transition = '1s';
+					sideBar[0].style.top = '4px';
 					head = 4;
 					sideBarNavPullTabPosition();
 				} else {
-					if ($(sideBar).hasClass('toggle')) {
-						$(sideBar).removeClass('toggle');
-						$(pullTabWrapper)[0].style.display = 'flex';
-						$(sideBar)[0].style.transition = '1s';
-						$(sideBar)[0].style.left = '-62px';
-						$(sideBar)[0].style.top = '4px';
+					if (sideBar.hasClass('toggle')) {
+						sideBar.removeClass('toggle');
+						pullTabWrapper[0].style.display = 'flex';
+						sideBar[0].style.transition = '1s';
+						sideBar[0].style.left = '-62px';
+						sideBar[0].style.top = '4px';
 						head = 4;
 						sideBarNavPullTabPosition();
 					}
@@ -299,7 +298,7 @@ function sideBarNavSwipe() {
 			}, 5000);
 		});
 	}
-	else if (window.innerHeight < 508 && !$(sideBar).hasClass('toggle')) {
+	else if (window.innerHeight < 508 && !sideBar.hasClass('toggle')) {
 		sideBar.off('touchmove');
 	}
 };
@@ -308,8 +307,8 @@ function sideBarNavLinks() {
 	sideBar.find('i').each(function() {
 		if ($(this).hasClass('fa-solid fa-sun')) {
 			let nav = $('.fa-solid.fa-sun');
-			$(nav).off('click');
-			$(nav).on('click', function() {
+			nav.off('click');
+			nav.on('click', function() {
 				document.documentElement.setAttribute('data-theme', 'dark');
 				$(this).off('mouseenter');
 				$(this).off('mouseout');
@@ -317,10 +316,10 @@ function sideBarNavLinks() {
 				$(this).addClass('fa-moon flashMode');
 				$(this).addClass('flashMode');
 				let nav = $('.fa-solid.fa-moon');
-				$(nav).on('mouseout', nav.fn = function(e) {
+				nav.on('mouseout', nav.fn = function(e) {
 					toolTip.style.opacity = 0;
 				});
-				$(nav).on('mouseenter', nav.fn = function(e) {
+				nav.on('mouseenter', nav.fn = function(e) {
 					toolTip.style.opacity = 1;
 				});
 				setTimeout(function() {
@@ -328,21 +327,21 @@ function sideBarNavLinks() {
 					$(navNew).removeClass('flashMode');
 				}, 600);
 				$(this).addClass('selectedDark');
-				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
-					$(sideBar)[0].style.transition = '1s';
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
+					sideBar[0].style.transition = '1s';
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
+					sideBar.removeClass('toggle');
 				}
 				sideBarNavLinks();
 			});
 		}
 		if ($(this).hasClass('fa-solid fa-moon')) {
 			let nav = $('.fa-solid.fa-moon');
-			$(nav).off('click');
-			$(nav).on('click', function() {
+			nav.off('click');
+			nav.on('click', function() {
 				document.documentElement.setAttribute('data-theme', 'light');
 				$(this).off('mouseenter');
 				$(this).off('mouseout');
@@ -350,10 +349,10 @@ function sideBarNavLinks() {
 				$(this).addClass('fa-sun');
 				$(this).addClass('flashMode');
 				let nav = $('.fa-solid.fa-sun');
-				$(nav).on('mouseout', nav.fn = function(e) {
+				nav.on('mouseout', nav.fn = function(e) {
 					toolTip.style.opacity = 0;
 				});
-				$(nav).on('mouseenter', nav.fn = function(e) {
+				nav.on('mouseenter', nav.fn = function(e) {
 					toolTip.style.opacity = 1;
 				});
 				setTimeout(function() {
@@ -361,13 +360,13 @@ function sideBarNavLinks() {
 					$(navNew).removeClass('flashMode');
 				}, 600);
 				$(this).addClass('selectedLight');
-				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
-					$(sideBar)[0].style.transition = '1s';
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
+					sideBar[0].style.transition = '1s';
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
+					sideBar.removeClass('toggle');
 				}
 				sideBarNavLinks();
 			});
@@ -375,26 +374,26 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fas fa-house-user')) {
 			let nav = $('.fas.fa-house-user');
 			nav.off('click');
-			// nav.off('mouseout');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(this).off('mouseout');
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).addClass('selected');
-				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				nav.addClass('selected');
+				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
-					$(sideBar)[0].style.transition = '1s';
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
+					sideBar[0].style.transition = '1s';
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
+					sideBar.removeClass('toggle');
 				}
 				fetch('/site/home.html')
 				.then((response) => response.text())
@@ -413,10 +412,10 @@ function sideBarNavLinks() {
 					bannerJustify();
 					window.scrollTo(0, 0);
 				});
-				$(nav).on('mouseout', function(e) {
+				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
 				});
-				$(nav).on('mouseenter', function(e) {
+				nav.on('mouseenter', function(e) {
 					toolTip.style.opacity = 1;
 				});
 			});
@@ -424,31 +423,32 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fa fa-code')) {
 			let nav = $('.fa.fa-code');
 			nav.off('click');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(this).off('mouseout');
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).addClass('selected');
-				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				nav.addClass('selected');
+				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
-					$(sideBar)[0].style.transition = '1s'
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
+					sideBar[0].style.transition = '1s'
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
+					sideBar.removeClass('toggle');
 				}
 				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
 					if ($(document).find('canvas').length != 0) {
-						// killCanvas();
+						killCanvas();
 						document.getElementsByTagName('canvas')[0].remove();
 					}
 					newDoc.innerHTML = text;
@@ -456,30 +456,34 @@ function sideBarNavLinks() {
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 				});
-				$(nav).mouseleave(function() {
+				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
+				});
+				nav.on('mouseenter', function(e) {
+					toolTip.style.opacity = 1;
 				});
 			});
 		}
 		if ($(this).hasClass('fa fa-linkedin')) {
 			let nav = $('.fa.fa-linkedin');
 			nav.off('click');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
-					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
-						$(sideBar)[0].style.transition = '1s'
-						$(sideBar)[0].style.left = '-62px';
-						$(sideBar).removeClass('toggle');
+						sideBar[0].style.transition = '1s'
+						sideBar[0].style.left = '-62px';
+						sideBar.removeClass('toggle');
 					}
 				});
-				$(this).off('mouseout');
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).mouseleave(function() {
+				nav.mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
 				window.open("https://www.linkedin.com/in/chris-hren/");
@@ -488,23 +492,28 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fa fa-reddit-alien')) {
 			let nav = $('.fa.fa-reddit-alien')[0];
 			nav.off('click');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
-					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
-						$(sideBar)[0].style.transition = '1s'
-						$(sideBar)[0].style.left = '-62px';
-						$(sideBar)[0].style.top = '4px';
-						$(sideBar).removeClass('toggle');
+						sideBar[0].style.transition = '1s'
+						sideBar[0].style.left = '-62px';
+						sideBar[0].style.top = '4px';
+						sideBar.removeClass('toggle');
 					}
 				});
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
+				nav.on('mouseout', function(e) {
+					toolTip.style.opacity = 0;
+				});
+				nav.on('mouseenter', function(e) {
+					toolTip.style.opacity = 1;
 				});
 				window.open("https://www.reddit.com/user/Richard_Musk/");
 			});
@@ -512,22 +521,24 @@ function sideBarNavLinks() {
 		if ($(this).hasClass('fa fa-github-alt')) {
 			let nav = $('.fa.fa-github-alt');
 			nav.off('click');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
-					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
-						$(sideBar)[0].style.transition = '1s'
-						$(sideBar)[0].style.left = '-62px';
-						$(sideBar)[0].style.top = '4px';
-						$(sideBar).removeClass('toggle');
+						sideBar[0].style.transition = '1s'
+						sideBar[0].style.left = '-62px';
+						sideBar[0].style.top = '4px';
+						sideBar.removeClass('toggle');
 					}
 				});
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).mouseleave(function() {
+				nav.mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
 				window.open("https://github.com/Maven158");
@@ -535,53 +546,59 @@ function sideBarNavLinks() {
 		}		
 		if ($(this).hasClass('fa fa-stack-overflow')) {
 			let nav = $('.fa.fa-stack-overflow');
-			if ($(nav).fn != '') {
-				$(nav).fn = '';
+			if (nav.fn != '') {
+				nav.fn = '';
 			}
-			$(nav).on('click', function() {
-				console.log($(nav));
+			nav.on('click', function() {
+				console.log(nav);
 				window.open("https://stackoverflow.com/users/18815704/maven");
 				sideBar.find('i').each(function() {
-					let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
 					if (window.innerWidth < 635) {
-						$(sideBar)[0].style.transition = '1s'
-						$(sideBar)[0].style.left = '-62px';
-						$(sideBar)[0].style.top = '4px';
-						$(sideBar).removeClass('toggle');
+						sideBar[0].style.transition = '1s'
+						sideBar[0].style.left = '-62px';
+						sideBar[0].style.top = '4px';
+						sideBar.removeClass('toggle');
 					}
 				});
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
+				nav.on('mouseout', function(e) {
+					toolTip.style.opacity = 0;
 				});
-				
+				nav.on('mouseenter', function(e) {
+					toolTip.style.opacity = 1;
+				});
 			});
 		}
 		if ($(this).hasClass('fa fa-file-alt')) {
 			let nav = $('.fa.fa-file-alt');
 			nav.off('click');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).addClass('selected');
-				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				nav.addClass('selected');
+				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
-					$(sideBar)[0].style.transition = '1s'
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
+					sideBar[0].style.transition = '1s'
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
+					sideBar.removeClass('toggle');
 				}
 				fetch('/site/resume.html')
 				.then((response) => response.text())
@@ -591,32 +608,37 @@ function sideBarNavLinks() {
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 				});
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
+				nav.on('mouseout', function(e) {
+					toolTip.style.opacity = 0;
+				});
+				nav.on('mouseenter', function(e) {
+					toolTip.style.opacity = 1;
 				});
 			});
 		}
 		if ($(this).hasClass('.fa fa-send')) {
 			let nav = $('.fa.fa-send');
 			nav.off('click');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				sideBar.find('i').each(function() {
 					if ($(this).hasClass('selected')) {
 						$(this).removeClass('selected');
 					}
 				});
-				$(nav).addClass('flash');
+				nav.off('mouseout');
+				nav.off('mouseenter');
+				nav.addClass('flash');
 				setTimeout(function() {
-					$(nav).removeClass('flash');
+					nav.removeClass('flash');
 				}, 600);
-				$(nav).addClass('selected');
-				let toolTip = $(nav)[0].getElementsByClassName('tt')[0];
+				nav.addClass('selected');
+				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
 				if (window.innerWidth < 635) {
-					$(sideBar)[0].style.transition = '1s'
-					$(sideBar)[0].style.left = '-62px';
-					$(sideBar)[0].style.top = '4px';
-					$(sideBar).removeClass('toggle');
+					sideBar[0].style.transition = '1s'
+					sideBar[0].style.left = '-62px';
+					sideBar[0].style.top = '4px';
+					sideBar.removeClass('toggle');
 				}
 				fetch('/site/contact.html')
 				.then((response) => response.text())
@@ -627,8 +649,11 @@ function sideBarNavLinks() {
 					window.scrollTo(0, 0);
 					loadScript("app.js");
 				});
-				$(nav).mouseleave(function() {
-					toolTip.style.opacity = null;
+				nav.on('mouseout', function(e) {
+					toolTip.style.opacity = 0;
+				});
+				nav.on('mouseenter', function(e) {
+					toolTip.style.opacity = 1;
 				});
 			});
 		}
@@ -637,25 +662,25 @@ function sideBarNavLinks() {
 
 function topBarNav() {
 	siteNav.find('a').each(function() {	
-		for(let i = 0; i < $(font).length; i++) {
+		for(let i = 0; i < font.length; i++) {
 			if ($(this).hasClass('mainNav')) {	
 				if (window.innerWidth >= 435) {	
-					changeFont($(font)[i], '1.1rem', '4px');
+					changeFont(font[i], '1.1rem', '4px');
 				}
 				if (window.innerWidth < 435) {	
-					changeFont($(font)[i], '1.0rem', '0px');
+					changeFont(font[i], '1.0rem', '0px');
 				}
 				if (window.innerWidth < 400) {	
-					changeFont($(font)[i], '0.9rem', '-4px');
+					changeFont(font[i], '0.9rem', '-4px');
 				}
 				if (window.innerWidth < 360) {	
-					changeFont($(font)[i], '0.8rem', '-8px');
+					changeFont(font[i], '0.8rem', '-8px');
 				}
 				if (window.innerWidth < 325) {	
-					changeFont($(font)[i], '0.7rem', '-10px');
+					changeFont(font[i], '0.7rem', '-10px');
 				}
 				if (window.innerWidth < 280) {	
-					changeFont($(font)[i], '0.7rem', '-10px');
+					changeFont(font[i], '0.7rem', '-10px');
 				}
 			}
 		}
@@ -666,17 +691,17 @@ function topBarNavLinks() {
 	siteNav.find('a').each(function() {
 		if ($(this).hasClass('accolades')) {
 			let nav = $('.accolades');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/accolades.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -692,17 +717,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('biography')) {
 			let nav = $('.biography');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/biography.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -719,7 +744,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('resume')) {
 			let nav = $('.resume');
 			let sideNav = $('.fa.fa-file-alt');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -733,18 +758,18 @@ function topBarNavLinks() {
 						$(sideNav).removeClass('flash');
 					}, 600);
 					$(sideNav).addClass('selected');
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
 					setTimeout(function() {
-						$(nav).closest('div > ul > li')[0].children[0].style.transitionDuration = '1s !important';
+						nav.closest('div > ul > li')[0].children[0].style.transitionDuration = '1s !important';
 						siteNav.find('a').each(function() {
 							$(this).removeClass('current');				
 						});
@@ -756,17 +781,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('future')) {
 			let nav = $('.future');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/future.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -782,17 +807,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('core')) {
 			let nav = $('.core');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/core.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -809,7 +834,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('hrenovator')) {
 			let nav = $('.hrenovator');
 			let sideNav = $('.fa.fa-code');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/hrenovator.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -823,13 +848,13 @@ function topBarNavLinks() {
 						$(sideNav).removeClass('flash');
 					}, 600);
 					$(sideNav).addClass('selected');
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -846,7 +871,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('neirman')) {
 			let nav = $('.neirman');
 			let sideNav = $('.fa.fa-code');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/neirman.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -860,13 +885,13 @@ function topBarNavLinks() {
 						$(sideNav).removeClass('flash');
 					}, 600);
 					$(sideNav).addClass('selected');
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -883,7 +908,7 @@ function topBarNavLinks() {
 		if ($(this).hasClass('maven')) {
 			let nav = $('.maven');
 			let sideNav = $('.fa.fa-code');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/maven.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -897,13 +922,13 @@ function topBarNavLinks() {
 						$(sideNav).removeClass('flash');
 					}, 600);
 					$(sideNav).addClass('selected');
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -919,17 +944,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('linkedin')) {
 			let nav = $('.linkedin');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -945,17 +970,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('reddit')) {
 			let nav = $('.reddit');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -971,17 +996,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('github')) {
 			let nav = $('.github');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -997,17 +1022,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('stackoverflow')) {
 			let nav = $('.stackoverflow');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -1023,17 +1048,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('contract')) {
 			let nav = $('.contract');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/contract.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
@@ -1049,17 +1074,17 @@ function topBarNavLinks() {
 		}
 		if ($(this).hasClass('email')) {
 			let nav = $('.email');
-			$(nav).on('click', function() {
+			nav.on('click', function() {
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
-					$(nav).addClass('flash');
+					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
 					setTimeout(function() {
-						$(nav).removeClass('flash');
+						nav.removeClass('flash');
 					}, 600);
 				})
 				.then(() => {
