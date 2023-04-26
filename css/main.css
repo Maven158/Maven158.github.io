@@ -1,26 +1,26 @@
 @charset "UTF-8";
 
 :root {
-	--green1: #778beb;
-	--green2: #546de5;
-	--blue1: #81ecec;
-	--blue2: #00cec9;
-	--blue3: #778beb;
-	--blue4: #546de5;
-	--purple1: #786fa6;
-	--purple2: #574b90;
-	--yellow1: #ffeaa7;
-	--yellow2: #fdcb6e;
-	--orange1: #fab1a0;
-	--orange2: #e17055;
-	--red1: #ff7675;
-	--red2: #d63031;
-	--pink1: #cf6a87;
-	--pink2: #c44569;
+	--green1: #32ff7e;
+	--green2: #3ae374;
+	--blue1: #7efff5;
+	--blue2: #67e6dc;
+	--blue3: #18dcff;
+	--blue4: #17c0eb;
+	--purple1: #7d5fff;
+	--purple2: #7158e2;
+	--yellow1: #fffa65;
+	--yellow2: #fff200;
+	--orange1: #ffaf40;
+	--orange2: #ff9f1a;
+	--red1: #ff4d4d;
+	--red2: #ff3838;
+	--pink1: #ffcccc;
+	--pink2: #ffb8b8;
 	--gray1: #dfe6e9;
 	--gray2: #b2bec3;
-	--gray3: #636e72;
-	--gray4: #2d3436;
+	--gray3: #4b4b4b;
+	--gray4: #3d3d3d;
 	--bg: #ffffff;
 }
 
@@ -105,8 +105,8 @@ html[data-theme="light"] #field > article > div.hero > div > img.banner {
 	display: flex;
 	text-align: center;
 	width: clamp(160px, calc(100vw * .55), 440px);
-	border: 2px solid var(--gray4);
-	box-shadow: 0px 0px 4px 4px var(--bg);
+	border: 2px solid var(--gray3);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 .burst {
 	/* margin-top: 28px; */
@@ -143,6 +143,18 @@ html[data-theme="light"] #field > article > div.hero > div > img.banner {
   font-family: Arial, sans-serif;
   display: block;
 	color: var(--pink2);
+	font-size: clamp(.5rem, 1vw + .75rem, 1.35rem);
+  letter-spacing: 0;
+  font-weight: normal;
+  margin: 14px 0 0 0;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: none;
+}
+html[data-theme="light"] .onePage .section-header {
+  font-family: Arial, sans-serif;
+  display: block;
+	color: var(--gray4);
 	font-size: clamp(.5rem, 1vw + .75rem, 1.35rem);
   letter-spacing: 0;
   font-weight: normal;
@@ -693,11 +705,11 @@ html[data-theme=light] .tt {
 	z-index: 999999999999;
 	margin-top: -8.5px;
 	padding: 4px 4px 4px 10px;
-	border: 2px solid var(--pink1);
+	border: 2px solid var(--gray3);
 	border-radius: 10px;
 	opacity: 0;
 	pointer-events: none;
-	box-shadow: 0px 0px 4px 4px var(--pink2);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 .tt .tt-title {
 	position: relative;
@@ -715,7 +727,7 @@ html[data-theme=light] .tt .tt-title {
 	background-color: var(--bg);
 	/* text-shadow: 2px 2px 1px var(--pink2); */
 	font-weight: bold;
-	color: var(--green1);
+	color: var(--red2);
 	font-size: 15px;
 	margin-bottom: 4px;
 }
@@ -747,12 +759,19 @@ html[data-theme=light] .tt .tt-descr {
 	font-weight: bold;
 	line-height: 100%;
 	width: 100%;
-	color: var(--purple1);
+	color: var(--gray4);
 	overflow-x: auto;
 	overflow-y: hidden;
 	letter-spacing: -.01em;
 }
 .tt .tt-descr span {
+	font-weight: 800;
+	text-align: left;
+	overflow-x: auto;
+	overflow-y: hidden;
+	color: var(--purple1);
+}
+html[data-theme=light] .tt .tt-descr span {
 	font-weight: 800;
 	text-align: left;
 	overflow-x: auto;
@@ -787,9 +806,9 @@ html[data-theme=light] #sideBar {
 	height:auto;
 	display: block;
 	transition: 1s;
-	background: linear-gradient(90deg, var(--bg), 75%, var(--pink2));
+	background: linear-gradient(90deg, var(--bg), 75%, var(--bg));
 	border-radius: 10px;
-	border-right: 2px solid var(--pink1);
+	border-right: 2px solid var(--bg);
 	margin-top: 0em;
 	padding-bottom: 0em;
 	z-index: 1;
@@ -804,10 +823,10 @@ html[data-theme=light] #sideBar {
 	box-shadow: 0px 0px 4px 4px var(--yellow2);
 }
 html[data-theme=light] #sideBar > div > ul > li > a > i.selected {
-	color: var(--blue4);
-	border: 2px solid var(--blue3);
+	color: var(--red2);
+	border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--blue4);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 #sideBar > div > ul > li > a > i.selectedDark {
 	color: var(--yellow2);
@@ -822,22 +841,22 @@ html[data-theme=light] #sideBar > div > ul > li > a > i.selected {
 	box-shadow: 0px 0px 4px 4px var(--purple2);
 }
 #sideBar > div > ul > li > a > i.selectedLight {
-	color: var(--yellow2);
-	border: 2px solid var(--purple1);
+	color: var(--red2);
+	border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--purple2);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 html[data-theme=light] #sideBar > div > ul > li > a > i.selectedLight {
-	color: var(--yellow2);
-	border: 2px solid var(--purple1);
+	color: var(--red2);
+	border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--purple2);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 html[data-theme=light] #sideBar > div > ul > li > a > i.selectedLight:hover {
-	color: var(--yellow2);
-	border: 2px solid var(--purple1);
+	color: var(--red2);
+	border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--purple2);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 #sideBar > div  > ul > li > a.current > i > ul > li > div,
 #sideBar > div  > ul > li > a.current > i > ul > li > div > .tt {
@@ -862,7 +881,7 @@ html[data-theme=light] #sideBar > div > ul > li > a > i.selectedLight:hover {
 }
 html[data-theme=light] #sideBar li a i {
 	transition: 1s;
-	color: var(--green1);
+	color: var(--gray4);
 	border-radius: 10px;
 	border: 2px solid transparent;
 	display: flex;
@@ -878,7 +897,7 @@ html[data-theme=light] #sideBar li a i {
 }
 html[data-theme=light] #sideBar ul li a i:hover {
 	transition: 1s;
-	color: var(--blue4);
+	color: var(--red2);
 	border-radius: 10px;
 }
 
@@ -912,10 +931,18 @@ html[data-theme=light] #sideBar ul li a i:hover {
 #siteNav > div > ul > li > a {
 	/* transition: 1s; */
 	color: var(--green1);
+}
+html[data-theme=light] #siteNav > div > ul > li > a {
+	/* transition: 1s; */
+	color: var(--gray4);
 } 
 #siteNav > div > ul > li > a.mainNav:hover {
 	/* transition: 1s; */
 	color: var(--pink2);
+}
+html[data-theme=light] #siteNav > div > ul > li > a.mainNav:hover {
+	/* transition: 1s; */
+	color: var(--red2);
 }
 /* #siteNav > div > ul > li:nth-child(4) > a, #siteNav > div > ul > li:nth-child(4) > a:hover */
 #siteNav > div > ul > li:nth-child(1) > a, #siteNav > div > ul > li:nth-child(1) > a:hover {
@@ -926,7 +953,23 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	padding: 0 .25em 0 .5em;
 	background: var(--bg);
 }
+html[data-theme=light] #siteNav > div > ul > li:nth-child(1) > a, html[data-theme=light] #siteNav > div > ul > li:nth-child(1) > a:hover {
+	/* transition: 1s !important; */
+	border-width: 2px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: 0 .25em 0 .5em;
+	background: var(--bg);
+}
 #siteNav > div > ul > li:nth-child(4) > a, #siteNav li:nth-child(4) a.hover {
+	/* transition: 1s !important; */
+	border-width: 2px;
+	padding: 0 .5em 0 .25em;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background: var(--bg);
+}
+html[data-theme=light] #siteNav > div > ul > li:nth-child(4) > a, html[data-theme=light] #siteNav li:nth-child(4) a.hover {
 	/* transition: 1s !important; */
 	border-width: 2px;
 	padding: 0 .5em 0 .25em;
@@ -952,6 +995,17 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	box-shadow: 0px 0px 4px 4px var(--pink2);
 	font-size: 1.1rem;
 }
+html[data-theme=light] #siteNav > div > ul {
+	display: flex;
+	margin: 0 0 0 0;
+	padding: 0;
+	position: relative;
+	background: var(--bg);
+	border: 2px solid var(--gray3);
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 4px var(--gray4);
+	font-size: 1.1rem;
+}
 #siteNav li a:link, #siteNav li a:visited {
 	display: block;
 	padding: 0em .25em;
@@ -960,6 +1014,17 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	font-weight: bold;
 	text-transform: uppercase;
 	color: var(--green1);
+	text-align: center;
+	letter-spacing: .1em;
+}
+html[data-theme=light] #siteNav li a:link, html[data-theme=light] #siteNav li a:visited {
+	display: block;
+	padding: 0em .25em;
+	background: var(--bg);
+	/* transition: 1s; */
+	font-weight: bold;
+	text-transform: uppercase;
+	color: var(--gray4);
 	text-align: center;
 	letter-spacing: .1em;
 }
@@ -981,25 +1046,57 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	box-shadow: 0px 0px 4px 4px var(--yellow2);
 	justify-items: center;
 }
+html[data-theme=light] #siteNav > div > ul > li > ul > li > a:hover {
+	/* transition: 1s; */
+	line-height: 2em;
+	border: 2px solid var(--gray3);
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 4px var(--gray4);
+	justify-items: center;
+}
 #siteNav > div > ul > li > ul > li > a > span:hover {
 	border-width: 2px;
 	border-radius: 10px;
 	color: var(--pink2);
+}
+html[data-theme=light] #siteNav > div > ul > li > ul > li > a > span:hover {
+	border-width: 2px;
+	border-radius: 10px;
+	color: var(--red2);
 }
 #siteNav li a.current, #siteNav li a.current:hover, #siteNav a span:hover {
 	border-width: 2px;
 	/* transition: 1s !important; */
 	color: var(--pink2);
 }
+html[data-theme=light] #siteNav li a.current, html[data-theme=light] #siteNav li a.current:hover, html[data-theme=light] #siteNav a span:hover {
+	border-width: 2px;
+	/* transition: 1s !important; */
+	color: var(--red2);
+}
 #siteNav li a:hover, #siteNav li a:active, #siteNav a span:hover {
 	transition: 1s !important;
 	color: var(--pink2);
+	border-bottom: none;
+}
+html[data-theme=light] #siteNav li a:hover, html[data-theme=light] #siteNav li a:active, html[data-theme=light] #siteNav a span:hover {
+	transition: 1s !important;
+	color: var(--red2);
 	border-bottom: none;
 }
 #siteNav li a:link span.tagline, #siteNav li a:visited span.tagline{
 	transition: 1s;
 	font: small-caps bold italic 1em Arial;
 	color: var(--purple2);
+	text-transform: none;
+	margin-top: .5em;
+	letter-spacing: 0;
+	background: var(--bg);
+}
+html[data-theme=light] #siteNav li a:link span.tagline, html[data-theme=light] #siteNav li a:visited span.tagline{
+	transition: 1s;
+	font: small-caps bold italic 1em Arial;
+	color: var(--red2);
 	text-transform: none;
 	margin-top: .5em;
 	letter-spacing: 0;
@@ -1024,6 +1121,13 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	margin:0;
 	color: var(--green1)
 }
+html[data-theme=light] #siteNav li ul li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin:0;
+	color: var(--green1)
+}
 #siteNav li ul a:link, #siteNav li ul a:visited {
 	font-weight: bold;
 	line-height: 2em;
@@ -1035,9 +1139,28 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	justify-content: center;
 	letter-spacing: 0;
 }
+html[data-theme=light] #siteNav li ul a:link, html[data-theme=light] #siteNav li ul a:visited {
+	font-weight: bold;
+	line-height: 2em;
+	text-align: center;
+	color: var(--gray4);
+	padding: 0 .5em;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 0;
+}
 #siteNav li ul a:hover, #siteNav li ul a:active {
 	transition: 1s;
 	color: var(--pink2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--bg);
+}
+html[data-theme=light] #siteNav li ul a:hover, html[data-theme=light] #siteNav li ul a:active {
+	transition: 1s;
+	color: var(--red2);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1082,9 +1205,9 @@ html[data-theme=light] #mainContent fieldset {
 	width: max-content !important;
 	min-width: 55vw !important;
 	max-width: calc(100vw * .66) !important; 
-	border: 2px solid var(--gray4);
+	border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--bg);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
 	position: relative;
 	-webkit-border-top-left-radius: 20px;
 	-webkit-border-top-right-radius: 20px;
