@@ -65,6 +65,7 @@ function changeFont(element, size, margin) {
 	var onePage = document.getElementsByClassName('onePage');
 	element.style.fontSize = size;
 	element.style.transitionDuration = '0s';
+	element.parentElement.children[0].children[1].style.transition = '0s';
 	element.parentElement.children[1].children[0].style.marginTop = margin;
 	element.parentElement.children[1].style.fontSize = size == '0.7rem' || size == '0.8rem' ? '.5rem' : '0.7rem';
 	element.parentElement.parentElement.style.height = 'fit-content';
@@ -74,6 +75,7 @@ function changeFont(element, size, margin) {
 	}
 	setTimeout(function() {
 		element.style.transitionDuration = '1s';
+		element.parentElement.children[0].children[1].style.transition = '1s';
 	}, 5);
 };
 
