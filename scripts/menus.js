@@ -408,6 +408,7 @@ function sideBarNavLinks() {
 					$('#mainContent')[0].outerHTML = str;
 					topBarNav();
 					sideBarNav();
+					loadSVG();
 					setTimeout(function() {
 						loadCanvas();
 					}, 5);
@@ -451,7 +452,6 @@ function sideBarNavLinks() {
 				.then((text) => {
 					if ($(document).find('canvas').length != 0) {
 						killCanvas();
-						document.getElementsByTagName('canvas')[0].remove();
 					}
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
@@ -1121,6 +1121,18 @@ function loadScript(src) {
 	});
 };
 
+function loadSVG() {
+let injector = document.getElementsByClassName('svg-container')[0];
+let palette = ['#55efc4', '#00b894', '#81ecec', '#00cec9', '#74b9ff', '#0984e3', '#a29bfe', '#6c5ce7', '#ffeaa7', '#fdcb6e', '#fab1a0', '#e17055', '#ff7675', '#d63031', '#fd79a8', '#e84393', '#dfe6e9', '#b2bec3', '#636e72', '#2d3436'];
+for (let i = 0; i < 128; i++) {
+	console.log(palette[Math.floor(Math.random() * 20)]);
+	let fill = palette[Math.floor(Math.random() * 20)];
+	injector.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="2em" height="2em" opacity="${Math.random()}" fill="#e84393">
+<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="0"/>
+</svg>`;
+}
+};
+
 $(document).ready(function() {
 
 	enableNav()
@@ -1130,6 +1142,9 @@ $(document).ready(function() {
 	sideBarNavLinks();
 	bannerJustify();
 	loadCanvas();
+	if ($(document).find('svg-container').length != 0) {
+		loadSVG();
+	}
 });
 
 $(window).resize(function() {
