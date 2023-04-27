@@ -1123,19 +1123,26 @@ function loadScript(src) {
 };
 
 function loadSVG() {
-let injector = document.getElementsByClassName('svg-container')[0];
-let palette = ['#55efc4', '#00b894', '#81ecec', '#00cec9', '#74b9ff', '#0984e3', '#a29bfe', '#6c5ce7', '#ffeaa7', '#fdcb6e', '#fab1a0', '#e17055', '#ff7675', '#d63031', '#fd79a8', '#e84393', '#dfe6e9', '#b2bec3', '#636e72', '#2d3436'];
-for (let i = 0; i < 128; i++) {
-	// let fill = palette[Math.floor(Math.random() * 20)];
-	injector.innerHTML += `<svg class="jacks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${Math.random()}" fill="#e84393">
-		<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="0"/>
-		</svg>`;
+	let injector = document.getElementsByClassName('svg-container')[0];
+	injector.innerHTML = '';
+	let palette = ['#55efc4', '#00b894', '#81ecec', '#00cec9', '#74b9ff', '#0984e3', '#a29bfe', '#6c5ce7', '#ffeaa7', '#fdcb6e', '#fab1a0', '#e17055', '#ff7675', '#d63031', '#fd79a8', '#e84393', '#dfe6e9', '#b2bec3', '#636e72', '#2d3436'];
+	let width = $(injector)[0].parentElement.offsetWidth - 16;
+	let height = $(injector)[0].parentElement.offsetHeight - 16;
+	injector.style.width = width;
+	injector.style.height = height;
+	let nodes = Math.floor(width / 16);
+	console.log(nodes);
+	for (let i = 0; i < nodes; i++) {
+		injector.innerHTML += `<svg class="jacks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${Math.random()}" fill="#e84393">
+			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="0"/>
+			</svg>`;
 	}
 };
+
 function responsiveSVG() {
-var palette = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3', '#d63031', '#e17055'];
-var oldOpacity;
-const feeler = document.getElementsByClassName('jacks');
+	var palette = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3', '#d63031', '#e17055'];
+	var oldOpacity;
+	const feeler = document.getElementsByClassName('jacks');
 	$(feeler).on('mouseenter', function(e) {
 		oldOpacity = $(this)[0].style.opacity;
 		$(this)[0].style.transition = '.25s ease-in-out !important';
@@ -1174,6 +1181,8 @@ $(window).resize(function() {
 	if ($(document).find('canvas').length != 0) {
 		loadCanvas();
 	}
+	loadSVG()
+	responsiveSVG()
 	topBarNav();
 	topBarNavLinks();
 	sideBarNav();

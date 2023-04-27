@@ -96,6 +96,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	width: clamp(160px, calc(100vw * .55), 440px);
 	border: 2px solid var(--pink1);
 	box-shadow: 0px 0px 4px 4px var(--pink2);
+	z-index: 1;
 }
 html[data-theme="light"] #field > article > div.hero > div > img.banner {
 	/* margin-top: 28px; */
@@ -107,9 +108,11 @@ html[data-theme="light"] #field > article > div.hero > div > img.banner {
 	width: clamp(160px, calc(100vw * .55), 440px);
 	border: 2px solid var(--gray3);
 	box-shadow: 0px 0px 4px 4px var(--gray4);
+	z-index: 1;
 }
 .burst {
 	/* margin-top: 28px; */
+	background: #000000;
 	border-radius: 10px;  
 	z-index: -1;
 }
@@ -1407,20 +1410,24 @@ html[data-theme=light] #mainContent .mainField {
 .svg-container {
 	display: flex;
 	flex-wrap: wrap;
-	position: absolute;
-	width: 512px;
+	position: relative;
+	width: auto;
 	height: auto;
-	/* margin-top: 32px; */
-	margin-bottom: 64px;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 0;
+	justify-content: space-evenly;
+	overflow: hidden;
 }
 svg {
 	transition: .25s ease-in-out;
 	/* transition-delay: .75s; */
-	/* margin: 1px; */
-	z-index: 10;
+	/* margin: 0 32px; */
+	z-index: 1;
 }
 svg:hover {
 	opacity: 1 !important;
 	transition: none;
-	/* transition-delay: .75s; */
 }
