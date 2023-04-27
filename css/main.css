@@ -1410,15 +1410,17 @@ html[data-theme=light] #mainContent .mainField {
 	position: absolute;
 	width: 512px;
 	height: auto;
-	margin-bottom: 10px;
+	/* margin-top: 32px; */
+	margin-bottom: 64px;
 }
 svg {
-	/* margin: -6px -6px -6px -6px; */
-	transition: .33s;
+	transition: .25s ease-in-out;
+	/* transition-delay: .75s; */
+	/* margin: 1px; */
+	z-index: 10;
 }
 svg:hover {
 	opacity: 1 !important;
-	/* transform: rotate(45deg); */
-	transition: .33s;
-	fill: #0984e3;
+	transition: none;
+	/* transition-delay: .75s; */
 }
