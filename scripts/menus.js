@@ -384,10 +384,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
@@ -408,8 +404,6 @@ function sideBarNavLinks() {
 					$('#mainContent')[0].outerHTML = str;
 					topBarNav();
 					sideBarNav();
-					loadSVG();
-					responsiveSVG();
 					setTimeout(function() {
 						loadCanvas();
 					}, 5);
@@ -435,10 +429,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
@@ -482,10 +472,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
@@ -508,10 +494,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
 				});
@@ -537,10 +519,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
@@ -567,10 +545,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
 				});
@@ -590,10 +564,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
@@ -630,10 +600,6 @@ function sideBarNavLinks() {
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
-				nav.addClass('flash');
-				setTimeout(function() {
-					nav.removeClass('flash');
-				}, 600);
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
@@ -871,11 +837,11 @@ function topBarNavLinks() {
 				})
 			});
 		}
-		if ($(this).hasClass('neirman')) {
-			let nav = $('.neirman');
+		if ($(this).hasClass('sandbox')) {
+			let nav = $('.sandbox');
 			let sideNav = $('.fa.fa-code');
 			nav.on('click', function() {
-				fetch('/site/neirman.html')
+				fetch('/site/sandbox.html')
 				.then((response) => response.text())
 				.then((text) => {
 					sideBar.find('i').each(function() {
@@ -893,6 +859,8 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
+					loadSVG();
+					responsiveSVG();
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -1124,40 +1092,58 @@ function loadScript(src) {
 
 function loadSVG() {
 	let injector = document.getElementsByClassName('svg-container')[0];
+	let updater = document.getElementsByClassName('updater');
+	console.log(updater);
 	injector.innerHTML = '';
-	let palette = ['#55efc4', '#00b894', '#81ecec', '#00cec9', '#74b9ff', '#0984e3', '#a29bfe', '#6c5ce7', '#ffeaa7', '#fdcb6e', '#fab1a0', '#e17055', '#ff7675', '#d63031', '#fd79a8', '#e84393', '#dfe6e9', '#b2bec3', '#636e72', '#2d3436'];
-	let width = $(injector)[0].parentElement.offsetWidth - 16;
-	let height = $(injector)[0].parentElement.offsetHeight - 16;
+	var pDubs = 0;
+	let width = Math.floor(($(injector)[0].parentElement.offsetWidth)/ 16) * 16;
+	let height = Math.floor(($(injector)[0].parentElement.offsetHeight) / 48) * 16;
 	injector.style.width = width;
 	injector.style.height = height;
-	let nodes = Math.floor(width / 16);
-	console.log(nodes);
+	let nodes = Math.floor((width * height) / 16);
+	if (updater[0]) {
+		updater[0].remove();
+	}
+	injector.parentElement.children[2].insertAdjacentHTML('afterend',`<div class='updater'><div class='item' style='padding: 16px 0 0 0;'>
+	<span class='content highlight' tabindex='0'>SVG Count</span><span class='content' tabindex='0'>&nbsp;${nodes}</span>
+	<span class='content highlight' tabindex='0'>Pinwheels</span><span class='content' id='updater' tabindex='0'>&nbsp;0</span>
+	</div></div>`);
 	for (let i = 0; i < nodes; i++) {
-		injector.innerHTML += `<svg class="jacks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${Math.random()}" fill="#e84393">
-			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="0"/>
-			</svg>`;
+		injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
+			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
+			</svg>`);
 	}
 };
 
 function responsiveSVG() {
-	var palette = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3', '#d63031', '#e17055'];
+	var palette = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
 	var oldOpacity;
-	const feeler = document.getElementsByClassName('jacks');
+	var pDubs = 0;
+	const feeler = document.getElementsByClassName('pinwheels');
 	$(feeler).on('mouseenter', function(e) {
 		oldOpacity = $(this)[0].style.opacity;
 		$(this)[0].style.transition = '.25s ease-in-out !important';
 		$(this)[0].style.transitionDelay = '0s';
-		$(this)[0].style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
-		$(this)[0].style.fill = `${palette[Math.floor(Math.random() * 8)]}`;
+		$(this)[0].style.transform = `rotate(${Math.floor(Math.random() * 2160)}deg)`;
+		$(this)[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
+		$(this)[0].style.stroke = `${palette[Math.floor(Math.random() * 6)]}`;
 		$(this)[0].style.opacity = '1 !important';
+		pDubs++;
+		document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
 	});
 	$(feeler).on('mouseleave', function(e) {
 		$(this)[0].style.transitionDelay = '.75s';
-		$(this)[0].style.transition = '.25s !important';
 		$(this)[0].style.transform = ``;
 		$(this)[0].style.opacity = oldOpacity;
-		$(this)[0].style.fill = '#e84393';
+		$(this)[0].style.fill = '#fd79a8';
+		$(this)[0].style.stroke = '#e84393';
+		
+		setTimeout(function() {
+			pDubs--;
+			document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
+		}, 2500);
 	});
+
 }
 
 $(document).ready(function() {
@@ -1168,9 +1154,9 @@ $(document).ready(function() {
 	sideBarNavLinks();
 	bannerJustify();
 	loadCanvas();
-	if ($(document).find('svg-container').length != 0) {
-		loadSVG();
-	}
+	// if ($(document).find('svg-container').length != 0) {
+	// 	loadSVG();
+	// }
 });
 
 $(window).resize(function() {

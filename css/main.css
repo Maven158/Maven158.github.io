@@ -396,7 +396,7 @@ html[data-theme="light"] .onePage .section-header {
 	background: var(--bg);
 	transition: 1s;
 }
-/* .flash {
+.flash {
 	-webkit-animation-name: flash;
 	-webkit-animation-duration: 0.2s;
   -webkit-animation-iteration-count: 3;
@@ -420,7 +420,7 @@ html[data-theme="light"] .onePage .section-header {
 	from { color: var(--yellow2); border: 2px solid var(--pink1); box-shadow: 0px 0px 4px 4px var(--pink2); }
 	to   { color: default; border: 2px solid var(--yellow1); box-shadow: 0px 0px 4px 4px var(--yellow2); }
 }
-.flashMode {
+/* .flashMode {
 	-webkit-animation-name: flashMode;
 	-webkit-animation-duration: 0.2s;
   -webkit-animation-iteration-count: 3;
@@ -1418,11 +1418,17 @@ html[data-theme=light] #mainContent .mainField {
 	left: 0px;
 	right: 0px;
 	z-index: 0;
+	margin-top: 16px;
 	justify-content: space-evenly;
 	overflow: hidden;
 }
 svg {
-	transition: .25s ease-in-out;
+	display: block;
+	flex-wrap: wrap;
+	position: relative;
+	width: auto;
+	height: auto;
+	transition: 2s ease-in-out;
 	/* transition-delay: .75s; */
 	/* margin: 0 32px; */
 	z-index: 1;
@@ -1430,4 +1436,11 @@ svg {
 svg:hover {
 	opacity: 1 !important;
 	transition: none;
+}
+polygon {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	width: auto;
+	height: auto;
 }
