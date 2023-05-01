@@ -812,10 +812,6 @@ function topBarNavLinks() {
 							$(this).removeClass('selected');
 						}
 					});
-					$(sideNav).addClass('flash');
-					setTimeout(function() {
-						$(sideNav).removeClass('flash');
-					}, 600);
 					$(sideNav).addClass('selected');
 					nav.addClass('flash');
 					newDoc.innerHTML = text;
@@ -849,10 +845,6 @@ function topBarNavLinks() {
 							$(this).removeClass('selected');
 						}
 					});
-					$(sideNav).addClass('flash');
-					setTimeout(function() {
-						$(sideNav).removeClass('flash');
-					}, 600);
 					$(sideNav).addClass('selected');
 					nav.addClass('flash');
 					newDoc.innerHTML = text;
@@ -888,10 +880,6 @@ function topBarNavLinks() {
 							$(this).removeClass('selected');
 						}
 					});
-					$(sideNav).addClass('flash');
-					setTimeout(function() {
-						$(sideNav).removeClass('flash');
-					}, 600);
 					$(sideNav).addClass('selected');
 					nav.addClass('flash');
 					newDoc.innerHTML = text;
@@ -1093,9 +1081,7 @@ function loadScript(src) {
 function loadSVG() {
 	let injector = document.getElementsByClassName('svg-container')[0];
 	let updater = document.getElementsByClassName('updater');
-	console.log(updater);
 	injector.innerHTML = '';
-	var pDubs = 0;
 	let width = Math.floor(($(injector)[0].parentElement.offsetWidth)/ 16) * 16;
 	let height = Math.floor(($(injector)[0].parentElement.offsetHeight) / 48) * 16;
 	injector.style.width = width;
@@ -1105,31 +1091,42 @@ function loadSVG() {
 		updater[0].remove();
 	}
 	injector.parentElement.children[2].insertAdjacentHTML('afterend',`<div class='updater'><div class='item' style='padding: 16px 0 0 0;'>
-	<span class='content highlight' tabindex='0'>SVG Count</span><span class='content' tabindex='0'>&nbsp;${nodes}</span>
+	<span class='content highlight' tabindex='0'>SVG Elements</span><span class='content' tabindex='0'>&nbsp;${nodes}</span>
 	<span class='content highlight' tabindex='0'>Pinwheels</span><span class='content' id='updater' tabindex='0'>&nbsp;0</span>
 	</div></div>`);
 	for (let i = 0; i < nodes; i++) {
-		injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
-			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
-			</svg>`);
+		// let randoSpins = Math.random() * 100;
+		// if (randoSpins < 2) {
+		// 	injector.insertAdjacentHTML('beforeend',`<span class="spinning"><svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
+		// 		<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
+		// 		</svg></span>`);
+		// } else {
+			injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
+				<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
+				</svg>`);
+		// }
 	}
+	
 };
 
 function responsiveSVG() {
-	var palette = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
+	var palette = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7', '#81ecec', '#74b9ff'];
+	var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
 	var oldOpacity;
-	var pDubs = 0;
 	const feeler = document.getElementsByClassName('pinwheels');
 	$(feeler).on('mouseenter', function(e) {
 		oldOpacity = $(this)[0].style.opacity;
 		$(this)[0].style.transition = '.25s ease-in-out !important';
-		$(this)[0].style.transitionDelay = '0s';
-		$(this)[0].style.transform = `rotate(${Math.floor(Math.random() * 2160)}deg)`;
+		// $(this)[0].style.transitionDelay = '0s';
 		$(this)[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
-		$(this)[0].style.stroke = `${palette[Math.floor(Math.random() * 6)]}`;
+		$(this)[0].style.stroke = `${stroke[Math.floor(Math.random() * 6)]}`;
+		$(this)[0].style.transform = `rotate(${Math.floor(Math.random() * 2160)}deg)`;
 		$(this)[0].style.opacity = '1 !important';
-		pDubs++;
-		document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
+		// $(this)[0].style.animation = 'fadeOutInOut 1s forwards';
+		// $(this)[0].style.animation = 'spin 1s linear';
+		
+		// pDubs++;
+		// document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
 	});
 	$(feeler).on('mouseleave', function(e) {
 		$(this)[0].style.transitionDelay = '.75s';
@@ -1137,14 +1134,95 @@ function responsiveSVG() {
 		$(this)[0].style.opacity = oldOpacity;
 		$(this)[0].style.fill = '#fd79a8';
 		$(this)[0].style.stroke = '#e84393';
+		// $(this)[0].style.animation = 'fadeOutInOut 1.25s backwards';
 		
-		setTimeout(function() {
-			pDubs--;
-			document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
-		}, 2500);
+		// setTimeout(function() {
+		// 	pDubs--;
+		// 	document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
+		// }, 2500);
 	});
 
 }
+
+function initSpin() {
+	var oldOpacity;
+	var palette = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7', '#81ecec', '#74b9ff'];
+	var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
+	let spinning = function() {
+		$('.spinning').each(function() {
+			// console.log($(this)[0].children[0]);
+			oldOpacity = $(this)[0].children[0].style.opacity;
+			$(this)[0].children[0].style.transition = '.25s ease-in-out !important';
+			$(this)[0].children[0].style.transitionDelay = '0s';
+			$(this)[0].children[0].style.transform = `rotate(2160deg)`;
+			$(this)[0].children[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
+			$(this)[0].children[0].style.stroke = `${stroke[Math.floor(Math.random() * 6)]}`;
+			$(this)[0].children[0].style.opacity = '1 !important';
+		});
+		let stopSpinning = function() {
+			$('.spinning').each(function() {
+				$(this)[0].children[0].style.transitionDelay = '.75s';
+				$(this)[0].children[0].style.transform = ``;
+				$(this)[0].children[0].style.opacity = oldOpacity;
+				$(this)[0].children[0].style.fill = '#fd79a8';
+				$(this)[0].children[0].style.stroke = '#e84393';
+			});
+		}
+		let rand = Math.round(Math.random() * 1900) + 100;
+		setTimeout(spinning, rand);
+		setTimeout(stopSpinning, rand);
+	}
+	let addSpin = function() {
+		let size = Math.floor(Math.random() * 20) + 10;
+		let top = Math.floor(Math.random() * 100) - 5;
+		let left = Math.floor(Math.random() * 100);
+		return '<span class="spin" style="top:' + top + '%; left:' + left + '%;">'
+			+ '<svg width="' + size + '" height="' + size + '" viewBox="0 0 68 68" fill="none" stroke-width="2" stroke="' + stroke + '">'
+			+ '<path d="' + svgPath + '" fill="' + color + '" /></svg></span>';
+	}
+	spinning();
+}
+
+$(function() {
+	initSpin();
+});
+
+function initSparkling() {
+	// settings
+	// var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
+	const color = `#C0C0C0`;
+	const stroke = '#D7EDE9';
+	const svgPath = 'M26.5 25.5C19.0043 33.3697 0 34 0 34C0 34 19.1013 35.3684 26.5 43.5C33.234 50.901 34 68 34 68C34 68 36.9884 50.7065 44.5 43.5C51.6431 36.647 68 34 68 34C68 34 51.6947 32.0939 44.5 25.5C36.5605 18.2235 34 0 34 0C34 0 33.6591 17.9837 26.5 25.5Z';
+	let sparkling = function() {
+		$('.sparkling').each(function() {
+			let sparklingElement = $(this);
+			let stars = sparklingElement.find('.star');
+			if (stars.length > 2) {
+				stars.each(function(index) {
+					if (index === 0) {
+						$(this).remove();
+					}
+				});
+			}
+			sparklingElement.append(addStar());
+		});
+		let rand = Math.round(Math.random() * 1900) + 100;
+		setTimeout(sparkling, rand);
+	}
+	let addStar = function() {
+		let size = Math.floor(Math.random() * 20) + 10;
+		let top = Math.floor(Math.random() * 100) - 5;
+		let left = Math.floor(Math.random() * 100);
+		return '<span class="star" style="top:' + top + '%; left:' + left + '%;">'
+			+ '<svg width="' + size + '" height="' + size + '" viewBox="0 0 68 68" fill="none" stroke-width="2" stroke="' + stroke + '">'
+			+ '<path d="' + svgPath + '" fill="' + color + '" /></svg></span>';
+	}
+	sparkling();
+}
+
+$(function() {
+	initSparkling();
+});
 
 $(document).ready(function() {
 	enableNav()
@@ -1167,8 +1245,10 @@ $(window).resize(function() {
 	if ($(document).find('canvas').length != 0) {
 		loadCanvas();
 	}
-	loadSVG()
-	responsiveSVG()
+	if ($(document).find('svg-container').length != 0) {
+		loadSVG();
+		responsiveSVG();
+	}
 	topBarNav();
 	topBarNavLinks();
 	sideBarNav();
