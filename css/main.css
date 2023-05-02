@@ -55,6 +55,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font: 100% Arial, sans-serif;
+	overflow-y: auto;
 }
 body {
 	text-align: center;
@@ -87,7 +88,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	position: absolute;
 }
 #field > article > div.hero > div > img.banner {
-	/* margin-top: 28px; */
 	border-radius: 10px;
 	padding: 10px;
 	position: absolute;
@@ -99,7 +99,6 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	z-index: 1;
 }
 html[data-theme="light"] #field > article > div.hero > div > img.banner {
-	/* margin-top: 28px; */
 	border-radius: 10px;
 	padding: 10px;
 	position: absolute;
@@ -111,8 +110,7 @@ html[data-theme="light"] #field > article > div.hero > div > img.banner {
 	z-index: 1;
 }
 .burst {
-	/* margin-top: 28px; */
-	background: #000000;
+	background: var(--bg);
 	border-radius: 10px;  
 	z-index: -1;
 }
@@ -152,7 +150,7 @@ html[data-theme="light"] #field > article > div.hero > div > img.banner {
 	font-size: clamp(.5rem, 1vw + .75rem, 1.35rem);
   letter-spacing: 0;
   font-weight: normal;
-  margin: 14px 0 0 0;
+  margin: 20px 0 0 0;
   text-transform: uppercase;
   text-align: left;
   border-bottom: none;
@@ -165,7 +163,7 @@ html[data-theme="light"] .onePage .section-header {
 	font-size: clamp(.5rem, 1vw + .75rem, 1.35rem);
   letter-spacing: 0;
   font-weight: normal;
-  margin: 14px 0 0 0;
+  margin: 20px 0 0 0;
   text-transform: uppercase;
   text-align: left;
   border-bottom: none;
@@ -1407,20 +1405,24 @@ html[data-theme=light] #mainContent .mainField {
 #mainContent > div > a:visited.footer {
 	color: var(--purple1);
 }
-.svg-container {
+.centered-container {
+position: relative;
+display: flex;
+justify-content: center;
+}
+[data-theme="dark"] .svg-container, .svg-container {
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
 	width: auto;
-	height: auto;
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
 	z-index: 0;
-	margin-top: 16px;
+	margin-top: 20px;
 	justify-content: center;
 	overflow: hidden;
+	padding: 16px;
+	border: 2px solid var(--yellow1);
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 4px var(--yellow2);
 }
 .left {
 	justify-content: right;
@@ -1432,6 +1434,7 @@ svg {
 	display: block;
 	flex-wrap: wrap;
 	position: relative;
+	margin: 0;
 	width: auto;
 	height: auto;
 	transition: 2s ease-in-out;
@@ -1448,33 +1451,27 @@ polygon {
 	width: auto;
 	height: auto;
 }
-
-/* sparkling stars */
 @keyframes fadeOutInOut {
 	0% { transform: scale(0); }
 	50% { transform: scale(1); }
 	100% { transform: scale(0); }
 }
-
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(180deg); }
 }
-
 .sparkling {
 	position: relative;
 	display: inline-block;
 	z-index: 10;
 	color: #ff7700;
 }
-
 .sparkling > span {
 	z-index: 15;
 	position: absolute;
 	display: block;
 	animation: fadeOutInOut 700ms forwards;
 }
-
 .sparkling > span > svg {
 	z-index: 20;
 	display: block;

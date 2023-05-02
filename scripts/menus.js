@@ -1082,31 +1082,29 @@ function loadSVG() {
 	let injector = document.getElementsByClassName('svg-container')[0];
 	let updater = document.getElementsByClassName('updater');
 	injector.innerHTML = '';
-	let width = Math.floor(($(injector)[0].parentElement.offsetWidth)/ 16) * 16;
-	let height = Math.floor(($(injector)[0].parentElement.offsetHeight) / 48) * 16;
-	injector.style.width = width;
-	injector.style.height = height;
-	let nodes = Math.floor((width * height) / 16);
-	if (updater[0]) {
-		updater[0].remove();
+	let width = Math.floor(($(injector)[0].parentElement.parentElement.clientWidth) / 16);
+	let height = Math.floor(($(injector)[0].parentElement.parentElement.clientHeight) / 16);
+
+	var numRowsCols
+	if (width > 40) {
+		numRowsCols = 40;
+	} else {
+		numRowsCols = width - 2; //Math.floor(((Math.floor((width / Math.floor(Math.sqrt(width * width))))) * Math.floor(Math.sqrt(width * width))));
 	}
-	injector.parentElement.children[2].insertAdjacentHTML('afterend',`<div class='updater'><div class='item' style='padding: 16px 0 0 0;'>
-	<span class='content highlight' tabindex='0'>SVG Elements</span><span class='content' tabindex='0'>&nbsp;${nodes}</span>
-	<span class='content highlight' tabindex='0'>Pinwheels</span><span class='content' id='updater' tabindex='0'>&nbsp;0</span>
-	</div></div>`);
+	let nodes = numRowsCols * numRowsCols;
+	// injector.parentElement.style.width = `${numRowsCols * 16} + px !important`;
+	// injector.parentElement.style.height = `${numRowsCols * 16} + px !important`;
+	injector.setAttribute('style', `width: ${numRowsCols * 16}px; height: ${numRowsCols * 16}px`);
+	// if (updater[0]) {
+	// 	updater[0].remove();
+	// }
+	// injector.parentElement.parentElement.children[2].insertAdjacentHTML('afterend',`<div class='updater'><div class='item' style='padding: 16px 0 0 0;'>
+	// <span class='content highlight'>SVG Elements</span><span class='content'>&nbsp;${nodes}</span></div></div>`);
 	for (let i = 0; i < nodes; i++) {
-		// let randoSpins = Math.random() * 100;
-		// if (randoSpins < 2) {
-		// 	injector.insertAdjacentHTML('beforeend',`<span class="spinning"><svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
-		// 		<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
-		// 		</svg></span>`);
-		// } else {
-			injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
-				<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
-				</svg>`);
-		// }
+		injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
+			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
+			</svg>`);
 	}
-	
 };
 
 function responsiveSVG() {
@@ -1114,6 +1112,7 @@ function responsiveSVG() {
 	var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
 	var oldOpacity;
 	const feeler = document.getElementsByClassName('pinwheels');
+	var pDubs = 0;
 	$(feeler).on('mouseenter', function(e) {
 		oldOpacity = $(this)[0].style.opacity;
 		$(this)[0].style.transition = '.25s ease-in-out !important';
@@ -1124,7 +1123,6 @@ function responsiveSVG() {
 		$(this)[0].style.opacity = '1 !important';
 		// $(this)[0].style.animation = 'fadeOutInOut 1s forwards';
 		// $(this)[0].style.animation = 'spin 1s linear';
-		
 		// pDubs++;
 		// document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
 	});
@@ -1135,57 +1133,15 @@ function responsiveSVG() {
 		$(this)[0].style.fill = '#fd79a8';
 		$(this)[0].style.stroke = '#e84393';
 		// $(this)[0].style.animation = 'fadeOutInOut 1.25s backwards';
-		
 		// setTimeout(function() {
 		// 	pDubs--;
-		// 	document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
+		// 	if (document.getElementById('updater')) {
+		// 		document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
+		// 	}
 		// }, 2500);
 	});
 
 }
-
-function initSpin() {
-	var oldOpacity;
-	var palette = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7', '#81ecec', '#74b9ff'];
-	var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
-	let spinning = function() {
-		$('.spinning').each(function() {
-			// console.log($(this)[0].children[0]);
-			oldOpacity = $(this)[0].children[0].style.opacity;
-			$(this)[0].children[0].style.transition = '.25s ease-in-out !important';
-			$(this)[0].children[0].style.transitionDelay = '0s';
-			$(this)[0].children[0].style.transform = `rotate(2160deg)`;
-			$(this)[0].children[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
-			$(this)[0].children[0].style.stroke = `${stroke[Math.floor(Math.random() * 6)]}`;
-			$(this)[0].children[0].style.opacity = '1 !important';
-		});
-		let stopSpinning = function() {
-			$('.spinning').each(function() {
-				$(this)[0].children[0].style.transitionDelay = '.75s';
-				$(this)[0].children[0].style.transform = ``;
-				$(this)[0].children[0].style.opacity = oldOpacity;
-				$(this)[0].children[0].style.fill = '#fd79a8';
-				$(this)[0].children[0].style.stroke = '#e84393';
-			});
-		}
-		let rand = Math.round(Math.random() * 1900) + 100;
-		setTimeout(spinning, rand);
-		setTimeout(stopSpinning, rand);
-	}
-	let addSpin = function() {
-		let size = Math.floor(Math.random() * 20) + 10;
-		let top = Math.floor(Math.random() * 100) - 5;
-		let left = Math.floor(Math.random() * 100);
-		return '<span class="spin" style="top:' + top + '%; left:' + left + '%;">'
-			+ '<svg width="' + size + '" height="' + size + '" viewBox="0 0 68 68" fill="none" stroke-width="2" stroke="' + stroke + '">'
-			+ '<path d="' + svgPath + '" fill="' + color + '" /></svg></span>';
-	}
-	spinning();
-}
-
-$(function() {
-	initSpin();
-});
 
 function initSparkling() {
 	// settings
@@ -1232,9 +1188,6 @@ $(document).ready(function() {
 	sideBarNavLinks();
 	bannerJustify();
 	loadCanvas();
-	// if ($(document).find('svg-container').length != 0) {
-	// 	loadSVG();
-	// }
 });
 
 $(window).resize(function() {
@@ -1245,12 +1198,11 @@ $(window).resize(function() {
 	if ($(document).find('canvas').length != 0) {
 		loadCanvas();
 	}
-	if ($(document).find('svg-container').length != 0) {
+	if ($(document).find('.svg-container').length != 0) {
 		loadSVG();
 		responsiveSVG();
 	}
 	topBarNav();
 	topBarNavLinks();
 	sideBarNav();
-	
 });
