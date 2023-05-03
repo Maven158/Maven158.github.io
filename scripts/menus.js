@@ -1080,26 +1080,16 @@ function loadScript(src) {
 
 function loadSVG() {
 	let injector = document.getElementsByClassName('svg-container')[0];
-	let updater = document.getElementsByClassName('updater');
-	injector.innerHTML = '';
 	let width = Math.floor(($(injector)[0].parentElement.parentElement.clientWidth) / 16);
-	let height = Math.floor(($(injector)[0].parentElement.parentElement.clientHeight) / 16);
-
 	var numRowsCols
+	injector.innerHTML = '';
 	if (width > 40) {
 		numRowsCols = 40;
 	} else {
-		numRowsCols = width - 2; //Math.floor(((Math.floor((width / Math.floor(Math.sqrt(width * width))))) * Math.floor(Math.sqrt(width * width))));
+		numRowsCols = width - 3;
 	}
 	let nodes = numRowsCols * numRowsCols;
-	// injector.parentElement.style.width = `${numRowsCols * 16} + px !important`;
-	// injector.parentElement.style.height = `${numRowsCols * 16} + px !important`;
 	injector.setAttribute('style', `width: ${numRowsCols * 16}px; height: ${numRowsCols * 16}px`);
-	// if (updater[0]) {
-	// 	updater[0].remove();
-	// }
-	// injector.parentElement.parentElement.children[2].insertAdjacentHTML('afterend',`<div class='updater'><div class='item' style='padding: 16px 0 0 0;'>
-	// <span class='content highlight'>SVG Elements</span><span class='content'>&nbsp;${nodes}</span></div></div>`);
 	for (let i = 0; i < nodes; i++) {
 		injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
 			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
@@ -1110,37 +1100,48 @@ function loadSVG() {
 function responsiveSVG() {
 	var palette = ['#fd79a8', '#55efc4', '#a29bfe', '#ffeaa7', '#81ecec', '#74b9ff'];
 	var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
-	var oldOpacity;
 	const feeler = document.getElementsByClassName('pinwheels');
-	var pDubs = 0;
 	$(feeler).on('mouseenter', function(e) {
-		oldOpacity = $(this)[0].style.opacity;
 		$(this)[0].style.transition = '.25s ease-in-out !important';
-		// $(this)[0].style.transitionDelay = '0s';
 		$(this)[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
 		$(this)[0].style.stroke = `${stroke[Math.floor(Math.random() * 6)]}`;
 		$(this)[0].style.transform = `rotate(${Math.floor(Math.random() * 2160)}deg)`;
 		$(this)[0].style.opacity = '1 !important';
-		// $(this)[0].style.animation = 'fadeOutInOut 1s forwards';
-		// $(this)[0].style.animation = 'spin 1s linear';
-		// pDubs++;
-		// document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
 	});
 	$(feeler).on('mouseleave', function(e) {
 		$(this)[0].style.transitionDelay = '.75s';
-		$(this)[0].style.transform = ``;
-		$(this)[0].style.opacity = oldOpacity;
-		$(this)[0].style.fill = '#fd79a8';
-		$(this)[0].style.stroke = '#e84393';
-		// $(this)[0].style.animation = 'fadeOutInOut 1.25s backwards';
-		// setTimeout(function() {
-		// 	pDubs--;
-		// 	if (document.getElementById('updater')) {
-		// 		document.getElementById('updater').innerHTML = `&nbsp;${pDubs}`;
-		// 	}
-		// }, 2500);
+		$(this)[0].style.transform = '';
+		$(this)[0].style.fill = '';
+		$(this)[0].style.stroke = '';
 	});
-
+	$(feeler).on('touchmove', function(e) {
+		e.preventDefault();
+		const touches = e.changedTouches;
+		const current = document.elementFromPoint(touches[0].pageX, touches[0].pageY);
+		if ($(current).hasClass('pinwheels')) {
+			$(current)[0].style.transition = '0s';
+			$(current)[0].style.opacity = '1';
+			$(current)[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
+			$(current)[0].style.stroke = `${stroke[Math.floor(Math.random() * 6)]}`;
+			$(current)[0].style.transform = `rotate(${Math.floor(Math.random() * 2160)}deg)`;
+			setTimeout(function() {
+				$(current)[0].style.transition = '2s';
+				$(current)[0].style.transitionDelay = '.75s';
+				$(current)[0].style.transform = '';
+				$(current)[0].style.opacity = '';
+				$(current)[0].style.fill = '';
+				$(current)[0].style.stroke = '';
+			}, 750);
+		}
+	});
+	$(feeler).on('touchend', function(e) {
+		e.preventDefault();
+		$(this)[0].style.transitionDelay = '.75s';
+		$(this)[0].style.transform = '';
+		$(this)[0].style.opacity = '';
+		$(this)[0].style.fill = '';
+		$(this)[0].style.stroke = '';
+	});
 }
 
 function initSparkling() {
