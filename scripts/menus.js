@@ -13,17 +13,17 @@ var touchStartPosY = 0;
 var revert;
 
 window.addEventListener('scroll', function() {
-	let state = window.pageYOffset || document.documentElement.scrollTop;
+	let state = window.scrollY || document.documentElement.scrollTop;
 	if (state > lastScrollTop && Math.abs(state - lastScrollTop) > 5) {
 		$('.box').fadeOut(1000);
-	}  else if (state < lastScrollTop) {
+		// setTimeout(function() {
+		// 	$(siteNav)[0].parentElement.style.zIndex = '-100';
+		// }, 1000);
+	}  else if (state <= lastScrollTop) {
+		// $(siteNav)[0].parentElement.style.zIndex = '';
 		$('.box').fadeIn(1000);
 	} 
 	lastScrollTop = state <= 0 ? 0 : state;
-	// clearTimeout($.data(this, 'scrollTimer'));
-	// $.data(this, 'scrollTimer', setTimeout(function() {
-	// 	$('.fixedBanner').fadeIn(1000);
-	// }, 750));
 }, false);
 
 function enableNav() {
@@ -1080,12 +1080,21 @@ function loadScript(src) {
 
 function loadSVG() {
 	let injector = document.getElementsByClassName('svg-container')[0];
-	let width = Math.floor(($(injector)[0].parentElement.parentElement.clientWidth) / 16);
+	var width = Math.floor(($(injector)[0].parentElement.parentElement.clientWidth) / 16);
 	var numRowsCols
 	injector.innerHTML = '';
 	if (width > 40) {
+		if ((width * 16 + 52) > (window.innerHeight - siteNav[0].clientHeight)) {
+			console.log(window.innerHeight - siteNav[0].clientHeight);
+			console.log((width * 16 + 52));
+		}
 		numRowsCols = 40;
 	} else {
+		if ((width * 16 + 52) > (window.innerHeight - siteNav[0].clientHeight)) {
+			console.log(window.innerHeight - siteNav[0].clientHeight);
+			console.log((width * 16 + 52));
+			width = Math.floor((window.innerHeight - 72) / 16);
+		}
 		numRowsCols = width - 3;
 	}
 	let nodes = numRowsCols * numRowsCols;
@@ -1102,7 +1111,7 @@ function responsiveSVG() {
 	var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
 	const feeler = document.getElementsByClassName('pinwheels');
 	$(feeler).on('mouseenter', function(e) {
-		$(this)[0].style.transition = '.25s ease-in-out !important';
+		$(this)[0].style.transition = '0s ease-in-out !important';
 		$(this)[0].style.fill = `${palette[Math.floor(Math.random() * 6)]}`;
 		$(this)[0].style.stroke = `${stroke[Math.floor(Math.random() * 6)]}`;
 		$(this)[0].style.transform = `rotate(${Math.floor(Math.random() * 2160)}deg)`;
@@ -1117,7 +1126,7 @@ function responsiveSVG() {
 	$(feeler).on('touchmove', function(e) {
 		e.preventDefault();
 		const touches = e.changedTouches;
-		const current = document.elementFromPoint(touches[0].pageX, touches[0].pageY);
+		const current = document.elementFromPoint(touches[0].pageX - window.scrollX, touches[0].pageY - window.scrollY);
 		if ($(current).hasClass('pinwheels')) {
 			$(current)[0].style.transition = '0s';
 			$(current)[0].style.opacity = '1';

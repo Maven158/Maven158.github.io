@@ -55,7 +55,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font: 100% Arial, sans-serif;
-	overflow-y: auto;
+	/* overflow-y: scroll; */
 }
 body {
 	text-align: center;
@@ -94,8 +94,8 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	display: flex;
 	text-align: center;
 	width: clamp(160px, calc(100vw * .55), 440px);
-	border: 2px solid var(--pink1);
-	box-shadow: 0px 0px 4px 4px var(--pink2);
+	border: 2px solid var(--blue3);
+	box-shadow: 0px 0px 4px 4px var(--blue4);
 	z-index: 1;
 }
 html[data-theme="light"] #field > article > div.hero > div > img.banner {
@@ -514,7 +514,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	bottom: 0px;
 	height: 60px;
 	overflow-y:hidden;
-	z-index: 2; /*fix for IE menu issues*/
+	z-index: 100; /*fix for IE menu issues*/
 }
 #mainContent > div > div > img.copyright {
 	display: flex;
@@ -928,6 +928,7 @@ html[data-theme=light] #sideBar ul li a i:hover {
 	position: relative;
 }
 #siteNav > div > ul > li > ul > li:nth-child(1) > a {
+	z-index: 200;
 	margin-top: 16px;
 }
 #siteNav > div > ul > li:nth-child(1), #siteNav > div > ul > li:nth-child(2), #siteNav > div > ul > li:nth-child(3), #siteNav > div > ul > li:nth-child(4) {
@@ -1034,6 +1035,7 @@ html[data-theme=light] #siteNav li a:link, html[data-theme=light] #siteNav li a:
 	letter-spacing: .1em;
 }
 #siteNav > div > ul > li > ul > li > a {
+	z-index: 200;
 	transition: 1s;;
 	line-height: 2em;
 	/* font-size: .7rem; */
@@ -1044,6 +1046,7 @@ html[data-theme=light] #siteNav li a:link, html[data-theme=light] #siteNav li a:
 	background: var(--bg);
 }
 #siteNav > div > ul > li > ul > li > a:hover {
+	z-index: 200;
 	/* transition: 1s; */
 	line-height: 2em;
 	border: 2px solid var(--yellow1);
@@ -1052,6 +1055,7 @@ html[data-theme=light] #siteNav li a:link, html[data-theme=light] #siteNav li a:
 	justify-items: center;
 }
 html[data-theme=light] #siteNav > div > ul > li > ul > li > a:hover {
+	z-index: 200;
 	/* transition: 1s; */
 	line-height: 2em;
 	border: 2px solid var(--gray3);
@@ -1060,6 +1064,7 @@ html[data-theme=light] #siteNav > div > ul > li > ul > li > a:hover {
 	justify-items: center;
 }
 #siteNav > div > ul > li > ul > li > a > span:hover {
+	z-index: 200;
 	border-width: 2px;
 	border-radius: 10px;
 	color: var(--pink2);
@@ -1420,9 +1425,10 @@ justify-content: center;
 	justify-content: center;
 	overflow: hidden;
 	padding: 16px;
-	border: 2px solid var(--yellow1);
+	border: 2px solid var(--blue3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--yellow2);
+	box-shadow: 0px 0px 4px 4px var(--blue4);
+	z-index: 100;
 }
 .left {
 	justify-content: right;
@@ -1438,7 +1444,7 @@ svg {
 	width: auto;
 	height: auto;
 	transition: 2s;
-	z-index: 1;
+	z-index: 100;
 }
 svg:hover {
 	opacity: 1 !important;
@@ -1450,7 +1456,7 @@ polygon {
 	position: relative;
 	width: auto;
 	height: auto;
-	z-index: -1;
+	z-index: 10;
 }
 @keyframes fadeOutInOut {
 	0% { transform: scale(0); }
