@@ -819,7 +819,7 @@ html[data-theme=light] #sideBar {
 	border-right: 2px solid var(--bg);
 	margin-top: 0em;
 	padding-bottom: 0em;
-	z-index: 1;
+	z-index: 1000;
 }
 #sideBar .toggle {
 	left: 4px;

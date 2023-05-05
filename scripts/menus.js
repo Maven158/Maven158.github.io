@@ -128,16 +128,13 @@ function sideBarNavPullTabClick() {
 				sideBar[0].style.transition = '1s';
 				sideBar[0].style.left = '-62px';
 				sideBar[0].style.top = '4px';
-				pullTabWrapper[0].style.display = 'flex';
-				pullTabWrapper[0].style.transition = '1s';
+				pullTabWrapper[0].style.transition = '1s left';
 				pullTabWrapper[0].style.left = '-11px';
-				// sideBarNavPullTabPosition();
 			} else if (!sideBar.hasClass('toggle')) {
 				sideBar.addClass('toggle');
 				sideBarNavSwipe();
 				sideBar[0].style.transition = '1s';
 				sideBar[0].style.left = '4px';
-				pullTabWrapper[0].style.display = 'flex';
 				pullTabWrapper[0].style.transition = '1s';
 				pullTabWrapper[0].style.left = '55px';
 				clearTimeout($.data(this));
@@ -153,7 +150,6 @@ function sideBarNavPullTabClick() {
 							sideBar[0].style.transition = '1s';
 							sideBar[0].style.left = '-62px';
 							sideBar[0].style.top = '4px';
-							pullTabWrapper[0].style.display = 'flex';
 							pullTabWrapper[0].style.transition = '1s';
 							pullTabWrapper[0].style.left = '-11px';
 							head = 4;
@@ -210,7 +206,6 @@ function sideBarNavPullTabSwipe() {
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.left = '-62px';
 					sideBar[0].style.top = '4px';
-					pullTabWrapper[0].style.display = 'flex';
 					pullTabWrapper[0].style.transition = '1s';
 					pullTabWrapper[0].style.left = '-11px';
 				}
@@ -219,7 +214,6 @@ function sideBarNavPullTabSwipe() {
 					sideBarNavSwipe();
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.left = '4px';
-					pullTabWrapper[0].style.display = 'flex';
 					pullTabWrapper[0].style.transition = '1s';
 					pullTabWrapper[0].style.left = '55px';
 				}
@@ -234,7 +228,6 @@ function sideBarNavPullTabSwipe() {
 						sideBar[0].style.transition = '1s';
 						sideBar[0].style.left = '-62px';
 						sideBar[0].style.top = '4px';
-						pullTabWrapper[0].style.display = 'flex';
 						pullTabWrapper[0].style.transition = '1s';
 						pullTabWrapper[0].style.left = '-11px';
 						head = 4;
@@ -288,7 +281,7 @@ function sideBarNavSwipe() {
 			const currentPageY = Math.round(element.originalEvent.touches[0].screenY);
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
-				head = window.innerHeight - 512;
+				head = window.innerHeight - 508;
 				sideBar[0].style.transition = '.2s';
 				sideBar[0].style.top = head + 'px';
 			} else {
@@ -311,7 +304,6 @@ function sideBarNavSwipe() {
 				} else {
 					if (sideBar.hasClass('toggle')) {
 						sideBar.removeClass('toggle');
-						pullTabWrapper[0].style.display = 'flex';
 						sideBar[0].style.transition = '1s';
 						sideBar[0].style.left = '-62px';
 						sideBar[0].style.top = '4px';
@@ -358,6 +350,8 @@ function sideBarNavLinks() {
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.left = '-62px';
 					sideBar[0].style.top = '4px';
+					pullTabWrapper[0].style.transition = '1s';
+					pullTabWrapper[0].style.left = '-11px';
 					sideBar.removeClass('toggle');
 				}
 				sideBarNavLinks();
@@ -391,6 +385,8 @@ function sideBarNavLinks() {
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.left = '-62px';
 					sideBar[0].style.top = '4px';
+					pullTabWrapper[0].style.transition = '1s';
+					pullTabWrapper[0].style.left = '-11px';
 					sideBar.removeClass('toggle');
 				}
 				sideBarNavLinks();
