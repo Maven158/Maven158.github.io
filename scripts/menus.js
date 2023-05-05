@@ -297,7 +297,7 @@ function sideBarNavSwipe() {
 				if (window.innerWidth >= 635) {
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.top = '4px';
-					pullTabWrapper[0].style.transition = '1s';
+					pullTabWrapper[0].style.transition = '0s left';
 					pullTabWrapper[0].style.left = '55px';
 					pullTabWrapper[0].style.opacity = '0';
 					head = 4;
@@ -307,7 +307,8 @@ function sideBarNavSwipe() {
 						sideBar[0].style.transition = '1s';
 						sideBar[0].style.left = '-62px';
 						sideBar[0].style.top = '4px';
-						pullTabWrapper[0].style.transition = '1s !important';
+						pullTabWrapper[0].style.opacity = '1';
+						pullTabWrapper[0].style.transition = '1s left !important';
 						pullTabWrapper[0].style.left = '-11px';
 						head = 4;
 					}
