@@ -14,15 +14,9 @@ var revert;
 window.addEventListener('scroll', function() {
 	let state = window.scrollY || document.documentElement.scrollTop;
 	if (state <= lastScrollTop || state == 0) {
-		$('.box').fadeIn(750);
-		setTimeout(function() {
-			$(siteNav)[0].parentElement.style.zIndex = '1000';
-		}, 1000);
+		$('#mainHeader').fadeIn(1000);
 	} else if (state > lastScrollTop) {
-		$('.box').fadeOut(750);
-		setTimeout(function() {
-			$(siteNav)[0].parentElement.style.zIndex = '-1';
-		}, 1000);
+		$('#mainHeader').fadeOut(1000);
 	}
 	lastScrollTop = state <= 0 ? 0 : state;
 }, false);
