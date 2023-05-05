@@ -97,11 +97,11 @@ function sideBarNav() {
 
 function sideBarNavPullTabPosition() {
 	pullTabWrapper[0].style.transition = '0s';
-	if (window.innerWidth < 635) {
-		pullTabWrapper[0].style.left = '-11px';
-	} else {
-		pullTabWrapper[0].style.left = '55px';
-	}
+	// if (window.innerWidth < 635) {
+	// 	pullTabWrapper[0].style.left = '-11px';
+	// } else {
+	// 	pullTabWrapper[0].style.left = '55px';
+	// }
 	if (window.innerHeight < 512) {
 		if (head == 4) {
 			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / window.innerHeight) * 100;
@@ -284,10 +284,12 @@ function sideBarNavSwipe() {
 				head = window.innerHeight - 508;
 				sideBar[0].style.transition = '.2s';
 				sideBar[0].style.top = head + 'px';
+				clearTimeout(revert);
 			} else {
 				head = 4;
 				sideBar[0].style.transition = '.2s';
 				sideBar[0].style.top = head + 'px';
+				clearTimeout(revert);
 			}
 			touchStartPosY = currentPageY;
 		});
