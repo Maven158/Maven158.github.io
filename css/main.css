@@ -56,6 +56,7 @@ html, body {
 	padding: 0;
 	font: 100% Arial, sans-serif;
 	/* overflow-y: scroll; */
+	overscroll-behavior: none;
 }
 body {
 	text-align: center;
@@ -534,17 +535,19 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 /*  header  ^5a*/
 
 .pullTab-Wrapper {
-	position: absolute;
+	position: fixed;
 	background: transparent;
-	left: 51px;
+	left: -11px;
 	width: 30px;
 	height: 80px;
-	top: 50%;
+	/* top: 46.1%; */
 	opacity: 1;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	z-index: -3;
+	transition: 1s;
+	transition-duration: 1s;
 }
 .pullTab-CornerTop {
 	position: absolute;
@@ -552,7 +555,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	height: 10px;
 	width: 10px;
 	left: 2px;
-	top: 12.5px;
+	top: 10px;
 	border-bottom-left-radius: 10px;
 	border: 2px solid var(--pink1);
 	border-right: none;
@@ -564,7 +567,7 @@ html[data-theme=light] .pullTab-CornerTop {
 	height: 10px;
 	width: 10px;
 	left: 2px;
-	top: 12.5px;
+	top: 10px;
 	border-bottom-left-radius: 10px;
 	border: 2px solid black;
 	border-right: none;
@@ -598,7 +601,7 @@ html[data-theme=light] .pullTab-CornerTop:before {
 	height: 10px;
 	width: 10px;
 	left: 2px;
-	top: 59.5px;
+	top: 58px;
 	border-top-left-radius: 10px;
 	border: 2px solid var(--pink1);
 	border-right: none;
@@ -610,7 +613,7 @@ html[data-theme=light] .pullTab-CornerBottom {
 	height: 10px;
 	width: 10px;
 	left: 2px;
-	top: 59.5px;
+	top: 58px;
 	border-top-left-radius: 10px;
 	border: 2px solid black;
 	border-right: none;
@@ -652,11 +655,11 @@ html[data-theme=light] .pullTab-CornerBottom:before {
 	line-height:1.1rem;
 	color:var(--pink1);
 	position: absolute;
-	height: 35px;
+	height: 36px;
 	width: 20px;
-	top: 50%;
+	top: 20px;
 	left: 1.5px;
-	margin-top: -17.5px;
+	/* margin-top: -17.5px; */
 	z-index: -2;
 	opacity: inherit ;
 }
@@ -674,11 +677,11 @@ html[data-theme=light] .pullTab {
 	line-height:1.1rem;
 	color: black;
 	position: absolute;
-	height: 35px;
+	height: 36px;
 	width: 20px;
-	top: 50%;
+	top: 20px;
 	left: 1.5px;
-	margin-top: -17.5px;
+	/* margin-top: -17.5px; */
 	z-index: -2;
 	opacity: inherit ;
 }
@@ -1428,13 +1431,13 @@ justify-content: center;
 	border: 2px solid var(--blue3);
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px var(--blue4);
-	z-index: 100;
+	z-index: 1;
 }
 .left {
 	justify-content: right;
 	flex-direction: row-reverse;
 	margin-top: 0px;
-	z-index: 10;
+	z-index: 11;
 }
 svg {
 	display: block;
@@ -1444,7 +1447,7 @@ svg {
 	width: auto;
 	height: auto;
 	transition: 2s;
-	z-index: 100;
+	z-index: 1000;
 }
 svg:hover {
 	opacity: 1 !important;
@@ -1456,7 +1459,7 @@ polygon {
 	position: relative;
 	width: auto;
 	height: auto;
-	z-index: 10;
+	z-index: 1;
 }
 @keyframes fadeOutInOut {
 	0% { transform: scale(0); }

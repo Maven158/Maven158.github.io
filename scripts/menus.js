@@ -3,7 +3,6 @@ import { resizeCanvas, loadCanvas, killCanvas } from './burst.js';
 var sideBar = $('#sideBar');
 var siteNav = $('#siteNav');
 var pullTabWrapper = $('#pullTab-Wrapper');
-var pullTab = $('#pullTab');
 var font = $('.mainNav');
 var newDoc = document.implementation.createHTMLDocument('doc').documentElement;
 var head = 4;
@@ -14,15 +13,17 @@ var revert;
 
 window.addEventListener('scroll', function() {
 	let state = window.scrollY || document.documentElement.scrollTop;
-	if (state > lastScrollTop && Math.abs(state - lastScrollTop) > 5) {
-		$('.box').fadeOut(1000);
-		// setTimeout(function() {
-		// 	$(siteNav)[0].parentElement.style.zIndex = '-100';
-		// }, 1000);
-	}  else if (state <= lastScrollTop) {
-		// $(siteNav)[0].parentElement.style.zIndex = '';
-		$('.box').fadeIn(1000);
-	} 
+	if (state <= lastScrollTop || state == 0) {
+		$('.box').fadeIn(750);
+		setTimeout(function() {
+			$(siteNav)[0].parentElement.style.zIndex = '1000';
+		}, 1000);
+	} else if (state > lastScrollTop) {
+		$('.box').fadeOut(750);
+		setTimeout(function() {
+			$(siteNav)[0].parentElement.style.zIndex = '-1';
+		}, 1000);
+	}
 	lastScrollTop = state <= 0 ? 0 : state;
 }, false);
 
@@ -101,18 +102,24 @@ function sideBarNav() {
 };
 
 function sideBarNavPullTabPosition() {
-	if (window.innerHeight < 508) {
+	pullTabWrapper[0].style.transition = '0s';
+	if (window.innerWidth < 635) {
+		pullTabWrapper[0].style.left = '-11px';
+	} else {
+		pullTabWrapper[0].style.left = '55px';
+	}
+	if (window.innerHeight < 512) {
 		if (head == 4) {
-			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / 504) * 100;
-			pullTabWrapper[0].style.top = sideBarNavPullTabPosition + '%';
-		} else {
-			let sideBarNavPullTabPosition = ((((window.innerHeight - 80) / 2) / 504) * 100) + ((512 - window.innerHeight) / 504) * 100;
+			let sideBarNavPullTabPosition = (((window.innerHeight - 80) / 2) / window.innerHeight) * 100;
 			pullTabWrapper[0].style.top = sideBarNavPullTabPosition + '%';
 		}
 	} else {
-		let sideBarNavPullTabPosition = (((512 - 80) / 2) / 504) * 100;
+		let sideBarNavPullTabPosition = (((512 - 80) / 2) / window.innerHeight) * 100;
 		pullTabWrapper[0].style.top = sideBarNavPullTabPosition + '%';
 	}
+	setTimeout(function() {
+		pullTabWrapper[0].style.transition = '1s';
+	}, 0);
 };
 
 function sideBarNavPullTabClick() {
@@ -124,16 +131,21 @@ function sideBarNavPullTabClick() {
 			element.preventDefault();
 			if (sideBar.hasClass('toggle')) {
 				sideBar.removeClass('toggle');
-				pullTabWrapper[0].style.display = 'flex';
 				sideBar[0].style.transition = '1s';
 				sideBar[0].style.left = '-62px';
 				sideBar[0].style.top = '4px';
+				pullTabWrapper[0].style.display = 'flex';
+				pullTabWrapper[0].style.transition = '1s';
+				pullTabWrapper[0].style.left = '-11px';
+				// sideBarNavPullTabPosition();
 			} else if (!sideBar.hasClass('toggle')) {
 				sideBar.addClass('toggle');
 				sideBarNavSwipe();
-				pullTabWrapper[0].style.display = 'flex';
 				sideBar[0].style.transition = '1s';
 				sideBar[0].style.left = '4px';
+				pullTabWrapper[0].style.display = 'flex';
+				pullTabWrapper[0].style.transition = '1s';
+				pullTabWrapper[0].style.left = '55px';
 				clearTimeout($.data(this));
 				let highestId = window.setTimeout(() => {
 					for (let i = highestId; i >= 0; i--) {
@@ -144,12 +156,13 @@ function sideBarNavPullTabClick() {
 					if (window.innerWidth < 635) {
 						if (sideBar.hasClass('toggle')) {
 							sideBar.removeClass('toggle');
-							pullTabWrapper[0].style.display = 'flex';
 							sideBar[0].style.transition = '1s';
 							sideBar[0].style.left = '-62px';
 							sideBar[0].style.top = '4px';
+							pullTabWrapper[0].style.display = 'flex';
+							pullTabWrapper[0].style.transition = '1s';
+							pullTabWrapper[0].style.left = '-11px';
 							head = 4;
-							sideBarNavPullTabPosition();
 						}
 					}
 				}, 5000);
@@ -157,30 +170,35 @@ function sideBarNavPullTabClick() {
 		});
 	} else if (window.innerWidth >= 635 && !sideBar.hasClass('toggle')) {
 		sideBar.addClass('toggle');
-		pullTabWrapper[0].style.display = 'none';
 		sideBar[0].style.transition = '1s';
 		sideBar[0].style.left = '4px';
 		sideBar[0].style.top = '4px';
+		pullTabWrapper[0].style.transition = '1s left';
+		pullTabWrapper[0].style.left = '55px';
+		pullTabWrapper[0].style.opacity = '0';
 		pullTabWrapper.off('click');
 		pullTabWrapper.off('touchmove');
-	} else if (window.innerWidth >= 635 && sideBar.hasClass('toggle')) {
-		pullTabWrapper[0].style.display = 'none';
+	} else if (window.innerWidth >= 635 && sideBar.hasClass('toggle')) {	
 		sideBar[0].style.transition = '1s';
 		sideBar[0].style.left = '4px';
 		sideBar[0].style.top = '4px';
+		pullTabWrapper[0].style.transition = '1s left';
+		pullTabWrapper[0].style.opacity = '0';
+		pullTabWrapper[0].style.left = '55px';
 		pullTabWrapper.off('click');
 		pullTabWrapper.off('touchmove');
 	}
 	if (window.innerWidth < 635) {
 		if (sideBar.hasClass('toggle')) {
 			sideBar.removeClass('toggle');
-			pullTabWrapper[0].style.display = 'flex';
 			sideBar[0].style.transition = '1s';
 			sideBar[0].style.left = '-62px';
 			sideBar[0].style.top = '4px';
+			pullTabWrapper[0].style.opacity = '1';
+			pullTabWrapper[0].style.transition = '1s left';
+			pullTabWrapper[0].style.left = '-11px';
 		}
 	}
-	sideBarNavSwipe();
 };
 
 function sideBarNavPullTabSwipe() {
@@ -195,17 +213,21 @@ function sideBarNavPullTabSwipe() {
 			if (touchStartPosX - currentPageX > 0) {
 				if (sideBar.hasClass('toggle')) {
 					sideBar.removeClass('toggle');
-					pullTabWrapper[0].style.display = 'flex';
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.left = '-62px';
 					sideBar[0].style.top = '4px';
+					pullTabWrapper[0].style.display = 'flex';
+					pullTabWrapper[0].style.transition = '1s';
+					pullTabWrapper[0].style.left = '-11px';
 				}
 			} else if (!sideBar.hasClass('toggle')) {
 					sideBar.addClass('toggle');
 					sideBarNavSwipe();
-					pullTabWrapper[0].style.display = 'flex';
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.left = '4px';
+					pullTabWrapper[0].style.display = 'flex';
+					pullTabWrapper[0].style.transition = '1s';
+					pullTabWrapper[0].style.left = '55px';
 				}
 			touchStartPosX = currentPageX;
 		});
@@ -215,12 +237,13 @@ function sideBarNavPullTabSwipe() {
 				if (window.innerWidth < 635) {
 					if (sideBar.hasClass('toggle')) {
 						sideBar.removeClass('toggle');
-						pullTabWrapper[0].style.display = 'flex';
 						sideBar[0].style.transition = '1s';
 						sideBar[0].style.left = '-62px';
 						sideBar[0].style.top = '4px';
+						pullTabWrapper[0].style.display = 'flex';
+						pullTabWrapper[0].style.transition = '1s';
+						pullTabWrapper[0].style.left = '-11px';
 						head = 4;
-						sideBarNavPullTabPosition();
 					}
 				}
 			}, 5000);
@@ -228,27 +251,34 @@ function sideBarNavPullTabSwipe() {
 	} else if (window.innerWidth >= 635 && !sideBar.hasClass('toggle')) {
 		sideBar.addClass('toggle');
 		sideBar[0].style.transition = '1s';
-		pullTabWrapper[0].style.display = 'none';
 		sideBar[0].style.left = '4px';
 		sideBar[0].style.top = '4px';
+		pullTabWrapper[0].style.transition = '1s left';
+		pullTabWrapper[0].style.left = '55px';
+		pullTabWrapper[0].style.opacity = '0';
 		pullTabWrapper.off('click');
 		pullTabWrapper.off('touchmove');
 	} else if (window.innerWidth >= 635 && sideBar.hasClass('toggle')) {
 		sideBar[0].style.transition = '1s';
-		pullTabWrapper[0].style.display = 'none';
-		pullTab[0].style.opacity
 		sideBar[0].style.left = '4px';
 		sideBar[0].style.top = '4px';
+		pullTabWrapper[0].style.transition = '1s left';
+		pullTabWrapper[0].style.left = '55px';
+		pullTabWrapper[0].style.opacity = '0';
 		pullTabWrapper.off('click');
 		pullTabWrapper.off('touchmove');
 	}
 	if (window.innerWidth < 635) {
 		if (sideBar.hasClass('toggle')) {
 			sideBar.removeClass('toggle');
-			pullTabWrapper[0].style.display = 'flex';
 			sideBar[0].style.transition = '1s';
 			sideBar[0].style.left = '-62px';
 			sideBar[0].style.top = '4px';
+			pullTabWrapper[0].style.opacity = '1';
+			setTimeout(function() {
+				pullTabWrapper[0].style.transition = '1s';
+				pullTabWrapper[0].style.left = '-11px';
+			}, 0);
 		}
 	}
 	sideBarNavSwipe();
@@ -257,24 +287,20 @@ function sideBarNavPullTabSwipe() {
 function sideBarNavSwipe() {
 	sideBar.off('touchmove');
 	sideBar.off('touchend');
-	if (window.innerHeight < 508 && sideBar.hasClass('toggle')) {
+	if (window.innerHeight < 512 && sideBar.hasClass('toggle')) {
 		sideBar.on('touchmove', sideBar.fn = function swipe(element) {
 			element.stopPropagation();
 			element.preventDefault();
 			const currentPageY = Math.round(element.originalEvent.touches[0].screenY);
 			if (touchStartPosY === currentPageY) return;
 			if (touchStartPosY - currentPageY > 0) {
-				head = window.innerHeight - 508;
+				head = window.innerHeight - 512;
 				sideBar[0].style.transition = '.2s';
 				sideBar[0].style.top = head + 'px';
-				// sideBar[0].style.transition = '0s';
-				sideBarNavPullTabPosition();
 			} else {
 				head = 4;
 				sideBar[0].style.transition = '.2s';
 				sideBar[0].style.top = head + 'px';
-				// sideBar[0].style.transition = '0s';
-				sideBarNavPullTabPosition();
 			}
 			touchStartPosY = currentPageY;
 		});
@@ -284,8 +310,10 @@ function sideBarNavSwipe() {
 				if (window.innerWidth >= 635) {
 					sideBar[0].style.transition = '1s';
 					sideBar[0].style.top = '4px';
+					pullTabWrapper[0].style.transition = '1s';
+					pullTabWrapper[0].style.left = '55px';
+					pullTabWrapper[0].style.opacity = '0';
 					head = 4;
-					sideBarNavPullTabPosition();
 				} else {
 					if (sideBar.hasClass('toggle')) {
 						sideBar.removeClass('toggle');
@@ -293,14 +321,15 @@ function sideBarNavSwipe() {
 						sideBar[0].style.transition = '1s';
 						sideBar[0].style.left = '-62px';
 						sideBar[0].style.top = '4px';
+						pullTabWrapper[0].style.transition = '1s !important';
+						pullTabWrapper[0].style.left = '-11px';
 						head = 4;
-						sideBarNavPullTabPosition();
 					}
 				}
 			}, 5000);
 		});
 	}
-	else if (window.innerHeight < 508 && !sideBar.hasClass('toggle')) {
+	else if (window.innerHeight < 512 && !sideBar.hasClass('toggle')) {
 		sideBar.off('touchmove');
 	}
 };
@@ -1091,9 +1120,7 @@ function loadSVG() {
 		numRowsCols = 40;
 	} else {
 		if ((width * 16 + 52) > (window.innerHeight - siteNav[0].clientHeight)) {
-			console.log(window.innerHeight - siteNav[0].clientHeight);
-			console.log((width * 16 + 52));
-			width = Math.floor((window.innerHeight - 72) / 16);
+			width = Math.floor((window.innerHeight - 80) / 16);
 		}
 		numRowsCols = width - 3;
 	}

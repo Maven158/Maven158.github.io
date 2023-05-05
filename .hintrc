@@ -12,7 +12,8 @@
       "default",
       {
         "ignore": [
-          "overflow-clip-margin"
+          "overflow-clip-margin",
+          "overscroll-behavior"
         ]
       }
     ]
