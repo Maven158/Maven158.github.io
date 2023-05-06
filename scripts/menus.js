@@ -14,9 +14,9 @@ var revert;
 window.addEventListener('scroll', function() {
 	let state = window.scrollY || document.documentElement.scrollTop;
 	if (state <= lastScrollTop || state == 0) {
-		$('#mainHeader').fadeIn(1000);
+		$('#mainHeader').stop().fadeIn(1000);
 	} else if (state > lastScrollTop) {
-		$('#mainHeader').fadeOut(1000);
+		$('#mainHeader').stop().fadeOut(1000);
 	}
 	lastScrollTop = state <= 0 ? 0 : state;
 }, false);
@@ -323,6 +323,22 @@ function sideBarNavSwipe() {
 	}
 };
 
+function downloadResume() {
+	var resume = $('.fa-cloud-arrow-down');
+	resume.on('click', resume.fn = function(e) {
+		fetch('site/Christopher Hren - Operations Manager - Region Manager.pdf',  {
+			method: 'GET'
+		})
+		.then(response => response.blob())
+  	.then(blob => {
+			var a = document.createElement('a');
+			a.href = window.URL.createObjectURL(blob);
+			a.download = 'Christopher Hren - Résumé';
+			a.click();
+  	});
+	});
+} 
+
 function sideBarNavLinks() {
 	sideBar.find('i').each(function() {
 		if ($(this).hasClass('fa-solid fa-sun')) {
@@ -349,14 +365,7 @@ function sideBarNavLinks() {
 				$(this).addClass('selectedDark');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (window.innerWidth < 635) {
-					sideBar[0].style.transition = '1s';
-					sideBar[0].style.left = '-62px';
-					sideBar[0].style.top = '4px';
-					pullTabWrapper[0].style.transition = '1s';
-					pullTabWrapper[0].style.left = '-11px';
-					sideBar.removeClass('toggle');
-				}
+				sideBarNavPullTabClick();
 				sideBarNavLinks();
 			});
 		}
@@ -384,14 +393,7 @@ function sideBarNavLinks() {
 				$(this).addClass('selectedLight');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (window.innerWidth < 635) {
-					sideBar[0].style.transition = '1s';
-					sideBar[0].style.left = '-62px';
-					sideBar[0].style.top = '4px';
-					pullTabWrapper[0].style.transition = '1s';
-					pullTabWrapper[0].style.left = '-11px';
-					sideBar.removeClass('toggle');
-				}
+				sideBarNavPullTabClick();
 				sideBarNavLinks();
 			});
 		}
@@ -409,12 +411,7 @@ function sideBarNavLinks() {
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (window.innerWidth < 635) {
-					sideBar[0].style.transition = '1s';
-					sideBar[0].style.left = '-62px';
-					sideBar[0].style.top = '4px';
-					sideBar.removeClass('toggle');
-				}
+				sideBarNavPullTabClick();
 				fetch('/site/home.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -454,12 +451,7 @@ function sideBarNavLinks() {
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (window.innerWidth < 635) {
-					sideBar[0].style.transition = '1s'
-					sideBar[0].style.left = '-62px';
-					sideBar[0].style.top = '4px';
-					sideBar.removeClass('toggle');
-				}
+				sideBarNavPullTabClick();
 				fetch('/site/code.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -486,11 +478,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (window.innerWidth < 635) {
-						sideBar[0].style.transition = '1s'
-						sideBar[0].style.left = '-62px';
-						sideBar.removeClass('toggle');
-					}
+					sideBarNavPullTabClick();
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
@@ -507,12 +495,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (window.innerWidth < 635) {
-						sideBar[0].style.transition = '1s'
-						sideBar[0].style.left = '-62px';
-						sideBar[0].style.top = '4px';
-						sideBar.removeClass('toggle');
-					}
+					sideBarNavPullTabClick();
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
@@ -532,12 +515,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (window.innerWidth < 635) {
-						sideBar[0].style.transition = '1s'
-						sideBar[0].style.left = '-62px';
-						sideBar[0].style.top = '4px';
-						sideBar.removeClass('toggle');
-					}
+					sideBarNavPullTabClick();
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
@@ -558,12 +536,7 @@ function sideBarNavLinks() {
 				sideBar.find('i').each(function() {
 					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
-					if (window.innerWidth < 635) {
-						sideBar[0].style.transition = '1s'
-						sideBar[0].style.left = '-62px';
-						sideBar[0].style.top = '4px';
-						sideBar.removeClass('toggle');
-					}
+					sideBarNavPullTabClick();
 				});
 				nav.off('mouseout');
 				nav.off('mouseenter');
@@ -589,12 +562,7 @@ function sideBarNavLinks() {
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (window.innerWidth < 635) {
-					sideBar[0].style.transition = '1s'
-					sideBar[0].style.left = '-62px';
-					sideBar[0].style.top = '4px';
-					sideBar.removeClass('toggle');
-				}
+				sideBarNavPullTabClick();
 				fetch('/site/resume.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -602,6 +570,7 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
+					downloadResume();
 				});
 				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
@@ -625,12 +594,7 @@ function sideBarNavLinks() {
 				nav.addClass('selected');
 				let toolTip = nav[0].getElementsByClassName('tt')[0];
 				toolTip.style.opacity = '0';
-				if (window.innerWidth < 635) {
-					sideBar[0].style.transition = '1s'
-					sideBar[0].style.left = '-62px';
-					sideBar[0].style.top = '4px';
-					sideBar.removeClass('toggle');
-				}
+				sideBarNavPullTabClick();
 				fetch('/site/contact.html')
 				.then((response) => response.text())
 				.then((text) => {
@@ -756,6 +720,7 @@ function topBarNavLinks() {
 					window.scrollTo(0, 0);
 					setTimeout(function() {
 						nav.removeClass('flash');
+						downloadResume();
 					}, 600);
 				})
 				.then(() => {

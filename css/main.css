@@ -55,8 +55,8 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font: 100% Arial, sans-serif;
-	/* overflow-y: scroll; */
-	overscroll-behavior: none;
+	/* overflow-y: auto; */
+	/* overscroll-behavior: none; */
 }
 body {
 	text-align: center;
@@ -1486,4 +1486,33 @@ polygon {
 	z-index: 20;
 	display: block;
 	animation: spin 1000ms linear;
+}
+.floaters {
+	color: var(--blue4);
+	background-color: transparent;
+	font-size: clamp(1rem, 4vw + 1rem, 1.5rem);
+	display: flex;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	bottom: 4px;
+	right: 4px;
+	width: auto;
+	height: auto;
+	background: var(--bg);
+	border-radius: 50%;
+	border: 2px solid var(--blue3);
+	box-shadow: 0px 0px 4px 4px var(--blue4);
+}
+.fa-cloud-arrow-down {
+	cursor: pointer;
+	margin: 8px 5px 8px 5px;
+	transition: 1s color;
+}
+.fa-cloud-arrow-down:hover {
+	cursor: pointer;
+	margin: 8px 5px 8px 5px;
+	transition: 1s color;
+	color: var(--pink2);
 }
