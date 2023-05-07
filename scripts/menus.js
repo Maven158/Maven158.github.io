@@ -323,22 +323,6 @@ function sideBarNavSwipe() {
 	}
 };
 
-function downloadResume() {
-	var resume = $('.fa-cloud-arrow-down');
-	resume.on('click', resume.fn = function(e) {
-		fetch('site/Christopher Hren - Operations Manager - Region Manager.pdf',  {
-			method: 'GET'
-		})
-		.then(response => response.blob())
-  	.then(blob => {
-			var a = document.createElement('a');
-			a.href = window.URL.createObjectURL(blob);
-			a.download = 'Christopher Hren - Résumé';
-			a.click();
-  	});
-	});
-} 
-
 function sideBarNavLinks() {
 	sideBar.find('i').each(function() {
 		if ($(this).hasClass('fa-solid fa-sun')) {
@@ -485,7 +469,7 @@ function sideBarNavLinks() {
 				nav.mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
-				window.open("https://www.linkedin.com/in/chris-hren/");
+				window.open('https://www.linkedin.com/in/chris-hren/');
 			});
 		}
 		if ($(this).hasClass('fa fa-reddit-alien')) {
@@ -505,7 +489,7 @@ function sideBarNavLinks() {
 				nav.on('mouseenter', function(e) {
 					toolTip.style.opacity = 1;
 				});
-				window.open("https://www.reddit.com/user/Richard_Musk/");
+				window.open('https://www.reddit.com/user/Richard_Musk/');
 			});
 		}		
 		if ($(this).hasClass('fa fa-github-alt')) {
@@ -522,7 +506,7 @@ function sideBarNavLinks() {
 				nav.mouseleave(function() {
 					toolTip.style.opacity = null;
 				});
-				window.open("https://github.com/Maven158");
+				window.open('https://github.com/Maven158');
 			});
 		}		
 		if ($(this).hasClass('fa fa-stack-overflow')) {
@@ -531,8 +515,7 @@ function sideBarNavLinks() {
 				nav.fn = '';
 			}
 			nav.on('click', function() {
-				console.log(nav);
-				window.open("https://stackoverflow.com/users/18815704/maven");
+				window.open('https://stackoverflow.com/users/18815704/maven');
 				sideBar.find('i').each(function() {
 					let toolTip = nav[0].getElementsByClassName('tt')[0];
 					toolTip.style.opacity = '0';
@@ -602,7 +585,7 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					loadScript("app.js");
+					loadScript('app.js');
 				});
 				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
@@ -708,19 +691,15 @@ function topBarNavLinks() {
 							$(this).removeClass('selected');
 						}
 					});
-					$(sideNav).addClass('flash');
-					setTimeout(function() {
-						$(sideNav).removeClass('flash');
-					}, 600);
 					$(sideNav).addClass('selected');
 					nav.addClass('flash');
 					newDoc.innerHTML = text;
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
+					downloadResume();
 					setTimeout(function() {
 						nav.removeClass('flash');
-						downloadResume();
 					}, 600);
 				})
 				.then(() => {
@@ -1047,23 +1026,23 @@ function topBarNavLinks() {
 	});
 };
 
-function loadScript(src) {
-  return new Promise(function (resolve, reject) {
-    if ($("script[src='" + src + "']").length === 0) {
-        let script = document.createElement('script');
-        script.onload = function() {
-            resolve();
-        };
-        script.onerror = function() {
-            reject();
-        };
-        script.src = src;
-        document.body.appendChild(script);
-    } else {
-        resolve();
-    }
-	});
-};
+// function loadScript(src) {
+//   return new Promise(function (resolve, reject) {
+//     if ($('script[src='' + src + '']').length === 0) {
+//         let script = document.createElement('script');
+//         script.onload = function() {
+//             resolve();
+//         };
+//         script.onerror = function() {
+//             reject();
+//         };
+//         script.src = src;
+//         document.body.appendChild(script);
+//     } else {
+//         resolve();
+//     }
+// 	});
+// };
 
 function loadSVG() {
 	let injector = document.getElementsByClassName('svg-container')[0];
@@ -1085,8 +1064,8 @@ function loadSVG() {
 	let nodes = numRowsCols * numRowsCols;
 	injector.setAttribute('style', `width: ${numRowsCols * 16}px; height: ${numRowsCols * 16}px`);
 	for (let i = 0; i < nodes; i++) {
-		injector.insertAdjacentHTML('beforeend',`<svg class="pinwheels" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="5 5 10 10" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="1em" height="1em" opacity="${(Math.random() * .75) + .25}" fill="#fd79a8" stroke="#e84393">
-			<polygon points="0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276" transform="matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)" stroke-width="1"/>
+		injector.insertAdjacentHTML('beforeend',`<svg class='pinwheels' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='5 5 10 10' shape-rendering='geometricPrecision' text-rendering='geometricPrecision' width='1em' height='1em' opacity='${(Math.random() * .75) + .25}' fill='#fd79a8' stroke='#e84393'>
+			<polygon points='0.006872,-4.766276 1.774639,-1.534043 5.006872,0.233724 1.774639,2.001491 0.006872,5.233724 -1.760895,2.001491 -4.993128,0.233724 -1.760895,-1.534043 0.006872,-4.766276' transform='matrix(.707107 0.707107-.707107 0.707107 10.167281 10.063597)' stroke-width='1'/>
 			</svg>`);
 	}
 };
@@ -1139,8 +1118,6 @@ function responsiveSVG() {
 }
 
 function initSparkling() {
-	// settings
-	// var stroke = ['#e84393', '#00b894', '#6c5ce7', '#fdcb6e', '#00cec9', '#0984e3'];
 	const color = `#C0C0C0`;
 	const stroke = '#D7EDE9';
 	const svgPath = 'M26.5 25.5C19.0043 33.3697 0 34 0 34C0 34 19.1013 35.3684 26.5 43.5C33.234 50.901 34 68 34 68C34 68 36.9884 50.7065 44.5 43.5C51.6431 36.647 68 34 68 34C68 34 51.6947 32.0939 44.5 25.5C36.5605 18.2235 34 0 34 0C34 0 33.6591 17.9837 26.5 25.5Z';
@@ -1164,9 +1141,9 @@ function initSparkling() {
 		let size = Math.floor(Math.random() * 20) + 10;
 		let top = Math.floor(Math.random() * 100) - 5;
 		let left = Math.floor(Math.random() * 100);
-		return '<span class="star" style="top:' + top + '%; left:' + left + '%;">'
-			+ '<svg width="' + size + '" height="' + size + '" viewBox="0 0 68 68" fill="none" stroke-width="2" stroke="' + stroke + '">'
-			+ '<path d="' + svgPath + '" fill="' + color + '" /></svg></span>';
+		return "<span class='star' style='top:' + top + '%; left:' + left + '%;'>"
+			+ "<svg width='" + size + "' height='" + size + "' viewBox='0 0 68 68' fill='none' stroke-width='2' stroke='" + stroke + "'>"
+			+ "<path d='" + svgPath + "' fill='" + color + "' /></svg></span>";
 	}
 	sparkling();
 }
@@ -1174,6 +1151,28 @@ function initSparkling() {
 $(function() {
 	initSparkling();
 });
+
+function downloadResume() {
+	var resume = $('.fa-cloud-arrow-down');
+	var floater = $('.floaters');
+	if (window.innerWidth >= 635) {
+		floater[0].style.right = '25px';
+		floater[0].style.bottom = '25px';
+	} else {
+		floater[0].style.right = '4px';
+		floater[0].style.bottom = '4px';
+	}
+	resume.on('click', resume.fn = function(e) {
+		fetch('site/Christopher Hren - Operations Manager - Region Manager.pdf')
+		.then(response => response.blob())
+  	.then(blob => {
+			var a = document.createElement('a');
+			a.href = window.URL.createObjectURL(blob);
+			a.download = 'Christopher Hren - Résumé';
+			a.click();
+  	});
+	});
+} 
 
 $(document).ready(function() {
 	enableNav()
@@ -1200,4 +1199,6 @@ $(window).resize(function() {
 	topBarNav();
 	topBarNavLinks();
 	sideBarNav();
+	downloadResume();
 });
+// $(window).on('orientationchange', downloadResume)

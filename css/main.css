@@ -55,11 +55,12 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font: 100% Arial, sans-serif;
-	/* overflow-y: auto; */
+	
 	/* overscroll-behavior: none; */
 }
 body {
 	text-align: center;
+	overflow-y: auto;
 	background: var(--bg);
 }
 div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
@@ -99,7 +100,7 @@ div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h
 	box-shadow: 0px 0px 4px 4px var(--blue4);
 	z-index: 1;
 }
-html[data-theme="light"] #field > article > div.hero > div > img.banner {
+html[data-theme=light] #field > article > div.hero > div > img.banner {
 	border-radius: 10px;
 	padding: 10px;
 	position: absolute;
@@ -157,7 +158,7 @@ html[data-theme="light"] #field > article > div.hero > div > img.banner {
   border-bottom: none;
 }
 
-html[data-theme="light"] .onePage .section-header {
+html[data-theme=light] .onePage .section-header {
   font-family: Arial, sans-serif;
   display: block;
 	color: var(--gray4);
@@ -213,6 +214,13 @@ html[data-theme="light"] .onePage .section-header {
   display: flex;
   flex-wrap: wrap;
 }
+html[data-theme=light] .onePage .contact {
+  color: var(--red2);
+  margin-top: 2px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
 .onePage .contact-item {
   font-family: Arial, sans-serif;
   display: block;
@@ -262,7 +270,7 @@ html[data-theme="light"] .onePage .section-header {
 	font-size: clamp(.5rem, 1vw + .5rem, 1rem);
   font-weight: 600;
   text-align: left;
-  display: inline-flex;
+  display: inline;
   align-items: baseline;
   padding: 0;
   line-height: initial;
@@ -326,6 +334,16 @@ html[data-theme="light"] .onePage .section-header {
   padding: 0 0px 0 3px;
   color: var(--pink2);
 }
+html[data-theme=light] .onePage .item span:after {
+  content: "|";
+	font-weight: bold;
+  position: relative;
+  left: 1px;
+	bottom: 2px;
+  box-sizing: border-box;
+  padding: 0 0px 0 3px;
+  color: var(--red2);
+}
 .onePage .item .baseline {
   display: block !important;
 }
@@ -334,13 +352,28 @@ html[data-theme="light"] .onePage .section-header {
   margin-left: -3px;
   color: var(--pink1);
 }
+html[data-theme=light] .onePage .item .baseline > span:not(:last-child):after {
+  content: ",";
+  margin-left: -3px;
+  color: var(--red2);
+}
 .onePage .item span:last-child:after {
+  content: "";
+  position: relative;
+  padding: 0;
+}
+html[data-theme=light] .onePage .item span:last-child:after {
   content: "";
   position: relative;
   padding: 0;
 }
 .onePage .item .baseline > span {
   color: var(--pink1);
+  font-weight: normal;
+  margin-bottom: 0;
+}
+html[data-theme=light] .onePage .item .baseline > span {
+  color: var(--red2);
   font-weight: normal;
   margin-bottom: 0;
 }
@@ -362,6 +395,22 @@ html[data-theme="light"] .onePage .section-header {
 	bottom: 0px;
 	height: 47px;
 	color:var(--pink2);
+}
+html[data-theme=light] .copyright {
+	display: 	inline-flex;
+	position: absolute;
+	align-items: center;
+	font-kerning: auto;
+	z-index: 1;
+	background: transparent;
+	transform: scale(1);
+	transition: 0.0s ease-in-out;
+	font-size: clamp(.7rem, 1vw + .5rem, 1.1rem);
+	font-weight: bold;
+	font-variant-caps: all-small-caps;
+	bottom: 0px;
+	height: 47px;
+	color:var(--red2);
 }
 .pfp {
 	position: absolute;
@@ -837,34 +886,34 @@ html[data-theme=light] #sideBar > div > ul > li > a > i.selected {
 	box-shadow: 0px 0px 4px 4px var(--gray4);
 }
 #sideBar > div > ul > li > a > i.selectedDark {
-	color: var(--yellow2);
-	border: 2px solid var(--purple1);
+	color: var(--purple2);
+	/* border: 2px solid var(--purple1);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--purple2);
+	box-shadow: 0px 0px 4px 4px var(--purple2); */
 }
 #sideBar > div > ul > li > a > i.selectedDark:hover {
 	color: var(--yellow2);
-	border: 2px solid var(--purple1);
+	/* border: 2px solid var(--purple1);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--purple2);
+	box-shadow: 0px 0px 4px 4px var(--purple2); */
 }
-#sideBar > div > ul > li > a > i.selectedLight {
+/* #sideBar > div > ul > li > a > i.selectedLight {
 	color: var(--red2);
 	border: 2px solid var(--gray3);
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 4px var(--gray4);
-}
+} */
 html[data-theme=light] #sideBar > div > ul > li > a > i.selectedLight {
-	color: var(--red2);
-	border: 2px solid var(--gray3);
+	color: var(--yellow2);
+	/* border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--gray4);
+	box-shadow: 0px 0px 4px 4px var(--gray4); */
 }
 html[data-theme=light] #sideBar > div > ul > li > a > i.selectedLight:hover {
-	color: var(--red2);
-	border: 2px solid var(--gray3);
+	color: var(--purple2);
+	/* border: 2px solid var(--gray3);
 	border-radius: 10px;
-	box-shadow: 0px 0px 4px 4px var(--gray4);
+	box-shadow: 0px 0px 4px 4px var(--gray4); */
 }
 #sideBar > div  > ul > li > a.current > i > ul > li > div,
 #sideBar > div  > ul > li > a.current > i > ul > li > div > .tt {
@@ -1487,10 +1536,10 @@ polygon {
 	display: block;
 	animation: spin 1000ms linear;
 }
-.floaters {
+[data-theme="dark"] .floaters {
 	color: var(--blue4);
 	background-color: transparent;
-	font-size: clamp(1rem, 4vw + 1rem, 1.5rem);
+	font-size: 1.5em;
 	display: flex;
 	position: fixed;
 	align-items: center;
@@ -1505,14 +1554,43 @@ polygon {
 	border: 2px solid var(--blue3);
 	box-shadow: 0px 0px 4px 4px var(--blue4);
 }
+.floaters {
+	color: var(--gray4);
+	background-color: transparent;
+	font-size: 1.5em;
+	display: flex;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	bottom: 4px;
+	right: 4px;
+	width: auto;
+	height: auto;
+	background: var(--bg);
+	border-radius: 50%;
+	border: 2px solid var(--gray4);
+	box-shadow: 0px 0px 4px 4px var(--gray4);
+}
+[data-theme="dark"] .fa-cloud-arrow-down {
+	cursor: pointer;
+	margin: 8px 5px 8px 5px;
+	transition: 1s color;
+}
 .fa-cloud-arrow-down {
 	cursor: pointer;
 	margin: 8px 5px 8px 5px;
 	transition: 1s color;
 }
-.fa-cloud-arrow-down:hover {
+[data-theme="dark"] .fa-cloud-arrow-down:hover {
 	cursor: pointer;
 	margin: 8px 5px 8px 5px;
 	transition: 1s color;
 	color: var(--pink2);
+}
+.fa-cloud-arrow-down:hover {
+	cursor: pointer;
+	margin: 8px 5px 8px 5px;
+	transition: 1s color;
+	color: var(--red2);
 }
