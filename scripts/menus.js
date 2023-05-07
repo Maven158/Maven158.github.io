@@ -871,8 +871,6 @@ function topBarNavLinks() {
 					loadSVG();
 					responsiveSVG();
 					window.scrollTo(0, 0);
-					console.log(body.scrollHeight);
-					console.log(window.innerHeight);
 					if (body.scrollHeight > window.innerHeight) {
 						$('body')[0].style.overflowY = 'auto';
 					} else {
@@ -1202,7 +1200,7 @@ $(document).ready(function() {
 	if (document.body.scrollHeight > window.innerHeight) {
 		$('body')[0].style.overflowY = 'auto';
 		document.ontouchmove = function (e) {
-			return true;
+			e.off();
 		}
 	} else {
 		$('body')[0].style.overflowY = 'hidden';
@@ -1233,7 +1231,7 @@ $(window).resize(function() {
 	if (document.body.scrollHeight > window.innerHeight) {
 		$('body')[0].style.overflowY = 'auto';
 		document.ontouchmove = function (e) {
-			return true;
+			e.off();
 		}
 	} else {
 		$('body')[0].style.overflowY = 'hidden';
