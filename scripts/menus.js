@@ -417,14 +417,8 @@ function sideBarNavLinks() {
 					console.log(body.scrollHeight);
 					if (body.scrollHeight > window.innerHeight) {
 						$('body')[0].style.overflowY = 'auto';
-						document.ontouchmove = function (e) {
-							return true;
-						}
 					} else {
 						$('body')[0].style.overflowY = 'hidden';
-						document.ontouchmove = function (e) {
-							e.preventDefault();
-						}
 					}
 					console.log($('body')[0].style.overflowY);
 				});
@@ -1207,8 +1201,14 @@ $(document).ready(function() {
 	window.scrollTo(0, 0);
 	if (document.body.scrollHeight > window.innerHeight) {
 		$('body')[0].style.overflowY = 'auto';
+		document.ontouchmove = function (e) {
+			return true;
+		}
 	} else {
 		$('body')[0].style.overflowY = 'hidden';
+		document.ontouchmove = function (e) {
+			e.preventDefault();
+		}
 	}
 });
 
@@ -1232,7 +1232,13 @@ $(window).resize(function() {
 	}
 	if (document.body.scrollHeight > window.innerHeight) {
 		$('body')[0].style.overflowY = 'auto';
+		document.ontouchmove = function (e) {
+			return true;
+		}
 	} else {
 		$('body')[0].style.overflowY = 'hidden';
+		document.ontouchmove = function (e) {
+			e.preventDefault();
+		}
 	}
 });
