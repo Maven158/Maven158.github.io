@@ -417,9 +417,16 @@ function sideBarNavLinks() {
 					console.log(body.scrollHeight);
 					if (body.scrollHeight > window.innerHeight) {
 						$('body')[0].style.overflowY = 'auto';
+						document.ontouchmove = function (e) {
+							return true;
+						}
 					} else {
 						$('body')[0].style.overflowY = 'hidden';
+						document.ontouchmove = function (e) {
+							e.preventDefault();
+						}
 					}
+					console.log($('body')[0].style.overflowY);
 				});
 				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
@@ -870,6 +877,8 @@ function topBarNavLinks() {
 					loadSVG();
 					responsiveSVG();
 					window.scrollTo(0, 0);
+					console.log(body.scrollHeight);
+					console.log(window.innerHeight);
 					if (body.scrollHeight > window.innerHeight) {
 						$('body')[0].style.overflowY = 'auto';
 					} else {

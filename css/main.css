@@ -60,8 +60,9 @@ html, body {
 }
 body {
 	text-align: center;
-	overflow-y: hidden;
+	overflow-y: auto;
 	background: var(--bg);
+	touch-action:none;
 }
 div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
 	margin: 0;
