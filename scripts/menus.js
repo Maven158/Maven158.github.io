@@ -1222,11 +1222,11 @@ $(document).ready(function() {
 	loadCanvas();
 	window.scrollTo(0, 0);
 	if (document.body.scrollHeight > window.innerHeight) {
-		document.body.style.overflowY = 'auto';
-		document.body.style.touchAction = 'auto';
+		$(body)[0].style.overflowY = 'auto';
+		$(body)[0].style.touchAction = 'auto';
 	} else {
-		document.body.style.overflowY = 'hidden';
-		document.body.style.touchAction = 'none';
+		$(body)[0].style.overflowY = 'hidden';
+		$(body)[0].style.touchAction = 'none';
 	}
 });
 
@@ -1249,10 +1249,10 @@ $(window).resize(function() {
 		downloadResume();
 	}
 	if (document.body.scrollHeight > window.innerHeight) {
-		document.body.style.overflowY = 'auto';
-		document.body.style.touchAction = 'auto';
+		$(body)[0].style.overflowY = 'auto';
+		$(body)[0].style.touchAction = 'auto';
 	} else {
-		document.body.style.overflowY = 'hidden';
-		document.body.style.touchAction = 'none';
+		$(body)[0].style.overflowY = 'hidden';
+		$(body)[0].style.touchAction = 'none';
 	}
 });
