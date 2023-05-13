@@ -415,11 +415,13 @@ function sideBarNavLinks() {
 					window.scrollTo(0, 0);
 					// console.log(window.innerHeight);
 					// console.log(body.scrollHeight);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					// console.log($('body')[0].style.overflowY);
 				});
 				nav.on('mouseout', function(e) {
@@ -455,11 +457,13 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';						
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 				});
 				nav.on('mouseout', function(e) {
 					toolTip.style.opacity = 0;
@@ -567,11 +571,13 @@ function sideBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					downloadResume();
 				});
 				nav.on('mouseout', function(e) {
@@ -660,11 +666,13 @@ function topBarNavLinks() {
 					window.scrollTo(0, 0);
 					// console.log(body.scrollHeight);
 					// console.log(window.innerHeight);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -691,11 +699,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -729,11 +739,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					downloadResume();
 					setTimeout(function() {
 						nav.removeClass('flash');
@@ -762,11 +774,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -793,11 +807,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -831,11 +847,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -871,11 +889,13 @@ function topBarNavLinks() {
 					loadSVG();
 					responsiveSVG();
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -909,11 +929,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -1044,11 +1066,13 @@ function topBarNavLinks() {
 					let str = newDoc.querySelector('#mainContent').outerHTML;
 					$('#mainContent')[0].outerHTML = str;
 					window.scrollTo(0, 0);
-					// if (body.scrollHeight > window.innerHeight) {
-					// 	$('body')[0].style.overflowY = 'auto';
-					// } else {
-					// 	$('body')[0].style.overflowY = 'hidden';
-					// }
+					if (body.scrollHeight > window.innerHeight) {
+						body.style.overflowY = 'auto';
+						body.style.touchAction = 'auto';
+					} else {
+						body.style.overflowY = 'hidden';
+						body.style.touchAction = 'none';
+					}
 					setTimeout(function() {
 						nav.removeClass('flash');
 					}, 600);
@@ -1197,17 +1221,13 @@ $(document).ready(function() {
 	bannerJustify();
 	loadCanvas();
 	window.scrollTo(0, 0);
-	// if (document.body.scrollHeight > window.innerHeight) {
-	// 	$('body')[0].style.overflowY = 'auto';
-	// 	document.body.ontouchmove = function (e) {
-	// 		return true;
-	// 	}
-	// } else {
-	// 	$('body')[0].style.overflowY = 'hidden';
-	// 	document.body.ontouchmove = function (e) {
-	// 		e.preventDefault();
-	// 	}
-	// }
+	if (document.body.scrollHeight > window.innerHeight) {
+		document.body.style.overflowY = 'auto';
+		document.body.style.touchAction = 'auto';
+	} else {
+		document.body.style.overflowY = 'hidden';
+		document.body.style.touchAction = 'none';
+	}
 });
 
 $(window).resize(function() {
@@ -1228,15 +1248,11 @@ $(window).resize(function() {
 	if ($(document).find('.floaters').length != 0) {
 		downloadResume();
 	}
-	// if (document.body.scrollHeight > window.innerHeight) {
-	// 	$('body')[0].style.overflowY = 'auto';
-	// 	document.body.ontouchmove = function (e) {
-	// 		return true;
-	// 	}
-	// } else {
-	// 	$('body')[0].style.overflowY = 'hidden';
-	// 	document.body.ontouchmove = function (e) {
-	// 		e.preventDefault();
-	// 	}
-	// }
+	if (document.body.scrollHeight > window.innerHeight) {
+		document.body.style.overflowY = 'auto';
+		document.body.style.touchAction = 'auto';
+	} else {
+		document.body.style.overflowY = 'hidden';
+		document.body.style.touchAction = 'none';
+	}
 });
