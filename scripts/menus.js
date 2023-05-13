@@ -1199,12 +1199,12 @@ $(document).ready(function() {
 	window.scrollTo(0, 0);
 	if (document.body.scrollHeight > window.innerHeight) {
 		$('body')[0].style.overflowY = 'auto';
-		document.ontouchmove = function (e) {
-			e.off();
+		document.body.ontouchmove = function (e) {
+			return true;
 		}
 	} else {
 		$('body')[0].style.overflowY = 'hidden';
-		document.ontouchmove = function (e) {
+		document.body.ontouchmove = function (e) {
 			e.preventDefault();
 		}
 	}
@@ -1230,12 +1230,12 @@ $(window).resize(function() {
 	}
 	if (document.body.scrollHeight > window.innerHeight) {
 		$('body')[0].style.overflowY = 'auto';
-		document.ontouchmove = function (e) {
-			e.off();
+		document.body.ontouchmove = function (e) {
+			return true;
 		}
 	} else {
 		$('body')[0].style.overflowY = 'hidden';
-		document.ontouchmove = function (e) {
+		document.body.ontouchmove = function (e) {
 			e.preventDefault();
 		}
 	}
